@@ -1,9 +1,10 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": "./",
     "paths": {
-      "@components": ["shared/components"]
+      "@components": ["src/components"],
+      "@theme": ["src/theme"]
     }
   }
 }
