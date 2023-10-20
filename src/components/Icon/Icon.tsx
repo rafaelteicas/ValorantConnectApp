@@ -1,31 +1,36 @@
 import React from 'react';
 
-import {ColorValue, Pressable} from 'react-native';
+import {GestureResponderEvent, Pressable} from 'react-native';
 
-import {pallette} from '@theme';
+import {useTheme} from '@hooks';
+import {Theme} from '@theme';
 
-import {EyeIcon} from '../../assets/icons/EyeIcon';
+import {EyeIcon, EyeOffIcon, ArrowIcon} from '../../assets/icons';
 
 type IconProps = {
   name: keyof typeof Icons;
   size?: number;
-  color?: keyof typeof pallette;
+  color?: keyof Theme['colors'];
+  onPress?: (event: GestureResponderEvent) => void;
 };
 
 const Icons = {
   eyeIcon: EyeIcon,
+  eyeOffIcon: EyeOffIcon,
+  arrowIcon: ArrowIcon,
 };
 
 export type IconType = {
   size: number;
-  color: ColorValue;
+  color: string;
 };
 
-export function Icon({size = 20, color = 'red', name}: IconProps) {
+export function Icon({size = 20, color = 'primary', name, onPress}: IconProps) {
+  const {colors} = useTheme();
   const SelectedIcon = Icons[name];
   return (
-    <Pressable>
-      <SelectedIcon size={size} color={color} />
+    <Pressable onPress={onPress}>
+      <SelectedIcon size={size} color={colors[color]} />
     </Pressable>
   );
 }
