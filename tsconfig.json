@@ -5,7 +5,8 @@
     "paths": {
       "@components": ["src/components"],
       "@theme": ["src/theme"],
-      "@hooks": ["src/hooks"]
+      "@hooks": ["src/hooks"],
+      "@screens": ["src/screens"]
     }
   }
 }

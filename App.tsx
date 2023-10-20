@@ -2,14 +2,13 @@ import React from 'react';
 
 import {ThemeProvider} from '@shopify/restyle';
 
+import {SignUpScreen} from '@screens';
 import {theme} from '@theme';
-
-import {SignInScreen} from './src/screens/auth/SignInScreen/SignInScreen';
 
 export function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
-      <SignInScreen />
+      <SignUpScreen />
     </ThemeProvider>
   );
 }

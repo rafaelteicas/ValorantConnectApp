@@ -9,7 +9,7 @@ const BoxRestyle = createBox<Theme>();
 export type BoxProps = ComponentProps<typeof BoxRestyle>;
 
 interface BoxComponentProps extends BoxProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function Box({children, ...boxProps}: BoxComponentProps) {

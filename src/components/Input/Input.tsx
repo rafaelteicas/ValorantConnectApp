@@ -22,9 +22,11 @@ export function Input({
   const [secure, setSecure] = useState<boolean>();
 
   return (
-    <Box {...$inputContainer}>
+    <Box
+      style={{backgroundColor: 'rgba(255,255,255,0.1)'}}
+      {...$inputContainer}>
       <Pressable>
-        <Box padding="s16">
+        <Box padding="s12">
           <Text preset="paragraphMedium" bold color="primary">
             {title}
           </Text>
