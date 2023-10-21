@@ -6,7 +6,8 @@
       "@components": ["src/components"],
       "@theme": ["src/theme"],
       "@hooks": ["src/hooks"],
-      "@screens": ["src/screens"]
+      "@screens": ["src/screens"],
+      "@routes": ["src/routes"]
     }
   }
 }

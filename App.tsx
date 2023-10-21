@@ -1,14 +1,22 @@
 import React from 'react';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ThemeProvider} from '@shopify/restyle';
 
-import {SignUpScreen} from '@screens';
+import {SignInScreen} from '@screens';
 import {theme} from '@theme';
 
-export function App(): JSX.Element {
+const Stack = createNativeStackNavigator();
+
+export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SignUpScreen />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={SignInScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
