@@ -19,7 +19,7 @@ export function Input({
   secureTextEntry,
   ...textInputProps
 }: inputProps) {
-  const [secure, setSecure] = useState<boolean>();
+  const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
 
   return (
     <Box
@@ -33,9 +33,9 @@ export function Input({
           <Box flexDirection="row">
             <TextInput
               {...textInputProps}
-              secureTextEntry={secure}
               style={[$inputTextStyle]}
               placeholder={placeholder}
+              secureTextEntry={secure}
               placeholderTextColor={'white'}
             />
             {secureTextEntry && (
