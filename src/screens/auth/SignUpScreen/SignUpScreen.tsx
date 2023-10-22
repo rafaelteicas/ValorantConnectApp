@@ -4,7 +4,7 @@ import {Box, Button, Input, Screen} from '@components';
 
 export function SignUpScreen() {
   return (
-    <Screen>
+    <Screen canGoBack>
       <Box padding="s32">
         <Input title="DIGITE SEU E-MAIL" placeholder="email@email.com" />
         <Input title="CONFIRME SEU EMAIL" placeholder="email@email.com" />
