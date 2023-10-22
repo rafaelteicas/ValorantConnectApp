@@ -5,7 +5,12 @@ import {GestureResponderEvent, Pressable} from 'react-native';
 import {useTheme} from '@hooks';
 import {Theme} from '@theme';
 
-import {EyeIcon, EyeOffIcon, ArrowIcon} from '../../assets/icons';
+import {
+  EyeIcon,
+  EyeOffIcon,
+  ArrowIcon,
+  ArrowLeftIcon,
+} from '../../assets/icons';
 
 type IconProps = {
   name: keyof typeof Icons;
@@ -18,6 +23,7 @@ const Icons = {
   eyeIcon: EyeIcon,
   eyeOffIcon: EyeOffIcon,
   arrowIcon: ArrowIcon,
+  arrowLeftIcon: ArrowLeftIcon,
 };
 
 export type IconType = {
