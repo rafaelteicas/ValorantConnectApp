@@ -2,12 +2,14 @@ import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 
-import {AuthStackNavigator} from './AuthStack/AuthStackNavigator';
+import {AppStackNavigator, AuthStackNavigator} from '@routes';
 
 export function Navigator() {
+  const authenticated = false;
+
   return (
     <NavigationContainer>
-      <AuthStackNavigator />
+      {authenticated ? <AppStackNavigator /> : <AuthStackNavigator />}
     </NavigationContainer>
   );
 }
