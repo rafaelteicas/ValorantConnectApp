@@ -11,7 +11,7 @@ export function SignInScreen({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, 'SignInScreen'>) {
   return (
-    <Screen>
+    <Screen justifyContent="center">
       <Box padding="s32">
         <Input title="E-mail" placeholder="Digite seu e-mail" />
         <Input title="Senha" secureTextEntry placeholder="********" />

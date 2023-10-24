@@ -13,9 +13,7 @@ export function Screen({children, canGoBack, ...props}: ScreenProps) {
     <KeyboardAvoidingView style={{flex: 1}}>
       <Box flex={1} backgroundColor="backgroundColor" {...props}>
         {canGoBack && <Header />}
-        <Box flex={1} justifyContent="center">
-          {children}
-        </Box>
+        {children}
       </Box>
     </KeyboardAvoidingView>
   );
