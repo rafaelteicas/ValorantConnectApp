@@ -7,7 +7,9 @@
       "@theme": ["src/theme"],
       "@hooks": ["src/hooks"],
       "@screens": ["src/screens"],
-      "@routes": ["src/routes"]
+      "@routes": ["src/routes"],
+      "@api": ["src/api"],
+      "@domain": ["src/domain"]
     }
   }
 }
