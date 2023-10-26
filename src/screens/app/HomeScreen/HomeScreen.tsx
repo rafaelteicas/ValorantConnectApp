@@ -16,7 +16,7 @@ export function HomeScreen() {
           <FlatList
             data={null}
             renderItem={null}
-            ListHeaderComponent={<TopMenu />}
+            ListHeaderComponent={<TopMenu currentOption="AGENTS" isSelected />}
             ListFooterComponent={<Characters />}
           />
         </Box>

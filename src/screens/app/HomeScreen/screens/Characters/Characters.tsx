@@ -7,8 +7,8 @@ import {Image} from 'react-native';
 import {useGetCharacters} from '@domain';
 import {CharactersType} from 'src/domain/Characters/charactersType';
 
-import {Box} from '../Box/Box';
-import {Text} from '../Text/Text';
+import {Box} from '../../../../../components/Box/Box';
+import {Text} from '../../../../../components/Text/Text';
 
 function CharactersComponent({item}: ListRenderItemInfo<CharactersType>) {
   const {width, height} = Dimensions.get('window');
