@@ -2,25 +2,25 @@ import React from 'react';
 
 import {FlatList} from 'react-native';
 
-import {useGetStreams} from '@domain';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-import {Box, Screen, StreamSlide, Text} from '@components';
+import {Box, Characters, Screen} from '@components';
+
+import {TopMenu} from './components/TopMenu/TopMenu';
 
 export function HomeScreen() {
-  const {item} = useGetStreams();
-
   return (
-    <Screen>
-      <Box>
-        <Text preset="title" color="primary" textAlign="center">
-          LIVES
-        </Text>
-        <FlatList
-          data={item.data}
-          horizontal
-          renderItem={items => <StreamSlide {...items} />}
-        />
-      </Box>
-    </Screen>
+    <SafeAreaView style={{flex: 1}}>
+      <Screen>
+        <Box alignItems="center">
+          <FlatList
+            data={null}
+            renderItem={null}
+            ListHeaderComponent={<TopMenu />}
+            ListFooterComponent={<Characters />}
+          />
+        </Box>
+      </Screen>
+    </SafeAreaView>
   );
 }

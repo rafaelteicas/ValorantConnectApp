@@ -10,9 +10,10 @@ import {
   EyeOffIcon,
   ArrowIcon,
   ArrowLeftIcon,
+  HomeIcon,
 } from '../../assets/icons';
 
-type IconProps = {
+export type IconProps = {
   name: keyof typeof Icons;
   size?: number;
   color?: keyof Theme['colors'];
@@ -24,6 +25,7 @@ const Icons = {
   eyeOffIcon: EyeOffIcon,
   arrowIcon: ArrowIcon,
   arrowLeftIcon: ArrowLeftIcon,
+  homeIcon: HomeIcon,
 };
 
 export type IconType = {

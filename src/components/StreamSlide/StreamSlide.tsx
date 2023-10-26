@@ -1,27 +1,28 @@
 import React from 'react';
 
-import {Image, ListRenderItemInfo} from 'react-native';
+import {FlatList} from 'react-native';
 
-import {StreamType, useDimensions} from '@domain';
+import {useGetStreams} from '@domain';
 
 import {Box} from '../Box/Box';
 import {Text} from '../Text/Text';
 
-export function StreamSlide({item}: ListRenderItemInfo<StreamType>) {
-  const {height, width} = useDimensions(300, 200);
+import {StreamSlideComponent} from './components/StreamSlideComponent';
 
-  if (item) {
-    return (
-      <Box padding="s12">
-        <Image source={{uri: item.thumbnailUrl}} style={{width, height}} />
-        <Text preset="heading" color="primary">
-          {item.userLogin}
-        </Text>
-      </Box>
-    );
-  } else {
-    <Box>
-      <Text preset="heading">DEU RUIM</Text>
-    </Box>;
-  }
+export function StreamSlide() {
+  const {item} = useGetStreams();
+
+  return (
+    <Box alignItems="center">
+      <Text preset="title" color="primary">
+        AO VIVO
+      </Text>
+      <FlatList
+        horizontal
+        keyExtractor={item => item.id}
+        data={item.data}
+        renderItem={items => <StreamSlideComponent {...items} />}
+      />
+    </Box>
+  );
 }

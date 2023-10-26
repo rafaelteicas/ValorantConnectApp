@@ -7,6 +7,7 @@ import {streamService} from '../streamService';
 
 export function useGetStreams() {
   const item = useQuery({
+    queryKey: 'quey2',
     queryFn: () => streamService.getStreams(),
     retry: false,
   });
@@ -17,5 +18,7 @@ export function useGetStreams() {
 
   return {
     item,
+    isLoading: item.isLoading,
+    isError: item.isError,
   };
 }
