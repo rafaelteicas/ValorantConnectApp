@@ -5,7 +5,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import {HomeScreen} from '@screens';
+import {AppTopNavigator} from '../AppTopNavigator/AppTopNavigator';
 
 import {AppBottomTabComponent} from './components/AppBottomTabComponent';
 
@@ -26,8 +26,7 @@ export function AppBottomTab() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="Outro" component={HomeScreen} />
+      <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
     </Tab.Navigator>
   );
 }

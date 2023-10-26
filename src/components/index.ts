@@ -6,4 +6,4 @@ export * from './Icon/Icon';
 export * from './Button/Button';
 export * from './Header/Header';
 export * from './StreamSlide/StreamSlide';
-export * from '../screens/app/HomeScreen/screens/Characters/Characters';
+export * from '../screens/app/HomeScreen/screens/Agents/Agents';
