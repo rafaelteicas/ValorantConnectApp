@@ -5,6 +5,8 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
+import {FindTeamScreen} from '@screens';
+
 import {AppTopNavigator} from '../AppTopNavigator/AppTopNavigator';
 
 import {AppBottomTabComponent} from './components/AppBottomTabComponent';
@@ -27,6 +29,7 @@ export function AppBottomTab() {
         headerShown: false,
       }}>
       <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
+      <Tab.Screen name="Outro" component={FindTeamScreen} />
     </Tab.Navigator>
   );
 }

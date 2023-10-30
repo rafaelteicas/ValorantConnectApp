@@ -14,7 +14,7 @@ export const getTabBarItem: Record<
     icon: 'homeIcon',
   },
   Outro: {
-    label: 'Outro',
-    icon: 'homeIcon',
+    label: '',
+    icon: 'findTeamIcon',
   },
 };

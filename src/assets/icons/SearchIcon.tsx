@@ -4,7 +4,7 @@ import {Path, Svg} from 'react-native-svg';
 
 import {IconType} from '@components';
 
-export function SearchIcon({size, color}: IconType) {
+export function SearchIcon({size = 20, color}: IconType) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path

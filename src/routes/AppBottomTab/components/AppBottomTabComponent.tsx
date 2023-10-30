@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {Platform, TouchableOpacity} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
@@ -15,7 +15,14 @@ export function AppBottomTabComponent({
   navigation,
 }: BottomTabBarProps) {
   return (
-    <Box backgroundColor="backgroundColor" flexDirection="row">
+    <Box
+      position="absolute"
+      bottom={20}
+      right={20}
+      left={20}
+      backgroundColor="darkBox"
+      borderRadius="b12"
+      flexDirection="row">
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -36,25 +43,30 @@ export function AppBottomTabComponent({
         };
 
         return (
-          <TouchableOpacity
+          <Box
+            flex={1}
+            padding="s16"
             key={route.key}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            style={{flex: 1, alignItems: 'center'}}>
-            <Icon
-              name={tabItem.icon}
-              size={24}
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-            />
-            <Text
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-              preset="paragraphMedium">
-              {tabItem.label}
-            </Text>
-          </TouchableOpacity>
+            style={{paddingBottom: Platform.OS === 'android' ? 0 : null}}>
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityState={isFocused ? {selected: true} : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              style={{flex: 1, alignItems: 'center'}}>
+              <Icon
+                name={tabItem.icon}
+                size={24}
+                color={isFocused ? 'primary' : 'backgroundContrast'}
+              />
+              <Text
+                color={isFocused ? 'primary' : 'backgroundContrast'}
+                preset="paragraphMedium">
+                {tabItem.label}
+              </Text>
+            </TouchableOpacity>
+          </Box>
         );
       })}
     </Box>
