@@ -21,7 +21,7 @@ export function MapsComponent({item}: ListRenderItemInfo<MapsTypes>) {
   }
   return (
     <Box padding="s32" marginBottom="s16">
-      <Box backgroundColor="box" padding="s28" borderRadius="b12">
+      <Box backgroundColor="darkBox" padding="s28" borderRadius="b12">
         <Box flexDirection="row" width={230}>
           <Image source={{uri: item.splash}} width={100} height={100} />
           <Text ml="s24" preset="paragraphSmall" color="backgroundContrast">

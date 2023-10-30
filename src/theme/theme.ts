@@ -5,12 +5,14 @@ const pallette = {
   darkBlue: '#0F1923',
   white: '#FFFFFF',
   darkGray: '#090808',
+  lightGray: '#cecece',
 };
 
 export const theme = createTheme({
   colors: {
     primary: pallette.red,
-    box: pallette.darkGray,
+    darkBox: pallette.darkGray,
+    lightBox: pallette.lightGray,
     backgroundColor: pallette.darkBlue,
     backgroundContrast: pallette.white,
   },

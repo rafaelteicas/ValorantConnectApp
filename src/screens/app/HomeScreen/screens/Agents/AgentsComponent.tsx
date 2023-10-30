@@ -16,7 +16,7 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
   const DEFAULT_HEIGHT = height * 0.3;
 
   return (
-    <Box justifyContent="center" alignItems="center" m="s32">
+    <Box flex={1} alignItems="center" justifyContent="center">
       <Image
         source={{uri: item.background}}
         width={DEFAULT_WIDTH}

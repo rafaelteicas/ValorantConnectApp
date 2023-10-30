@@ -11,6 +11,7 @@ import {
   ArrowIcon,
   ArrowLeftIcon,
   HomeIcon,
+  SearchIcon,
 } from '../../assets/icons';
 
 export type IconProps = {
@@ -26,6 +27,7 @@ const Icons = {
   arrowIcon: ArrowIcon,
   arrowLeftIcon: ArrowLeftIcon,
   homeIcon: HomeIcon,
+  searchIcon: SearchIcon,
 };
 
 export type IconType = {
