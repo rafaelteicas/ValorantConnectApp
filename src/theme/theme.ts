@@ -4,11 +4,13 @@ const pallette = {
   red: '#E31039',
   darkBlue: '#0F1923',
   white: '#FFFFFF',
+  darkGray: '#090808',
 };
 
 export const theme = createTheme({
   colors: {
     primary: pallette.red,
+    box: pallette.darkGray,
     backgroundColor: pallette.darkBlue,
     backgroundContrast: pallette.white,
   },

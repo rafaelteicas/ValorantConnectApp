@@ -5,7 +5,7 @@ import {
   createMaterialTopTabNavigator,
 } from '@react-navigation/material-top-tabs';
 
-import {AgentsScreen} from '@screens';
+import {AgentsScreen, MapsScreen} from '@screens';
 
 import {AppTopNavigatorComponent} from './components/AppTopNavigatorComponent';
 
@@ -18,8 +18,8 @@ export function AppTopNavigator() {
 
   return (
     <Tab.Navigator tabBar={renderTabBar}>
-      <Tab.Screen name="Home" component={AgentsScreen} />
-      <Tab.Screen name="Home2" component={AgentsScreen} />
+      <Tab.Screen name="AGENTES" component={AgentsScreen} />
+      <Tab.Screen name="MAPAS" component={MapsScreen} />
       <Tab.Screen name="Home3" component={AgentsScreen} />
     </Tab.Navigator>
   );

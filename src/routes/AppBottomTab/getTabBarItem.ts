@@ -10,7 +10,7 @@ export const getTabBarItem: Record<
   }
 > = {
   HomeScreen: {
-    label: 'Home',
+    label: '',
     icon: 'homeIcon',
   },
   Outro: {
