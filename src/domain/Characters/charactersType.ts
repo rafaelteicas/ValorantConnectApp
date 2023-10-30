@@ -32,4 +32,5 @@ export interface CharactersType {
   description: string;
   image: string;
   background: string;
+  smallIcon: string;
 }

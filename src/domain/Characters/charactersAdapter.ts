@@ -9,6 +9,7 @@ function toCharacter(data: CharactersTypeAPI): CharactersType {
     name: data.displayName,
     image: image,
     background: data.background,
+    smallIcon: data.displayIconSmall,
   };
 }
 
