@@ -2,11 +2,11 @@ module.exports = {
   root: true,
   extends: [
     '@react-native',
-    'plugin:@tanstack/eslint-plugin-query/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended'
   ],
   rules: {
     '@typescript-eslint/no-unused-vars': 0,
-    'react-native/no-inline-styles': 0,
+    'react-native/no-inline-styles': 0
   },
   plugins: ['import', '@tanstack/query'],
   overrides: [
@@ -22,28 +22,28 @@ module.exports = {
               {
                 pattern: 'react+(|-native)',
                 group: 'external',
-                position: 'before',
+                position: 'before'
               },
               {
                 pattern: '@+(routes|screens|components|hooks|theme)',
                 group: 'internal',
-                position: 'before',
+                position: 'before'
               },
               {
                 pattern: './',
                 group: 'internal',
-                position: 'before',
-              },
+                position: 'before'
+              }
             ],
             pathGroupsExcludedImportTypes: ['react+(|-native)'],
             alphabetize: {
               order: 'asc',
-              caseInsensitive: true,
+              caseInsensitive: true
             },
-            'newlines-between': 'always-and-inside-groups',
-          },
-        ],
-      },
-    },
-  ],
-};
+            'newlines-between': 'always-and-inside-groups'
+          }
+        ]
+      }
+    }
+  ]
+}

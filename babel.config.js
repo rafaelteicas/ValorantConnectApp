@@ -13,6 +13,7 @@ module.exports = {
           '@routes': './src/routes',
           '@api': './src/api',
           '@domain': './src/domain',
+          '@infra': './src/infra',
         },
       },
     ],
