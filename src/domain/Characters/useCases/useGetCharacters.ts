@@ -1,10 +1,11 @@
+import {QueryKeys} from '@infra';
 import {useQuery} from 'react-query';
 
 import {charactersService} from '../charactersService';
 
 export function useGetCharacters() {
   const item = useQuery({
-    queryKey: 'KEY1',
+    queryKey: [QueryKeys.GetAgents],
     queryFn: () => charactersService.getCharacters(),
     retry: false,
     staleTime: 1000 * 1000,
