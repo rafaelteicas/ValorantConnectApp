@@ -1,6 +1,11 @@
 import React from 'react';
 
-import {Dimensions, ListRenderItemInfo} from 'react-native';
+import {
+  Dimensions,
+  ListRenderItemInfo,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 import {Image} from 'react-native';
 
@@ -35,17 +40,7 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
           `#${item.backgroundGradientColors[0]}`,
           `#${item.backgroundGradientColors[1]}`,
         ]}
-        style={{
-          width: 140,
-          height: 180,
-          top: 80,
-          borderRadius: 10,
-          position: 'absolute',
-          zIndex: -1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          flex: 1,
-        }}>
+        style={$linearGradientStyle}>
         <Image
           source={{uri: item.background}}
           width={DEFAULT_WIDTH}
@@ -56,3 +51,15 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
     </Box>
   );
 }
+
+const $linearGradientStyle: StyleProp<ViewStyle> = {
+  width: 140,
+  height: 180,
+  top: 80,
+  borderRadius: 10,
+  position: 'absolute',
+  zIndex: -1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flex: 1,
+};
