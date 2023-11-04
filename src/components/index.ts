@@ -7,3 +7,4 @@ export * from './Button/Button';
 export * from './Header/Header';
 export * from './StreamSlide/StreamSlide';
 export * from './SearchInput/SearchInput';
+export * from './Form/FormTextInput';

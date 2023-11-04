@@ -7,7 +7,7 @@ import {Box, BoxProps, Text} from '@components';
 
 import {Icon} from '../Icon/Icon';
 
-interface inputProps extends TextInputProps {
+export interface InputProps extends TextInputProps {
   title?: string;
   placeholder?: string;
   secureTextEntry?: boolean;
@@ -18,7 +18,7 @@ export function Input({
   placeholder,
   secureTextEntry,
   ...textInputProps
-}: inputProps) {
+}: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {FlatList} from 'react-native';
 
@@ -10,13 +10,19 @@ import {Box, Screen, SearchInput} from '@components';
 import {AgentsComponent} from './AgentsComponent';
 
 export function AgentsScreen() {
-  const {agents} = useGetCharacters();
+  const [search, setSearch] = useState('');
+
+  const {agents} = useGetCharacters(search);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <Screen>
         <Box ml="s32" mr="s32">
-          <SearchInput placeholder="PESQUISE POR UM AGENTE" />
+          <SearchInput
+            value={search}
+            onChangeText={setSearch}
+            placeholder="PESQUISE POR UM AGENTE"
+          />
           <FlatList
             data={agents?.slice(0, 4)}
             keyExtractor={agent => agent.id}

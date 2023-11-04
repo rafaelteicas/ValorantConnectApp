@@ -1,21 +1,71 @@
 import React from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {Box, Input, Screen, Button, Text} from '@components';
+import {Controller, useForm} from 'react-hook-form';
+
+import {Box, Input, Screen, Button, Text, FormTextInput} from '@components';
 import {AuthStackParamList} from '@routes';
+
+type LoginType = {
+  email: string;
+  password: string;
+};
 
 export function SignInScreen({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, 'SignInScreen'>) {
+  const {control, formState, handleSubmit} = useForm<LoginType>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  function handleOnPress({email, password}: LoginType) {
+    Alert.alert(email, password);
+  }
+
   return (
     <Screen justifyContent="center">
       <Box padding="s32">
-        <Input title="E-mail" placeholder="Digite seu e-mail" />
-        <Input title="Senha" secureTextEntry placeholder="********" />
-        <Button marginBottom="s32" rightComponent title="ENTRAR" />
+        <FormTextInput
+          control={control}
+          name="email"
+          rules={{
+            required: true,
+          }}
+          title="E-mail"
+          placeholder="Digite seu e-mail"
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          rules={{
+            required: true,
+          }}
+          render={({field}) => (
+            <Input
+              onChangeText={field.onChange}
+              value={field.value}
+              title="Senha"
+              secureTextEntry
+              placeholder="********"
+            />
+          )}
+        />
+
+        <Button
+          disabled={!formState.isValid}
+          onPress={handleSubmit(handleOnPress)}
+          marginBottom="s32"
+          rightComponent
+          title="ENTRAR"
+        />
+
         <TouchableOpacity
           onPress={() => navigation.navigate('SignUpScreen')}
           style={{alignItems: 'center'}}>

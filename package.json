@@ -19,6 +19,7 @@
     "axios": "^1.5.1",
     "git-conventional-commits": "^2.6.5",
     "react": "18.2.0",
+    "react-hook-form": "^7.47.0",
     "react-native": "0.72.6",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-linear-gradient": "^2.8.3",
