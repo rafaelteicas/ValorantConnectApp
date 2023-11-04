@@ -10,6 +10,7 @@ function toCharacter(data: CharactersTypeAPI): CharactersType {
     image: image,
     background: data.background,
     smallIcon: data.displayIconSmall,
+    backgroundGradientColors: data.backgroundGradientColors,
   };
 }
 

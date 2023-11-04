@@ -16,6 +16,7 @@ export interface CharactersTypeAPI {
   fullPortraitV2: string; //'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/fullportrait.png';
   killfeedPortrait: string; // 'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/killfeedportrait.png';
   background: string; //'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/background.png';
+  backgroundGradientColors: string[];
   role: {
     uuid: string; // '1b47567f-8f7b-444b-aae3-b0c634622d10';
     displayName: string; //  'Iniciador';
@@ -33,4 +34,5 @@ export interface CharactersType {
   image: string;
   background: string;
   smallIcon: string;
+  backgroundGradientColors: string[];
 }
