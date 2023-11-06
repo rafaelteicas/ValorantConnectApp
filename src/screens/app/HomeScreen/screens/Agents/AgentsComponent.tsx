@@ -4,18 +4,27 @@ import {
   Dimensions,
   ListRenderItemInfo,
   StyleProp,
+  TouchableOpacity,
   ViewStyle,
 } from 'react-native';
 
 import {Image} from 'react-native';
 
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LinearGradient from 'react-native-linear-gradient';
 import {CharactersType} from 'src/domain/Characters/charactersType';
+
+import {tabBarProps} from '@routes';
 
 import {Box} from '../../../../../components/Box/Box';
 import {Text} from '../../../../../components/Text/Text';
 
-export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
+type Props = {
+  item: ListRenderItemInfo<CharactersType>['item'];
+  navigation: NativeStackNavigationProp<tabBarProps>;
+};
+
+export function AgentsComponent({item, navigation}: Props) {
   const {width, height} = Dimensions.get('window');
 
   const DEFAULT_WIDTH = width * 0.3;
@@ -27,27 +36,29 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
       alignItems="center"
       justifyContent="center"
       style={{backgroundColor: `#${item.backgroundGradientColors}`}}>
-      <Image
-        source={{uri: item.image}}
-        width={DEFAULT_WIDTH}
-        height={DEFAULT_HEIGHT}
-      />
-      <Text preset="heading" color="primary">
-        {item.name}
-      </Text>
-      <LinearGradient
-        colors={[
-          `#${item.backgroundGradientColors[0]}`,
-          `#${item.backgroundGradientColors[1]}`,
-        ]}
-        style={$linearGradientStyle}>
+      <TouchableOpacity>
         <Image
-          source={{uri: item.background}}
+          source={{uri: item.image}}
           width={DEFAULT_WIDTH}
           height={DEFAULT_HEIGHT}
-          style={{opacity: 0.4, flex: 1}}
         />
-      </LinearGradient>
+        <Text preset="heading" color="primary">
+          {item.name}
+        </Text>
+        <LinearGradient
+          colors={[
+            `#${item.backgroundGradientColors[0]}`,
+            `#${item.backgroundGradientColors[1]}`,
+          ]}
+          style={$linearGradientStyle}>
+          <Image
+            source={{uri: item.background}}
+            width={DEFAULT_WIDTH}
+            height={DEFAULT_HEIGHT}
+            style={{opacity: 0.4, flex: 1}}
+          />
+        </LinearGradient>
+      </TouchableOpacity>
     </Box>
   );
 }

@@ -14,6 +14,7 @@ module.exports = {
           '@api': './src/api',
           '@domain': './src/domain',
           '@infra': './src/infra',
+          '@service': './src/service',
         },
       },
     ],
