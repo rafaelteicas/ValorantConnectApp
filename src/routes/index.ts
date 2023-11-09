@@ -6,3 +6,5 @@ export * from './AuthStack/AuthStackParams';
 export * from './AppStack/AppStackNavigator';
 
 export * from './AppBottomTab/AppBottomTab';
+
+export * from './routesTypes';

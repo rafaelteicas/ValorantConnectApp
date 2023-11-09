@@ -11,12 +11,12 @@ import {AppTopNavigator} from '../AppTopNavigator/AppTopNavigator';
 
 import {AppBottomTabComponent} from './components/AppBottomTabComponent';
 
-export type tabBarProps = {
+export type TabBottomParamList = {
   HomeScreen: undefined;
-  Outro: undefined;
+  FindTeam: undefined;
 };
 
-const Tab = createBottomTabNavigator<tabBarProps>();
+const Tab = createBottomTabNavigator<TabBottomParamList>();
 
 export function AppBottomTab() {
   function renderTabBar(props: BottomTabBarProps) {
@@ -29,7 +29,7 @@ export function AppBottomTab() {
         headerShown: false,
       }}>
       <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
-      <Tab.Screen name="Outro" component={FindTeamScreen} />
+      <Tab.Screen name="FindTeam" component={FindTeamScreen} />
     </Tab.Navigator>
   );
 }

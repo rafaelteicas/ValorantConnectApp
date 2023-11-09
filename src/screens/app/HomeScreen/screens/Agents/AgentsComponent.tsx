@@ -10,25 +10,26 @@ import {
 
 import {Image} from 'react-native';
 
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {CharactersType} from 'src/domain/Characters/charactersType';
-
-import {tabBarProps} from '@routes';
 
 import {Box} from '../../../../../components/Box/Box';
 import {Text} from '../../../../../components/Text/Text';
 
-type Props = {
-  item: ListRenderItemInfo<CharactersType>['item'];
-  navigation: NativeStackNavigationProp<tabBarProps>;
-};
-
-export function AgentsComponent({item, navigation}: Props) {
+export function AgentsComponent(
+  item: ListRenderItemInfo<CharactersType>['item'],
+) {
   const {width, height} = Dimensions.get('window');
 
   const DEFAULT_WIDTH = width * 0.3;
   const DEFAULT_HEIGHT = height * 0.3;
+
+  const navigation = useNavigation();
+
+  function handleNavigate() {
+    navigation.navigate('AgentScreen', {name: item.name, image: item.image});
+  }
 
   return (
     <Box
@@ -36,7 +37,7 @@ export function AgentsComponent({item, navigation}: Props) {
       alignItems="center"
       justifyContent="center"
       style={{backgroundColor: `#${item.backgroundGradientColors}`}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleNavigate}>
         <Image
           source={{uri: item.image}}
           width={DEFAULT_WIDTH}

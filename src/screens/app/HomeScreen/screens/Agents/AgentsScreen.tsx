@@ -27,7 +27,7 @@ export function AgentsScreen() {
             data={agents?.slice(0, 4)}
             keyExtractor={agent => agent.id}
             numColumns={2}
-            renderItem={data => <AgentsComponent {...data} />}
+            renderItem={data => <AgentsComponent {...data.item} />}
           />
         </Box>
       </Screen>

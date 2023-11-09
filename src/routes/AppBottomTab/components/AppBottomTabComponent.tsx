@@ -6,7 +6,7 @@ import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
 import {Box, Icon, Text} from '@components';
 
-import {tabBarProps} from '../AppBottomTab';
+import {TabBottomParamList} from '../AppBottomTab';
 import {getTabBarItem} from '../getTabBarItem';
 
 export function AppBottomTabComponent({
@@ -26,7 +26,7 @@ export function AppBottomTabComponent({
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
-        const tabItem = getTabBarItem[route.name as keyof tabBarProps];
+        const tabItem = getTabBarItem[route.name as keyof TabBottomParamList];
 
         const isFocused = state.index === index;
 
@@ -62,9 +62,8 @@ export function AppBottomTabComponent({
               />
               <Text
                 color={isFocused ? 'primary' : 'backgroundContrast'}
-                preset="paragraphMedium">
-                {tabItem.label}
-              </Text>
+                preset="paragraphMedium"
+              />
             </TouchableOpacity>
           </Box>
         );

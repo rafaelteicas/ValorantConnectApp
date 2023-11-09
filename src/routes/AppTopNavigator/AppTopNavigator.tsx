@@ -9,7 +9,13 @@ import {AgentsScreen, MapsScreen, WeaponsScreen} from '@screens';
 
 import {AppTopNavigatorComponent} from './components/AppTopNavigatorComponent';
 
-const Tab = createMaterialTopTabNavigator();
+export type TopTabParamList = {
+  AGENTES: undefined;
+  MAPAS: undefined;
+  ARMAS: undefined;
+};
+
+const Tab = createMaterialTopTabNavigator<TopTabParamList>();
 
 export function AppTopNavigator() {
   function renderTabBar(props: MaterialTopTabBarProps) {

@@ -4,36 +4,40 @@ import {Image} from 'react-native';
 
 import {useGetCharacters} from '@domain';
 
-import {Box, Screen, Text} from '@components';
+import {useNavigation} from '@react-navigation/native';
+
+import {Box, BoxProps, Button, Screen, SearchInput, Text} from '@components';
 
 export function FindTeamScreen() {
   const {agents} = useGetCharacters();
+  const navigation = useNavigation();
+
+  function handleNavigate() {
+    navigation.navigate('PostScreen');
+  }
 
   return (
     <Screen p="s32">
-      <Box
-        flexDirection="row"
-        backgroundColor="darkBox"
-        borderRadius="b12"
-        padding="s32">
-        <Image
-          source={{
-            uri: 'https://static.thenounproject.com/png/5034901-200.png',
-          }}
-          style={{backgroundColor: '#fff'}}
-          width={100}
-          height={100}
-        />
-        <Box ml="s32">
+      <Button
+        preset="outline"
+        mb="s24"
+        title="PROCURAR DUO"
+        onPress={handleNavigate}
+      />
+      <SearchInput placeholder="PROCURE POR MAIN OU ELO!" />
+      <Box {...$boxStyles}>
+        <Box>
           <Text preset="paragraphMedium" color="primary">
             FULANO DE TAL
           </Text>
           <Text preset="paragraphSmall" color="backgroundContrast">
             Lorem ipsum dolor sit amet, consectetur
           </Text>
-          <Box flexDirection="row" justifyContent="space-between">
+          <Box flexDirection="row" justifyContent="flex-end">
             <Box alignItems="center">
-              <Text color="primary">MAIN</Text>
+              <Text preset="paragraphSmall" color="primary">
+                MAIN
+              </Text>
               {agents && (
                 <Image
                   source={{uri: agents[3].smallIcon}}
@@ -43,7 +47,9 @@ export function FindTeamScreen() {
               )}
             </Box>
             <Box alignItems="center">
-              <Text color="primary">ELO</Text>
+              <Text preset="paragraphSmall" color="primary">
+                ELO
+              </Text>
               <Image
                 source={{
                   uri: 'https://static.wikia.nocookie.net/valorant/images/1/1a/Radiant_Rank.png/revision/latest/thumbnail/width/360/height/360?cb=20200623203621',
@@ -62,3 +68,9 @@ export function FindTeamScreen() {
     </Screen>
   );
 }
+
+const $boxStyles: BoxProps = {
+  borderColor: 'darkBox',
+  justifyContent: 'center',
+  padding: 's32',
+};

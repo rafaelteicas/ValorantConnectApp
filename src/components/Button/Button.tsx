@@ -4,11 +4,15 @@ import {GestureResponderEvent, TouchableOpacity} from 'react-native';
 
 import {Box, BoxProps, Icon, Text} from '@components';
 
-interface ButtonProps extends BoxProps {
+import {Presets, getButtonPresets} from './getButtonPresets';
+
+export interface ButtonProps extends BoxProps {
   title?: string;
   rightComponent?: boolean;
   disabled?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
+  outline?: boolean;
+  preset?: Presets;
 }
 
 export function Button({
@@ -16,19 +20,21 @@ export function Button({
   rightComponent,
   onPress,
   disabled,
+  preset = 'primary',
   ...boxProps
 }: ButtonProps) {
+  const buttonPreset = getButtonPresets[preset];
   return (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
       <Box
-        flexDirection="row"
+        {...$buttonStyle}
         justifyContent={rightComponent ? 'space-between' : 'center'}
-        alignItems="center"
-        padding="s16"
-        backgroundColor={disabled ? 'lightBox' : 'primary'}
-        height={62}
+        borderColor={buttonPreset.borderColor}
+        borderWidth={buttonPreset.borderWidth}
+        borderRadius={buttonPreset.borderRadius}
+        backgroundColor={disabled ? 'lightBox' : buttonPreset.backgroundColor}
         {...boxProps}>
-        <Box width={20} height={20} />
+        {rightComponent && <Box width={26} height={26} />}
         <Text preset="paragraphMedium" color="backgroundContrast">
           {title}
         </Text>
@@ -39,3 +45,10 @@ export function Button({
     </TouchableOpacity>
   );
 }
+
+const $buttonStyle: ButtonProps = {
+  flexDirection: 'row',
+  alignItems: 'center',
+  padding: 's16',
+  height: 62,
+};
