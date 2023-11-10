@@ -18,13 +18,12 @@ export function Input({
   placeholder,
   secureTextEntry,
   ...textInputProps
-}: InputProps & BoxProps) {
+}: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
 
   return (
     <Box
       style={{backgroundColor: 'rgba(255,255,255,0.1)'}}
-      {...textInputProps}
       {...$inputContainer}>
       <Pressable>
         <Box padding="s12">
@@ -37,6 +36,7 @@ export function Input({
               placeholder={placeholder}
               secureTextEntry={secure}
               placeholderTextColor={'white'}
+              {...textInputProps}
             />
             {secureTextEntry && (
               <Icon

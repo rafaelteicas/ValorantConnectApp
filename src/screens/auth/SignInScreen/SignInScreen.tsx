@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {Alert, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
+import {useAuthSignIn} from '@domain';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {Controller, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 
-import {Box, Input, Screen, Button, Text, FormTextInput} from '@components';
+import {Box, Screen, Button, Text, FormTextInput} from '@components';
 import {AuthStackParamList} from '@routes';
 
 type LoginType = {
@@ -17,15 +18,17 @@ type LoginType = {
 export function SignInScreen({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, 'SignInScreen'>) {
+  const {signIn} = useAuthSignIn();
   const {control, formState, handleSubmit} = useForm<LoginType>({
     defaultValues: {
       email: '',
       password: '',
     },
+    mode: 'onChange',
   });
 
   function handleOnPress({email, password}: LoginType) {
-    Alert.alert(email, password);
+    signIn(email, password);
   }
 
   return (
@@ -41,21 +44,15 @@ export function SignInScreen({
           placeholder="Digite seu e-mail"
         />
 
-        <Controller
+        <FormTextInput
           control={control}
           name="password"
           rules={{
             required: true,
           }}
-          render={({field}) => (
-            <Input
-              onChangeText={field.onChange}
-              value={field.value}
-              title="Senha"
-              secureTextEntry
-              placeholder="********"
-            />
-          )}
+          secureTextEntry
+          title="Senha"
+          placeholder="********"
         />
 
         <Button

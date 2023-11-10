@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Controller, FieldValues, UseControllerProps} from 'react-hook-form';
 
-import {Input, InputProps} from '../Input/Input';
+import {Input, InputProps} from '@components';
 
 export function FormTextInput<T extends FieldValues>({
   control,
@@ -17,8 +17,8 @@ export function FormTextInput<T extends FieldValues>({
       rules={rules}
       render={({field}) => (
         <Input
-          onChangeText={field.onChange}
           value={field.value}
+          onChangeText={field.onChange}
           {...inputProps}
         />
       )}
