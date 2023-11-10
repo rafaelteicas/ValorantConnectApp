@@ -1,24 +1,9 @@
-import {create} from 'zustand';
-import {persist} from 'zustand/middleware';
-
-import {storage} from '../storage/storage';
+import {useContext} from 'react';
 
 import {AuthServiceTypes} from './authServiceTypes';
+import {AuthContext} from './Providers/AuthCredentialsProvider';
 
-export function useAuth(): AuthServiceTypes {
-  return useAuthZustand();
+export function useAuthContext(): AuthServiceTypes {
+  const context = useContext(AuthContext);
+  return context;
 }
-
-const useAuthZustand = create<AuthServiceTypes>()(
-  persist(
-    set => ({
-      auth: null,
-      saveAuth: async data => set({auth: data}),
-      removeAuth: async () => set({auth: null}),
-    }),
-    {
-      name: 'test',
-      storage: storage,
-    },
-  ),
-);
