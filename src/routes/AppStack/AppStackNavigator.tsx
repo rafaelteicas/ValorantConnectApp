@@ -11,6 +11,13 @@ export type AppStackParamList = {
   AgentScreen: {
     name: string;
     image: string;
+    description: string;
+    role: {
+      name: string;
+      description: string;
+      icon: string;
+    };
+    abilities: {};
   };
   PostScreen: undefined;
   ChooseMain: undefined;

@@ -11,6 +11,12 @@ function toCharacter(data: CharactersTypeAPI): CharactersType {
     background: data.background,
     smallIcon: data.displayIconSmall,
     backgroundGradientColors: data.backgroundGradientColors,
+    role: {
+      name: data.role.displayName,
+      icon: data.role.displayIcon,
+      description: data.role.description,
+    },
+    abilities: data.abilities,
   };
 }
 

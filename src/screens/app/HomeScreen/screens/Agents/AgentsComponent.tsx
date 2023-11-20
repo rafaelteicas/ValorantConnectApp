@@ -28,7 +28,13 @@ export function AgentsComponent(
   const navigation = useNavigation();
 
   function handleNavigate() {
-    navigation.navigate('AgentScreen', {name: item.name, image: item.image});
+    navigation.navigate('AgentScreen', {
+      name: item.name,
+      image: item.image,
+      description: item.description,
+      role: item.role,
+      abilities: item.abilities,
+    });
   }
 
   return (

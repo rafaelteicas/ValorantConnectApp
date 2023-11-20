@@ -5,7 +5,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import {FindTeamScreen} from '@screens';
+import {FindTeamScreen, ProfileScreen} from '@screens';
 
 import {AppTopNavigator} from '../AppTopNavigator/AppTopNavigator';
 
@@ -14,6 +14,7 @@ import {AppBottomTabComponent} from './components/AppBottomTabComponent';
 export type TabBottomParamList = {
   HomeScreen: undefined;
   FindTeam: undefined;
+  Profile: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabBottomParamList>();
@@ -30,6 +31,7 @@ export function AppBottomTab() {
       }}>
       <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
       <Tab.Screen name="FindTeam" component={FindTeamScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

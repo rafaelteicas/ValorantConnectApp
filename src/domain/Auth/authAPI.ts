@@ -1,9 +1,9 @@
-import axios from 'axios';
+import {apiConfig} from '@api';
 
-import {Auth} from './authTypes';
+import {Auth, SignUp} from './authTypes';
 
 async function authenticate(email: string, password: string): Promise<Auth> {
-  const auth = await axios.post('http://192.168.1.7:3000/auth', {
+  const auth = await apiConfig.post('/auth', {
     email,
     password,
   });
@@ -11,6 +11,20 @@ async function authenticate(email: string, password: string): Promise<Auth> {
   return auth.data;
 }
 
+async function signUp(account: SignUp) {
+  await apiConfig.post('/signup', account);
+}
+
+async function refreshToken(token: string) {
+  const response = await apiConfig.post('/refresh-token', {
+    token,
+  });
+
+  return response.data;
+}
+
 export const authAPI = {
   authenticate,
+  signUp,
+  refreshToken,
 };

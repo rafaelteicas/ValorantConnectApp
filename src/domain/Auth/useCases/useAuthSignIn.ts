@@ -2,12 +2,12 @@ import {useAuthContext} from '@service';
 import {useMutation} from 'react-query';
 
 import {authService} from '../authService';
-import {Auth} from '../authTypes';
+import {Auth, SignIn} from '../authTypes';
 
 export function useAuthSignIn() {
   const {saveAuth} = useAuthContext();
-  const mutation = useMutation<Auth, Error, {email: string; password: string}>({
-    mutationFn: ({email, password}) => authService.signIn(email, password),
+  const mutation = useMutation<Auth, Error, SignIn>({
+    mutationFn: data => authService.signIn(data),
     retry: false,
     onSuccess: auth => {
       saveAuth(auth);

@@ -1,8 +1,16 @@
 export type Auth = {
-  body: {
-    token: string;
-    refreshToken: string;
-    expiresAt: string;
-  };
+  token: string;
+  refreshToken: string;
+  expiresAt: string;
   status: number;
+};
+
+export type SignIn = {
+  email: string;
+  password: string;
+};
+
+export type SignUp = {
+  email: string;
+  password: string;
 };

@@ -11,7 +11,12 @@ interface ScreenProps extends BoxProps {
 export function Screen({children, canGoBack, ...props}: ScreenProps) {
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
-      <Box flex={1} backgroundColor="backgroundColor" {...props}>
+      <Box
+        padding="s32"
+        flex={1}
+        backgroundColor="backgroundColor"
+        {...props}
+        style={{paddingBottom: 0}}>
         {canGoBack && <Header />}
         {children}
       </Box>

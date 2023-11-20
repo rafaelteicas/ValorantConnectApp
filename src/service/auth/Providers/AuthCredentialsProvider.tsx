@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import {createContext} from 'react';
 
+import {apiConfig} from '@api';
 import {Auth, authService} from '@domain';
 
 import {MMKVStorage} from '@service';
@@ -26,17 +27,41 @@ export function AuthCredentialsProvider({children}: React.PropsWithChildren) {
     saveCredentials();
   }, []);
 
+  useEffect(() => {
+    apiConfig.interceptors.response.use(
+      response => response,
+      async reject => {
+        if (reject.response.status === 400) {
+          const failedRequest = reject.config;
+          if (auth?.refreshToken === undefined) {
+            removeAuth();
+            return;
+          }
+          const newAuth = await authService.refreshToken(auth?.refreshToken);
+          console.log(newAuth);
+          saveAuth(newAuth);
+          failedRequest.headers.Authorization = `Bearer ${newAuth.token}`;
+          return apiConfig(failedRequest);
+        }
+      },
+    );
+  }, [auth?.refreshToken]);
+
   async function saveCredentials() {
-    const data: Auth = await MMKVStorage.getItem(KEY);
-    if (data) {
-      authService.updateToken(data.body.token);
-      setAuth(data);
+    try {
+      const data: Auth = await MMKVStorage.getItem(KEY);
+      if (data) {
+        authService.updateToken(data.token);
+        setAuth(data);
+      }
+    } catch (err) {
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   async function saveAuth(accountData: Auth) {
-    authService.updateToken(accountData.body.token);
+    authService.updateToken(accountData.token);
     MMKVStorage.setItem(KEY, accountData);
     setAuth(accountData);
   }

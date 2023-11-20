@@ -35,4 +35,10 @@ export interface CharactersType {
   background: string;
   smallIcon: string;
   backgroundGradientColors: string[];
+  role: {
+    name: string;
+    description: string;
+    icon: string;
+  };
+  abilities: abilitiesAPI[];
 }

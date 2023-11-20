@@ -12,10 +12,8 @@ export function Header({...headerProps}: headerProps) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.goBack()}
-      style={{position: 'absolute'}}>
-      <Box padding="s32" flexDirection="row" {...headerProps}>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <Box flexDirection="row" {...headerProps} style={{paddingBottom: 0}}>
         <Icon name="arrowLeftIcon" size={28} />
         <Text preset="paragraphMedium" color="primary" ml="s16">
           VOLTAR

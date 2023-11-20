@@ -1,14 +1,19 @@
 import {apiConfig} from '@api';
 
 import {authAPI} from './authAPI';
-import {Auth} from './authTypes';
+import {Auth, SignIn, SignUp} from './authTypes';
 
-async function signIn(email: string, password: string): Promise<Auth> {
+async function signIn({email, password}: SignIn): Promise<Auth> {
   const response = await authAPI.authenticate(email, password);
+
   if (response.status === 400) {
     throw new Error();
   }
   return response;
+}
+
+async function signUp({email, password}: SignUp) {
+  await authAPI.signUp({email, password});
 }
 
 function updateToken(token: string) {
@@ -19,8 +24,15 @@ function removeToken() {
   apiConfig.defaults.headers.common.Authorization = null;
 }
 
+async function refreshToken(token: string) {
+  const response = await authAPI.refreshToken(token);
+  return response;
+}
+
 export const authService = {
   signIn,
+  signUp,
   updateToken,
   removeToken,
+  refreshToken,
 };
