@@ -5,14 +5,20 @@ import {TouchableOpacity} from 'react-native';
 import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
 
 import {Box, Text} from '@components';
+import {useAppSafeArea} from '@hooks';
 
 export function AppTopNavigatorComponent({
   state,
   descriptors,
   navigation,
 }: MaterialTopTabBarProps) {
+  const {top} = useAppSafeArea();
   return (
-    <Box p="s32" backgroundColor="backgroundColor" flexDirection="row">
+    <Box
+      paddingHorizontal="s32"
+      backgroundColor="backgroundColor"
+      flexDirection="row"
+      style={{paddingTop: top}}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =

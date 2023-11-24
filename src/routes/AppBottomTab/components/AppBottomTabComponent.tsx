@@ -6,6 +6,8 @@ import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
 import {Box, Icon, Text} from '@components';
 
+import {useAppSafeArea} from '@hooks';
+
 import {TabBottomParamList} from '../AppBottomTab';
 import {getTabBarItem} from '../getTabBarItem';
 
@@ -14,10 +16,11 @@ export function AppBottomTabComponent({
   descriptors,
   navigation,
 }: BottomTabBarProps) {
+  const {bottom} = useAppSafeArea();
   return (
     <Box
       position="absolute"
-      bottom={20}
+      bottom={bottom}
       right={20}
       left={20}
       backgroundColor="darkBox"
@@ -47,7 +50,9 @@ export function AppBottomTabComponent({
             flex={1}
             padding="s16"
             key={route.key}
-            style={{paddingBottom: Platform.OS === 'android' ? 0 : null}}>
+            style={{
+              paddingBottom: Platform.OS === 'android' ? 0 : 10,
+            }}>
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityState={isFocused ? {selected: true} : {}}

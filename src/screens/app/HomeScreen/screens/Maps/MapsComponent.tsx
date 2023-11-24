@@ -20,7 +20,7 @@ export function MapsComponent({item}: ListRenderItemInfo<MapsTypes>) {
     return null;
   }
   return (
-    <Box padding="s32" marginBottom="s16">
+    <Box marginBottom="s16">
       <Box backgroundColor="darkBox" padding="s28" borderRadius="b12">
         <Box flexDirection="row" width={230}>
           <Image source={{uri: item.splash}} width={100} height={100} />

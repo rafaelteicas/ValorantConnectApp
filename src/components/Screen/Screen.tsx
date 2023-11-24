@@ -1,7 +1,9 @@
 import React from 'react';
-import {KeyboardAvoidingView} from 'react-native';
+
+import {KeyboardAvoidingView, Platform} from 'react-native';
 
 import {Box, BoxProps, Header} from '@components';
+import {useAppSafeArea} from '@hooks';
 
 interface ScreenProps extends BoxProps {
   children: React.ReactNode;
@@ -9,14 +11,17 @@ interface ScreenProps extends BoxProps {
 }
 
 export function Screen({children, canGoBack, ...props}: ScreenProps) {
+  const {bottom, top} = useAppSafeArea();
   return (
-    <KeyboardAvoidingView style={{flex: 1}}>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Box
         padding="s32"
-        flex={1}
         backgroundColor="backgroundColor"
-        {...props}
-        style={{paddingBottom: 0}}>
+        flex={1}
+        style={{paddingBottom: bottom, paddingTop: top}}
+        {...props}>
         {canGoBack && <Header />}
         {children}
       </Box>

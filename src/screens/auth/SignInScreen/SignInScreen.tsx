@@ -33,9 +33,10 @@ export function SignInScreen({
 
   return (
     <Screen justifyContent="center">
-      <Box padding="s32">
+      <Box>
         <FormTextInput
           control={control}
+          textContentType="emailAddress"
           name="email"
           rules={{
             required: true,

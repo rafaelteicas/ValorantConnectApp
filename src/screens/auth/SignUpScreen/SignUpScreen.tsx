@@ -23,7 +23,7 @@ export function SignUpScreen() {
   });
   return (
     <Screen canGoBack>
-      <Box padding="s32">
+      <Box>
         <FormTextInput
           control={control}
           name="email"

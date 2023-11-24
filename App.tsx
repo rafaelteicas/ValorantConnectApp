@@ -14,15 +14,15 @@ const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <AuthCredentialsProvider>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <AuthCredentialsProvider>
+          <QueryClientProvider client={queryClient}>
             <Navigator />
             <Toast />
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </AuthCredentialsProvider>
+          </QueryClientProvider>
+        </AuthCredentialsProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
