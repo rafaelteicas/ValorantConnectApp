@@ -6,8 +6,9 @@ import {WeaponsTypes} from 'src/domain/Weapons/weaponsTypes';
 
 import {Box, Text} from '@components';
 
-export function Weapons({item}: ListRenderItemInfo<WeaponsTypes>) {
+export function WeaponsComponent({item}: ListRenderItemInfo<WeaponsTypes>) {
   const {width} = Dimensions.get('window');
+
   return (
     <Box
       width={width}
