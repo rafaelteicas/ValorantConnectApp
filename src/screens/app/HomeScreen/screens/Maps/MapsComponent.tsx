@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Image, ListRenderItemInfo} from 'react-native';
+import {Dimensions, Image, ListRenderItemInfo} from 'react-native';
 
 import {MapsTypes} from 'src/domain/Maps/mapsType';
 
@@ -19,19 +19,13 @@ export function MapsComponent({item}: ListRenderItemInfo<MapsTypes>) {
   if (item.displayName === 'The Range') {
     return null;
   }
+  const {width} = Dimensions.get('screen');
   return (
     <Box marginBottom="s16">
-      <Box backgroundColor="darkBox" padding="s28" borderRadius="b12">
-        <Box flexDirection="row" width={230}>
-          <Image source={{uri: item.splash}} width={100} height={100} />
-          <Text ml="s24" preset="paragraphSmall" color="backgroundContrast">
-            {item.narrativeDescription}
-          </Text>
-        </Box>
-        <Text preset="heading" color="backgroundContrast">
-          {item.displayName}
-        </Text>
-      </Box>
+      <Image source={{uri: item.splash}} width={width} height={100} />
+      <Text preset="heading" color="backgroundContrast">
+        {item.displayName}
+      </Text>
     </Box>
   );
 }

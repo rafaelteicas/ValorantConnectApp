@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Platform, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
@@ -19,12 +19,9 @@ export function AppBottomTabComponent({
   const {bottom} = useAppSafeArea();
   return (
     <Box
-      position="absolute"
-      bottom={bottom}
-      right={20}
-      left={20}
+      justifyContent="center"
+      alignItems="center"
       backgroundColor="darkBox"
-      borderRadius="b12"
       flexDirection="row">
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
@@ -47,19 +44,17 @@ export function AppBottomTabComponent({
 
         return (
           <Box
-            flex={1}
             padding="s16"
+            flex={1}
             key={route.key}
-            style={{
-              paddingBottom: Platform.OS === 'android' ? 0 : 10,
-            }}>
+            style={{paddingBottom: bottom}}>
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityState={isFocused ? {selected: true} : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
               testID={options.tabBarTestID}
               onPress={onPress}
-              style={{flex: 1, alignItems: 'center'}}>
+              style={{flex: 1, alignItems: 'center', paddingBottom: bottom}}>
               <Icon
                 name={tabItem.icon}
                 size={24}

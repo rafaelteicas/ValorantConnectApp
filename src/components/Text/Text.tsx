@@ -13,7 +13,7 @@ const RestyleText = createText<Theme>();
 type RestyleProps = ComponentProps<typeof RestyleText>;
 
 interface TextProps extends RestyleProps {
-  preset: fontPresets;
+  preset?: fontPresets;
   children?: React.ReactNode;
   bold?: boolean;
   semiBold?: boolean;
@@ -52,7 +52,7 @@ export function Text({
   children,
   bold,
   semiBold,
-  preset,
+  preset = 'paragraphMedium',
   ...textProps
 }: TextProps) {
   const fontFamily = getFontFamily(bold, semiBold);
