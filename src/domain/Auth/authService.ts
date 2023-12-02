@@ -12,8 +12,9 @@ async function signIn({email, password}: SignIn): Promise<Auth> {
   return response;
 }
 
-async function signUp({email, password}: SignUp) {
-  await authAPI.signUp({email, password});
+async function signUp(signUpData: SignUp): Promise<Auth> {
+  const response = await authAPI.signUp(signUpData);
+  return response;
 }
 
 function updateToken(token: string) {

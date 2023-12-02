@@ -15,9 +15,9 @@ type LoginType = {
   password: string;
 };
 
-export function SignInScreen({
+export function LoginScreen({
   navigation,
-}: NativeStackScreenProps<AuthStackParamList, 'SignInScreen'>) {
+}: NativeStackScreenProps<AuthStackParamList, 'LoginScreen'>) {
   const {signIn} = useAuthSignIn();
   const {control, formState, handleSubmit} = useForm<LoginType>({
     defaultValues: {
@@ -32,7 +32,7 @@ export function SignInScreen({
   }
 
   return (
-    <Screen justifyContent="center">
+    <Screen justifyContent="center" style={{paddingTop: 0}}>
       <Box>
         <FormTextInput
           control={control}
@@ -44,7 +44,6 @@ export function SignInScreen({
           title="E-mail"
           placeholder="Digite seu e-mail"
         />
-
         <FormTextInput
           control={control}
           name="password"
@@ -55,7 +54,6 @@ export function SignInScreen({
           title="Senha"
           placeholder="********"
         />
-
         <Button
           disabled={!formState.isValid}
           onPress={handleSubmit(handleOnPress)}
@@ -63,7 +61,6 @@ export function SignInScreen({
           rightComponent
           title="ENTRAR"
         />
-
         <TouchableOpacity
           onPress={() => navigation.navigate('SignUpScreen')}
           style={{alignItems: 'center'}}>

@@ -5,7 +5,7 @@ import {useGetWeapons} from '@domain';
 
 import {Box, Screen} from '@components';
 
-import {Weapons} from './WeaponsComponent';
+import {WeaponsComponent} from './WeaponsComponent';
 
 export function WeaponsScreen() {
   const {weapons} = useGetWeapons();
@@ -14,7 +14,7 @@ export function WeaponsScreen() {
     <Screen style={{paddingHorizontal: 0, paddingBottom: 0}}>
       <FlatList
         data={weapons}
-        renderItem={data => <Weapons {...data} />}
+        renderItem={data => <WeaponsComponent {...data} />}
         ItemSeparatorComponent={renderItemSeparator}
       />
     </Screen>

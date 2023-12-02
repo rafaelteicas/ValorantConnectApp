@@ -13,8 +13,8 @@ import {AppBottomTabComponent} from './components/AppBottomTabComponent';
 
 export type TabBottomParamList = {
   HomeScreen: undefined;
-  FindTeam: undefined;
-  Profile: undefined;
+  FindTeamScreen: undefined;
+  ProfileScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabBottomParamList>();
@@ -30,8 +30,8 @@ export function AppBottomTab() {
         headerShown: false,
       }}>
       <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
-      <Tab.Screen name="FindTeam" component={FindTeamScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="FindTeamScreen" component={FindTeamScreen} />
+      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

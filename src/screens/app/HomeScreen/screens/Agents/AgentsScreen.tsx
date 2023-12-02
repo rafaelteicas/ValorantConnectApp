@@ -10,9 +10,7 @@ import {AgentsComponent} from './AgentsComponent';
 
 export function AgentsScreen() {
   const [search, setSearch] = useState('');
-
   const {agents} = useGetCharacters(search);
-
   return (
     <Screen style={{paddingTop: 32}}>
       <SearchInput

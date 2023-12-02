@@ -12,7 +12,6 @@ interface ScreenProps extends BoxProps {
 
 export function Screen({children, canGoBack, ...props}: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
-  console.log(top);
 
   return (
     <KeyboardAvoidingView

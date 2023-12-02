@@ -1,10 +1,11 @@
 import {userAPI} from './userAPI';
 
-export async function getUserById(id: string) {
-  const response = await userAPI.getUserById(id);
-  return response.data;
+export async function getUser() {
+  const response = await userAPI.getUser();
+
+  return response;
 }
 
 export const userService = {
-  getUserById,
+  getUser,
 };

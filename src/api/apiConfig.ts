@@ -1,5 +1,9 @@
 import axios from 'axios';
 
 export const apiConfig = axios.create({
-  baseURL: 'http://192.168.1.7:3000',
+  baseURL: 'http://localhost:3000',
+  headers: {
+    Authorization:
+      'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6ImVtYWlsQG1haWwuY29tIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi92YWxvcmFudC1hcGktNjk1YzcuYXBwc3BvdC5jb20vby9wcm9maWxlSW1hZ2UlMkYxP2FsdD1tZWRpYSZ0b2tlbj1hNGE2ZTBmZC04YTdjLTQxZTItYWJiNi0zMjgxM2JmNmRhOGQiLCJ1c2VybmFtZSI6InVzZXIiLCJyaW90SWQiOiJpZCMxMjMifSwiaWF0IjoxNzAxNTMzODI1LCJleHAiOjE3MDIxMzg2MjV9.kQmbF58bkKvVHwZXK_kH0J5rIbWfwBRhoi7VZPKprO2eCJZ00VP0LIfENWfJCDgGoF-fDvNsYqFHZxQLds-77LSBoGUHwzcsL8V4pWuUeAwGLY4Z3jBlRIfX2ajDe2m1-bMiafsg3Mdya9Qycxox5KdQKUgQN_gNvc-ZE8b_x5x_mlRTFZyZEq8Ao5BPyBWsaiICxIQRt9EEvOUqcwd_1bSdWnyHPFoGHZzAlv79-LHSGUsgs_elEENFPupXVx7EdOP2kFL8Rx01VgWVewjS0qLMBeffS-u_apT1AcQfaRYVoYOmd3mwFuI8Ox8ToXNDworrJAvPRPNdB12bzTFSDA',
+  },
 });

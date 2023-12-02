@@ -11,10 +11,10 @@ export const getTabBarItem: Record<
   HomeScreen: {
     icon: 'homeIcon',
   },
-  FindTeam: {
+  FindTeamScreen: {
     icon: 'findTeamIcon',
   },
-  Profile: {
+  ProfileScreen: {
     icon: 'homeIcon',
   },
 };

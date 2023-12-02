@@ -9,17 +9,16 @@ export function PostScreen({navigation}: AppTopScreenProps<'PostScreen'>) {
   }
 
   return (
-    <Screen canGoBack>
-      <Box p="s32" justifyContent="center" alignItems="center" flex={1}>
-        <Text mb="s32" preset="heading" color="primary">
-          NOME NO JOGO (RIOT ID)
-        </Text>
-        <Box flexDirection="row">
-          <Input placeholder="USERNAME" title="RIOT ID" mr="s12" flex={1} />
-          <Input placeholder="#1234" flex={0.5} />
+    <Box flex={1}>
+      <Screen canGoBack>
+        <Box justifyContent="center" flex={1}>
+          <Text mb="s32" preset="heading" color="primary">
+            NOME NO JOGO (RIOT ID)
+          </Text>
+          <Input placeholder="USERNAME" title="RIOT ID" />
         </Box>
-      </Box>
+      </Screen>
       <Button title="PROXIMO" rightComponent onPress={handleNavigate} />
-    </Screen>
+    </Box>
   );
 }

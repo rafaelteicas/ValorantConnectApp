@@ -1,4 +1,9 @@
-import {WeaponsTypes, WeaponsTypesAPI} from './weaponsTypes';
+import {
+  SkinTypes,
+  SkinTypesAPI,
+  WeaponsTypes,
+  WeaponsTypesAPI,
+} from './weaponsTypes';
 
 export function toWeapons(data: WeaponsTypesAPI): WeaponsTypes {
   return {
@@ -8,6 +13,15 @@ export function toWeapons(data: WeaponsTypesAPI): WeaponsTypes {
   };
 }
 
+function toSkinsByUuid(data: SkinTypesAPI): SkinTypes {
+  return {
+    uuid: data.uuid,
+    image: data.displayIcon,
+    name: data.displayName,
+  };
+}
+
 export const weaponsAdapter = {
   toWeapons,
+  toSkinsByUuid,
 };

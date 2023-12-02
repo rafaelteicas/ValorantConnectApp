@@ -38,7 +38,6 @@ export function AuthCredentialsProvider({children}: React.PropsWithChildren) {
             return;
           }
           const newAuth = await authService.refreshToken(auth?.refreshToken);
-          console.log(newAuth);
           saveAuth(newAuth);
           failedRequest.headers.Authorization = `Bearer ${newAuth.token}`;
           return apiConfig(failedRequest);

@@ -5,3 +5,4 @@ export * from './ArrowLeftIcon';
 export * from './HomeIcon';
 export * from './SearchIcon';
 export * from './FindTeamIcon';
+export * from './EmailIcon';

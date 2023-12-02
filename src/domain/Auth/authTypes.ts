@@ -13,4 +13,7 @@ export type SignIn = {
 export type SignUp = {
   email: string;
   password: string;
+  confirmPassword: string;
+  username: string;
+  riotId: string;
 };

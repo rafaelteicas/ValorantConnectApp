@@ -3,10 +3,11 @@ import {useQuery} from 'react-query';
 
 import {userService} from '../userService';
 
-export function useUserGetUserById(id: string) {
+export function useUserGetUser() {
   const {data} = useQuery({
-    queryKey: [QueryKeys.UseUseGetUserById, id],
-    queryFn: () => userService.getUserById(id),
+    queryKey: [QueryKeys.UseUseGetUserById],
+    retry: false,
+    queryFn: () => userService.getUser(),
   });
 
   return {

@@ -11,8 +11,9 @@ async function authenticate(email: string, password: string): Promise<Auth> {
   return auth.data;
 }
 
-async function signUp(account: SignUp) {
-  await apiConfig.post('/signup', account);
+async function signUp(account: SignUp): Promise<Auth> {
+  const response = await apiConfig.post('/signup', account);
+  return response.data;
 }
 
 async function refreshToken(token: string) {

@@ -16,29 +16,31 @@ export function ChooseMain() {
   }
 
   return (
-    <Screen>
-      <Box flex={1}>
-        <Box alignItems="center" p="s32">
-          <Text color="primary" preset="title">
-            ESCOLHA SEU MAIN
-          </Text>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={agents}
-            renderItem={item => (
-              <TouchableOpacity onPress={() => setKey(item.index)}>
-                <RenderAgent {...item} />
-              </TouchableOpacity>
-            )}
-          />
-          <Image source={{uri: agents[key].image}} width={300} height={300} />
-          <Text preset="heading" color="primary">
-            QUAL O SEU ELO?
-          </Text>
+    <Box flex={1}>
+      <Screen canGoBack>
+        <Box>
+          <Box alignItems="center" p="s32">
+            <Text color="primary" preset="title">
+              ESCOLHA SEU MAIN
+            </Text>
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={agents}
+              renderItem={item => (
+                <TouchableOpacity onPress={() => setKey(item.index)}>
+                  <RenderAgent {...item} />
+                </TouchableOpacity>
+              )}
+            />
+            <Image source={{uri: agents[key].image}} width={300} height={300} />
+            <Text preset="heading" color="primary">
+              QUAL O SEU ELO?
+            </Text>
+          </Box>
         </Box>
-      </Box>
+      </Screen>
       <Button title="ENVIAR" rightComponent />
-    </Screen>
+    </Box>
   );
 }

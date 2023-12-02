@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Platform, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -13,11 +13,7 @@ export function Header({...headerProps}: headerProps) {
 
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Box
-        paddingTop={Platform.OS == 'ios' ? 's32' : undefined}
-        paddingBottom="s32"
-        flexDirection="row"
-        {...headerProps}>
+      <Box paddingBottom="s32" flexDirection="row" {...headerProps}>
         <Icon name="arrowLeftIcon" size={28} />
         <Text preset="paragraphMedium" color="primary" ml="s16">
           VOLTAR

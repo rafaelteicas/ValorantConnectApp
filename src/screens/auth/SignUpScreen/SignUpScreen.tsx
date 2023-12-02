@@ -1,67 +1,36 @@
 import React from 'react';
 
-import {useForm} from 'react-hook-form';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Box, Button, FormTextInput, Screen} from '@components';
+import {EmailScreen} from './Steps/EmailScreen';
+import {PasswordScreen} from './Steps/PasswordScreen';
+import {ValorantData} from './Steps/ValorantData';
 
-type SignUpType = {
-  email: string;
-  emailConfirmation: string;
-  password: string;
-  passwordConfirmation: string;
+export type SignUpAuthStackParamList = {
+  EmailScreen: undefined;
+  PasswordScreen: {
+    email: string;
+  };
+  ValorantData: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  };
 };
 
+const Stack = createNativeStackNavigator<SignUpAuthStackParamList>();
+
 export function SignUpScreen() {
-  const {control, formState} = useForm<SignUpType>({
-    defaultValues: {
-      email: '',
-      emailConfirmation: '',
-      password: '',
-      passwordConfirmation: '',
-    },
-    mode: 'onSubmit',
-  });
   return (
-    <Screen canGoBack>
-      <Box>
-        <FormTextInput
-          control={control}
-          name="email"
-          rules={{
-            required: true,
-          }}
-          title="E-mail"
-          placeholder="Digite seu e-mail"
-        />
-        <FormTextInput
-          control={control}
-          name="email"
-          rules={{
-            required: true,
-          }}
-          title="E-mail"
-          placeholder="Confirme seu e-mail"
-        />
-        <FormTextInput
-          control={control}
-          name="email"
-          rules={{
-            required: true,
-          }}
-          title="Password"
-          placeholder="Digite sua senha"
-        />
-        <FormTextInput
-          control={control}
-          name="email"
-          rules={{
-            required: true,
-          }}
-          title="Password"
-          placeholder="Confirme sua senha"
-        />
-        <Button disabled={!formState.isValid} title="CADASTRAR" />
-      </Box>
-    </Screen>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        animation: 'none',
+      }}
+      initialRouteName="EmailScreen">
+      <Stack.Screen name="EmailScreen" component={EmailScreen} />
+      <Stack.Screen name="PasswordScreen" component={PasswordScreen} />
+      <Stack.Screen name="ValorantData" component={ValorantData} />
+    </Stack.Navigator>
   );
 }

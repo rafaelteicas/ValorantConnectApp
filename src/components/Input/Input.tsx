@@ -11,12 +11,14 @@ export interface InputProps extends TextInputProps {
   title?: string;
   placeholder?: string;
   secureTextEntry?: boolean;
+  boxProps?: BoxProps;
 }
 
 export function Input({
   title,
   placeholder,
   secureTextEntry,
+  boxProps,
   ...textInputProps
 }: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
@@ -24,6 +26,7 @@ export function Input({
   return (
     <Box
       style={{backgroundColor: 'rgba(255,255,255,0.1)'}}
+      {...boxProps}
       {...$inputContainer}>
       <Pressable>
         <Box padding="s12">

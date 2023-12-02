@@ -8,8 +8,6 @@ import {AppStackNavigator, AuthStackNavigator} from '@routes';
 
 export function Navigator() {
   const {auth} = useAuthContext();
-  console.log(auth);
-
   return (
     <NavigationContainer>
       {auth ? <AppStackNavigator /> : <AuthStackNavigator />}

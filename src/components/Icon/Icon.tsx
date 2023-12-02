@@ -13,14 +13,16 @@ import {
   HomeIcon,
   SearchIcon,
   FindTeamIcon,
+  EmailIcon,
 } from '../../assets/icons';
+import {Box, BoxProps} from '../Box/Box';
 
-export type IconProps = {
+export interface IconProps extends BoxProps {
   name: keyof typeof Icons;
   size?: number;
   color?: keyof Theme['colors'];
   onPress?: (event: GestureResponderEvent) => void;
-};
+}
 
 const Icons = {
   eyeIcon: EyeIcon,
@@ -30,6 +32,7 @@ const Icons = {
   homeIcon: HomeIcon,
   searchIcon: SearchIcon,
   findTeamIcon: FindTeamIcon,
+  emailIcon: EmailIcon,
 };
 
 export type IconType = {
@@ -37,12 +40,20 @@ export type IconType = {
   color: string;
 };
 
-export function Icon({size = 20, color = 'primary', name, onPress}: IconProps) {
+export function Icon({
+  size = 20,
+  color = 'primary',
+  name,
+  onPress,
+  ...boxProps
+}: IconProps) {
   const {colors} = useTheme();
   const SelectedIcon = Icons[name];
   return (
-    <Pressable onPress={onPress}>
-      <SelectedIcon size={size} color={colors[color]} />
-    </Pressable>
+    <Box {...boxProps}>
+      <Pressable disabled={!onPress} onPress={onPress}>
+        <SelectedIcon size={size} color={colors[color]} />
+      </Pressable>
+    </Box>
   );
 }
