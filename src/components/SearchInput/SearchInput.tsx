@@ -9,6 +9,7 @@ interface Props extends TextInputProps {}
 export function SearchInput({...textInputProps}: Props) {
   return (
     <Box
+      flex={1}
       p="s16"
       backgroundColor="lightBox"
       flexDirection="row"

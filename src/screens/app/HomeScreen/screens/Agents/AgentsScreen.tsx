@@ -4,20 +4,15 @@ import {FlatList} from 'react-native';
 
 import {useGetCharacters} from '@domain';
 
-import {Screen, SearchInput} from '@components';
+import {Screen} from '@components';
 
 import {AgentsComponent} from './AgentsComponent';
 
 export function AgentsScreen() {
-  const [search, setSearch] = useState('');
+  const [search] = useState('');
   const {agents} = useGetCharacters(search);
   return (
-    <Screen style={{paddingTop: 32}}>
-      <SearchInput
-        value={search}
-        onChangeText={setSearch}
-        placeholder="PESQUISE POR UM AGENTE"
-      />
+    <Screen paddingOff>
       <FlatList
         data={agents?.slice(0, 4)}
         keyExtractor={agent => agent.id}

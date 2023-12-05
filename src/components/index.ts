@@ -10,3 +10,4 @@ export * from './SearchInput/SearchInput';
 export * from './Form/FormTextInput';
 export * from './Toast/Toast';
 export * from './Loading/Loading';
+export * from './AppHeader/AppHeader';
