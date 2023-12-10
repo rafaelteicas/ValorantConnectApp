@@ -20,7 +20,6 @@ async function signUp(signUpData: SignUp): Promise<Auth> {
 function updateToken(token: string) {
   apiConfig.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
-
 function removeToken() {
   apiConfig.defaults.headers.common.Authorization = null;
 }

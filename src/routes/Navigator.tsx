@@ -8,6 +8,7 @@ import {AppStackNavigator, AuthStackNavigator} from '@routes';
 
 export function Navigator() {
   const {auth} = useAuthContext();
+
   return (
     <NavigationContainer>
       {auth ? <AppStackNavigator /> : <AuthStackNavigator />}

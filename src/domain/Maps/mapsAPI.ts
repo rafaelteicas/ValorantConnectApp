@@ -1,9 +1,9 @@
-import {valorantAPIConfig} from '@api';
+import {valorantApi} from '@service';
 
-import {MapsTypesAPI} from './mapsType';
+import {MapsTypesAPI} from './mapsTypes';
 
 async function getMaps(): Promise<MapsTypesAPI[]> {
-  const response = await valorantAPIConfig.get('maps', {
+  const response = await valorantApi.get('maps', {
     params: {
       language: 'pt-BR',
     },

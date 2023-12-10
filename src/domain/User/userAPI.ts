@@ -5,6 +5,13 @@ export async function getUser() {
   return response.data;
 }
 
+export async function getUserById(id: string) {
+  const response = await apiConfig.get(`/user/${id}`);
+
+  return response.data;
+}
+
 export const userAPI = {
   getUser,
+  getUserById,
 };

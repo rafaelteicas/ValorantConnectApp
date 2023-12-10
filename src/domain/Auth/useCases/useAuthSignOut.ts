@@ -7,7 +7,9 @@ export function useAuthSignOut() {
   const {removeAuth} = useAuthContext();
   const query = useQuery({
     queryFn: () => authService.removeToken(),
-    onSuccess: removeAuth,
+    onSuccess: () => {
+      removeAuth();
+    },
   });
 
   return {

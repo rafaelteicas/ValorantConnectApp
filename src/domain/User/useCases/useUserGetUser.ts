@@ -4,13 +4,13 @@ import {useQuery} from 'react-query';
 import {userService} from '../userService';
 
 export function useUserGetUser() {
-  const {data} = useQuery({
+  const {data, isLoading} = useQuery({
     queryKey: [QueryKeys.UseUseGetUserById],
-    retry: false,
     queryFn: () => userService.getUser(),
   });
 
   return {
     user: data,
+    isLoading,
   };
 }
