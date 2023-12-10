@@ -3,7 +3,7 @@ import {CompositeScreenProps} from '@react-navigation/native';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {SignUpAuthStackParamList} from '@screens';
+import {PostScreenParamList, SignUpAuthStackParamList} from '@screens';
 
 import {TabBottomParamList} from './AppBottomTab/AppBottomTab';
 import {AppStackParamList} from './AppStack/AppStackNavigator';
@@ -15,7 +15,8 @@ declare global {
       extends TabBottomParamList,
         AppStackParamList,
         AuthStackParamList,
-        SignUpAuthStackParamList {}
+        SignUpAuthStackParamList,
+        PostScreenParamList {}
   }
 }
 
@@ -25,6 +26,9 @@ export type AuthStackTypes<RouteName extends keyof AuthStackParamList> =
 export type AuthSignUpStackTypes<
   RouteName extends keyof SignUpAuthStackParamList,
 > = NativeStackScreenProps<SignUpAuthStackParamList, RouteName>;
+
+export type PostScreenTypes<RouteName extends keyof PostScreenParamList> =
+  NativeStackScreenProps<PostScreenParamList, RouteName>;
 
 export type AppTopScreenProps<RouteName extends keyof AppStackParamList> =
   CompositeScreenProps<

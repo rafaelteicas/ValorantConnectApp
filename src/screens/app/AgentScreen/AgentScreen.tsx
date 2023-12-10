@@ -10,7 +10,6 @@ import {AppTopScreenProps} from '@routes';
 
 export function AgentScreen({route}: AppTopScreenProps<'AgentScreen'>) {
   const {width, height} = Dimensions.get('window');
-
   const {colors} = useTheme();
 
   return (

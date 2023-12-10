@@ -5,5 +5,6 @@ export enum QueryKeys {
   GetStreams = 'GetStreams',
   AuthSignIn = 'AuthSignIn',
   UseUseGetUserById = 'UseUseGetUserById',
+  UseUseGetUserByToken = 'UseUseGetUserByToken',
   UseGetWeaponsByUuid = 'UseGetWeaponsByUuid',
 }

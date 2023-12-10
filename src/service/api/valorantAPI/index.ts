@@ -1,1 +1,1 @@
-export * from './valorantAPIConfig';
+export * from './valorantApi';

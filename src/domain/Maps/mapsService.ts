@@ -1,6 +1,6 @@
 import {mapsAdapter} from './mapsAdapter';
 import {mapsAPI} from './mapsAPI';
-import {MapsTypes} from './mapsType';
+import {MapsTypes} from './mapsTypes';
 
 async function getMaps(): Promise<MapsTypes[]> {
   const response = await mapsAPI.getMaps();

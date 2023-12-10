@@ -11,7 +11,7 @@ export function WeaponsScreen() {
   const {weapons} = useGetWeapons();
 
   return (
-    <Screen style={{paddingHorizontal: 0, paddingBottom: 0}}>
+    <Screen paddingOff paddingVerticalOff>
       <FlatList
         data={weapons}
         renderItem={data => <WeaponsComponent {...data} />}

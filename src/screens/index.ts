@@ -6,7 +6,6 @@ export * from './app/HomeScreen';
 export * from './app/ProfileScreen/ProfileScreen';
 export * from './app/AgentScreen/AgentScreen';
 export * from './app/FindTeamScreen/FindTeamScreen';
-export * from './app/PostScreen/screens/PostScreen';
-export * from './app/PostScreen/screens/ChooseMain';
+export * from './app/PostScreen/PostScreen';
 
-export * from './app/WeponScreen/WeaponScreen';
+export * from './app/WeaponScreen/WeaponScreen';

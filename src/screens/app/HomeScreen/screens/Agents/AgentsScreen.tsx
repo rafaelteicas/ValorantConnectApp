@@ -1,23 +1,49 @@
 import React, {useState} from 'react';
 
-import {FlatList} from 'react-native';
+import {Dimensions} from 'react-native';
 
 import {useGetCharacters} from '@domain';
 
-import {Screen} from '@components';
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue,
+} from 'react-native-reanimated';
+
+import {Screen, SearchInput} from '@components';
 
 import {AgentsComponent} from './AgentsComponent';
 
+const {width} = Dimensions.get('window');
+
 export function AgentsScreen() {
-  const [search] = useState('');
+  const x = useSharedValue(0);
+  const [search, setSearch] = useState('');
   const {agents} = useGetCharacters(search);
+  const scrollHandler = useAnimatedScrollHandler(event => {
+    x.value = event.contentOffset.x;
+  });
   return (
-    <Screen paddingOff>
-      <FlatList
-        data={agents?.slice(0, 4)}
+    <Screen paddingVerticalOff paddingOff>
+      <SearchInput
+        value={search}
+        onChangeText={setSearch}
+        placeholder="PESQUISE POR UM AGENTE"
+        boxProps={{
+          width: '90%',
+          alignSelf: 'center',
+        }}
+      />
+      <Animated.FlatList
         keyExtractor={agent => agent.id}
-        numColumns={2}
-        renderItem={data => <AgentsComponent {...data.item} />}
+        horizontal
+        data={agents}
+        renderItem={data => <AgentsComponent {...data} />}
+        bounces={false}
+        snapToInterval={width * 0.5}
+        decelerationRate={0}
+        scrollEventThrottle={16}
+        onScroll={scrollHandler}
+        onEndReachedThreshold={0.1}
       />
     </Screen>
   );

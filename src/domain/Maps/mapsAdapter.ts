@@ -1,4 +1,4 @@
-import {MapsTypes, MapsTypesAPI} from './mapsType';
+import {MapsTypes, MapsTypesAPI} from './mapsTypes';
 
 function toMaps(maps: MapsTypesAPI): MapsTypes {
   return {

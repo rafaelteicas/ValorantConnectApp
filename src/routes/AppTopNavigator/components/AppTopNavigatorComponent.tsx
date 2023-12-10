@@ -5,19 +5,18 @@ import {TouchableOpacity} from 'react-native';
 import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
 
 import {AppHeader, Box, Text} from '@components';
+import {useAppSafeArea} from '@hooks';
 
 export function AppTopNavigatorComponent({
   state,
   descriptors,
   navigation,
 }: MaterialTopTabBarProps) {
+  const {top} = useAppSafeArea();
   return (
-    <Box backgroundColor="backgroundColor">
+    <Box backgroundColor="backgroundColor" style={{paddingTop: top}}>
       <AppHeader />
-      <Box
-        paddingHorizontal="s32"
-        backgroundColor="backgroundColor"
-        flexDirection="row">
+      <Box backgroundColor="backgroundColor" flexDirection="row">
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
           const label =
@@ -43,6 +42,7 @@ export function AppTopNavigatorComponent({
 
           return (
             <Box
+              mb="s24"
               key={route.key}
               alignItems="center"
               flex={1}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Dimensions, Image, ListRenderItemInfo} from 'react-native';
 
-import {MapsTypes} from 'src/domain/Maps/mapsType';
+import {MapsTypes} from 'src/domain/Maps/mapsTypes';
 
 import {Box, Text} from '@components';
 

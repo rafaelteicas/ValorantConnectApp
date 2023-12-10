@@ -1,24 +1,37 @@
-import React from 'react';
-import {TextInput, TextInputProps} from 'react-native';
+import React, {useRef} from 'react';
+import {Pressable, TextInput, TextInputProps} from 'react-native';
 
-import {Box} from '../Box/Box';
+import {Box, BoxProps} from '../Box/Box';
 import {Icon} from '../Icon/Icon';
 
-interface Props extends TextInputProps {}
+interface Props extends TextInputProps {
+  boxProps?: BoxProps;
+}
 
-export function SearchInput({...textInputProps}: Props) {
+export function SearchInput({boxProps, ...textInputProps}: Props) {
+  const inputRef = useRef<TextInput>(null);
+  function focusOnInput() {
+    inputRef.current?.focus;
+  }
   return (
-    <Box
-      flex={1}
-      p="s16"
-      backgroundColor="lightBox"
-      flexDirection="row"
-      justifyContent="space-between"
-      borderRadius="b12">
-      <TextInput style={{marginLeft: 12}} {...textInputProps} />
-      <Box justifyContent="center" mr="s12">
-        <Icon name="searchIcon" color="darkBox" />
+    <Pressable onPress={focusOnInput}>
+      <Box
+        position="absolute"
+        p="s12"
+        backgroundColor="lightBox"
+        flexDirection="row"
+        justifyContent="space-between"
+        borderRadius="b12"
+        {...boxProps}>
+        <TextInput
+          ref={inputRef}
+          style={{flexGrow: 1, flexShrink: 1, marginLeft: 12}}
+          {...textInputProps}
+        />
+        <Box justifyContent="center" mr="s12">
+          <Icon name="searchIcon" color="darkBox" />
+        </Box>
       </Box>
-    </Box>
+    </Pressable>
   );
 }

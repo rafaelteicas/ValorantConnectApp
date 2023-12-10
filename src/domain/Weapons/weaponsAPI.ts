@@ -1,15 +1,15 @@
-import {valorantAPIConfig} from '@api';
+import {valorantApi} from '@service';
 
 import {SkinTypesAPI, WeaponsTypesAPI} from './weaponsTypes';
 
 async function getWeapons(): Promise<WeaponsTypesAPI[]> {
-  const response = await valorantAPIConfig.get('/weapons');
+  const response = await valorantApi.get('/weapons');
 
   return response.data.data;
 }
 
 async function getWeaponsByUuid(uuid: string): Promise<SkinTypesAPI[]> {
-  const response = await valorantAPIConfig.get(`/weapons/${uuid}`);
+  const response = await valorantApi.get(`/weapons/${uuid}`);
 
   return response.data.data.skins;
 }

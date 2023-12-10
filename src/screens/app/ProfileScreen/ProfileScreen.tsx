@@ -1,11 +1,17 @@
 import React from 'react';
 
-import {Box, Screen} from '@components';
+import {useAuthSignOut} from '@domain';
+
+import {Button, Screen} from '@components';
 
 export function ProfileScreen() {
+  const {signOut} = useAuthSignOut();
+  function handleSignOut() {
+    signOut;
+  }
   return (
     <Screen>
-      <Box />
+      <Button onPress={handleSignOut} />
     </Screen>
   );
 }

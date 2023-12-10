@@ -11,7 +11,7 @@ import {MapsComponent} from './MapsComponent';
 export function MapsScreen() {
   const {maps} = useGetMaps();
   return (
-    <Screen style={{paddingHorizontal: 0, paddingBottom: 0}}>
+    <Screen paddingOff paddingVerticalOff>
       <FlatList data={maps} renderItem={item => <MapsComponent {...item} />} />
     </Screen>
   );
