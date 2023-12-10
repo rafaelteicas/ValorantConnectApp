@@ -14,6 +14,7 @@ import {
   SearchIcon,
   FindTeamIcon,
   EmailIcon,
+  CloseIcon,
 } from '../../assets/icons';
 import {Box, BoxProps} from '../Box/Box';
 
@@ -33,6 +34,7 @@ const Icons = {
   searchIcon: SearchIcon,
   findTeamIcon: FindTeamIcon,
   emailIcon: EmailIcon,
+  closeIcon: CloseIcon,
 };
 
 export type IconType = {
