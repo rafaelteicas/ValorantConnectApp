@@ -9,12 +9,14 @@ interface ScreenProps extends BoxProps {
   children: React.ReactNode;
   canGoBack?: boolean;
   paddingOff?: boolean;
+  paddingVerticalOff?: boolean;
 }
 
 export function Screen({
   children,
   canGoBack,
   paddingOff,
+  paddingVerticalOff,
   ...props
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
@@ -28,11 +30,13 @@ export function Screen({
         backgroundColor="backgroundColor"
         flex={1}
         style={{
-          paddingBottom: paddingOff ? 0 : bottom,
-          paddingTop: paddingOff ? 0 : top,
+          paddingBottom: paddingVerticalOff ? 0 : bottom,
+          paddingTop: paddingVerticalOff ? 0 : top,
         }}
         {...props}>
-        {canGoBack && <Header />}
+        {canGoBack && (
+          <Header paddingHorizontal={paddingOff ? 's32' : undefined} />
+        )}
         {children}
       </Box>
     </KeyboardAvoidingView>

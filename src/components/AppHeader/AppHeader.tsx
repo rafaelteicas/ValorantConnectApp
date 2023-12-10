@@ -4,22 +4,21 @@ import {Image, ImageProps} from 'react-native';
 
 import {useUserGetUser} from '@domain';
 
-import {useAppSafeArea} from '@hooks';
-
 import {Box, BoxProps} from '../Box/Box';
-import {SearchInput} from '../SearchInput/SearchInput';
+import {Text} from '../Text/Text';
 
 const SIZE_PROFILE = 40;
 
 export function AppHeader() {
-  const {top} = useAppSafeArea();
-  const {user} = useUserGetUser();
-  console.log(user);
+  const {user, isLoading} = useUserGetUser();
 
   return (
-    <Box {...$boxStyle} style={{paddingTop: top}}>
-      <SearchInput placeholder="DIGITE" />
-      <Image {...$imageStyle} source={{uri: user.profileImage}} />
+    <Box {...$boxStyle}>
+      <Text color="primary">{isLoading ? 'Username' : user?.username}</Text>
+      <Image
+        {...$imageStyle}
+        source={{uri: isLoading ? '_' : user?.profileImage}}
+      />
     </Box>
   );
 }

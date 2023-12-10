@@ -11,6 +11,8 @@ export interface InputProps extends TextInputProps {
   title?: string;
   placeholder?: string;
   secureTextEntry?: boolean;
+  padding?: BoxProps['padding'];
+  multiline?: boolean;
   boxProps?: BoxProps;
 }
 
@@ -19,6 +21,8 @@ export function Input({
   placeholder,
   secureTextEntry,
   boxProps,
+  multiline,
+  padding = 's12',
   ...textInputProps
 }: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
@@ -29,16 +33,19 @@ export function Input({
       {...boxProps}
       {...$inputContainer}>
       <Pressable>
-        <Box padding="s12">
-          <Text preset="paragraphMedium" bold color="primary">
-            {title}
-          </Text>
+        <Box padding={padding}>
+          {title && (
+            <Text preset="paragraphMedium" bold color="primary">
+              {title}
+            </Text>
+          )}
           <Box flexDirection="row">
             <TextInput
               style={[$inputTextStyle]}
               placeholder={placeholder}
               secureTextEntry={secure}
               placeholderTextColor={'white'}
+              multiline={multiline}
               {...textInputProps}
             />
             {secureTextEntry && (
@@ -59,7 +66,6 @@ const $inputTextStyle: TextStyle = {
   flexGrow: 1,
   flexShrink: 1,
   color: 'white',
-  fontSize: 12,
 };
 
 const $inputContainer: BoxProps = {
