@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  Dimensions,
-  Image,
-  ListRenderItemInfo,
-  TouchableOpacity,
-} from 'react-native';
+import {Dimensions, Image, ListRenderItemInfo, Pressable} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -36,7 +31,7 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
   }
   return (
     <Box justifyContent="center" alignItems="center">
-      <TouchableOpacity onPress={handleNavigate}>
+      <Pressable onPress={handleNavigate}>
         <Image
           source={{uri: item.image}}
           width={DEFAULT_WIDTH}
@@ -45,7 +40,7 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
         <Text textAlign="center" preset="heading" color="primary">
           {item.name}
         </Text>
-      </TouchableOpacity>
+      </Pressable>
       <AgentsBackgroundCard
         width={width}
         height={height}

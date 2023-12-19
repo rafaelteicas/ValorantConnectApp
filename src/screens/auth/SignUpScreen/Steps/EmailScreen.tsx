@@ -26,13 +26,14 @@ export function EmailScreen({navigation}: AuthSignUpStackTypes<'EmailScreen'>) {
         Escolha um e-mail acessar sua conta
       </Text>
       <FormTextInput
+        autoCapitalize="none"
         control={control}
         name="email"
         title="E-mail"
         placeholder="Digite seu e-mail"
       />
       <Box justifyContent="center" alignItems="center">
-        <Loading percentage={10} />
+        <Loading title="1/3" percentage={10} />
       </Box>
       <Box flex={1} justifyContent="flex-end">
         <Button

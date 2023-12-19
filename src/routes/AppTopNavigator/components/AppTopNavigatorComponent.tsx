@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
 
@@ -48,11 +48,11 @@ export function AppTopNavigatorComponent({
               flex={1}
               justifyContent="center">
               <Box>
-                <TouchableOpacity onPress={onPress}>
+                <Pressable onPress={onPress}>
                   <Text preset="paragraphMedium" color="backgroundContrast">
                     {label.toString()}
                   </Text>
-                </TouchableOpacity>
+                </Pressable>
                 <Box
                   height={5}
                   backgroundColor={isFocused ? 'primary' : 'backgroundColor'}

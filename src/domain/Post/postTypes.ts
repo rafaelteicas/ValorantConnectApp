@@ -4,18 +4,21 @@ export interface PostAPI {
   message: string; // 'teste';
   elo: string; // 'Platina 12';
   main: string; //'Jett';
+  other: string[];
 }
 
 export interface Post {
   id: number;
   userId: number;
-  message: string;
+  message?: string;
   elo: string;
   main: string;
+  other: string[];
 }
 
 export interface CreatePost {
-  message: string;
+  message?: string;
   elo: string;
   main: string;
+  other: string[];
 }

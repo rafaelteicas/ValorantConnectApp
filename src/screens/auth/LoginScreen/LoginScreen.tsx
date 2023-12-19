@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {TouchableOpacity} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {useAuthSignIn} from '@domain';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -18,7 +17,7 @@ type LoginType = {
 export function LoginScreen({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, 'LoginScreen'>) {
-  const {signIn} = useAuthSignIn();
+  const {signIn, isLoading} = useAuthSignIn();
   const {control, formState, handleSubmit} = useForm<LoginType>({
     defaultValues: {
       email: '',
@@ -37,6 +36,7 @@ export function LoginScreen({
         <FormTextInput
           control={control}
           textContentType="emailAddress"
+          autoCapitalize="none"
           name="email"
           rules={{
             required: true,
@@ -47,6 +47,8 @@ export function LoginScreen({
         <FormTextInput
           control={control}
           name="password"
+          autoCapitalize="none"
+          textContentType="password"
           rules={{
             required: true,
           }}
@@ -55,13 +57,14 @@ export function LoginScreen({
           placeholder="********"
         />
         <Button
+          isLoading={isLoading}
           disabled={!formState.isValid}
           onPress={handleSubmit(handleOnPress)}
           marginBottom="s32"
           rightComponent
           title="ENTRAR"
         />
-        <TouchableOpacity
+        <Pressable
           onPress={() => navigation.navigate('SignUpScreen')}
           style={{alignItems: 'center'}}>
           <Text
@@ -71,7 +74,7 @@ export function LoginScreen({
             textDecorationLine="underline">
             OU CADASTRE-SE
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       </Box>
     </Screen>
   );

@@ -1,8 +1,15 @@
 export type Auth = {
-  token: string;
-  refreshToken: string;
-  expiresAt: string;
-  status: number;
+  token: {
+    accessToken: string;
+    refreshToken: string;
+  };
+  user: {
+    id: number;
+    email: string;
+    profileImage?: string;
+    riotId: string;
+    username: string;
+  };
 };
 
 export type SignIn = {

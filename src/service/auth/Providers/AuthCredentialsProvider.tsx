@@ -21,18 +21,15 @@ export function AuthCredentialsProvider({children}: React.PropsWithChildren) {
 
   useEffect(() => {
     startAuthCredentials();
-  }, []);
-
-  function startAuthCredentials() {
-    const ac = MMKVStorage.getItem(KEY);
-    if (ac) {
-      setAuth(ac);
+    function startAuthCredentials() {
+      const ac = MMKVStorage.getItem(KEY);
+      saveAuth(ac);
     }
-  }
+  }, []);
 
   async function saveAuth(accountData: any) {
     MMKVStorage.setItem(KEY, accountData);
-    authService.updateToken(accountData.token);
+    authService.updateToken(accountData.token.accessToken);
     setAuth(accountData);
   }
 

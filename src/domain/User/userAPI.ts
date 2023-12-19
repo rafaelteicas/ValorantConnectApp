@@ -1,12 +1,12 @@
-import {apiConfig} from '@api';
+import {api} from '@api';
 
 export async function getUser() {
-  const response = await apiConfig.get('/user');
+  const response = await api.get('/user');
   return response.data;
 }
 
 export async function getUserById(id: string) {
-  const response = await apiConfig.get(`/user/${id}`);
+  const response = await api.get(`/user/${id}`);
 
   return response.data;
 }

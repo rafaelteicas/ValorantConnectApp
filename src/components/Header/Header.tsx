@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -12,7 +12,7 @@ export function Header({paddingHorizontal, ...headerProps}: headerProps) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.goBack()}>
+    <Pressable onPress={() => navigation.goBack()}>
       <Box
         paddingBottom="s32"
         paddingHorizontal={paddingHorizontal}
@@ -23,6 +23,6 @@ export function Header({paddingHorizontal, ...headerProps}: headerProps) {
           VOLTAR
         </Text>
       </Box>
-    </TouchableOpacity>
+    </Pressable>
   );
 }

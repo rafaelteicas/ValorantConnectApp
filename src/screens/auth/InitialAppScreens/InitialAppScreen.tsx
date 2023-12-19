@@ -1,11 +1,17 @@
 import React from 'react';
 
-import {useNavigation} from '@react-navigation/native';
-import {Circle, ClipPath, Svg, Image} from 'react-native-svg';
+import {Pressable, Image} from 'react-native';
 
-import {Box, Button, Screen, Text} from '@components';
+import {useNavigation} from '@react-navigation/native';
+
+import {Box, Button, DefaultAvatar, Screen, Text} from '@components';
+import {useAppCamera} from '@hooks';
+
+const DEFAULTS = {size: 300, borderRadius: 75};
 
 export function InitialAppScreen() {
+  const {image, loading, imagePicker} = useAppCamera();
+
   const navigation = useNavigation();
   return (
     <Screen>
@@ -16,25 +22,33 @@ export function InitialAppScreen() {
         Selecione sua foto de perfil
       </Text>
       <Box flex={1} justifyContent="center" alignItems="center">
-        <Svg>
-          <ClipPath id="circle">
-            <Circle cx="50%" cy="50%" r={150} />
-          </ClipPath>
+        {image ? (
           <Image
-            href={{
-              uri: 'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
+            source={{uri: image ? image : ''}}
+            width={DEFAULTS.size}
+            height={DEFAULTS.size}
+            style={{
+              borderRadius: DEFAULTS.borderRadius,
             }}
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#circle)"
           />
-        </Svg>
-        <Box position="absolute" style={{bottom: 100}}>
+        ) : (
+          <DefaultAvatar
+            borderRadius={DEFAULTS.borderRadius}
+            size={DEFAULTS.size}
+            iconSize={DEFAULTS.size / 2}
+          />
+        )}
+        <Pressable onPress={imagePicker} style={{top: 20}}>
           <Text color="primary">ESCOLHA UMA FOTO</Text>
-        </Box>
+        </Pressable>
       </Box>
-      <Button mb="s16" title="Enviar" rightComponent />
+      <Button
+        isLoading={loading}
+        disabled={!image}
+        mb="s16"
+        title="Enviar"
+        rightComponent
+      />
       <Button
         title="Pular"
         preset="outline"

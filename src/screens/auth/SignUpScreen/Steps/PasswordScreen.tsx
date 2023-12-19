@@ -48,7 +48,7 @@ export function PasswordScreen({
         secureTextEntry
       />
       <Box justifyContent="center" alignItems="center">
-        <Loading percentage={40} />
+        <Loading title="2/3" percentage={40} />
       </Box>
       <Box flex={1} justifyContent="flex-end">
         <Button

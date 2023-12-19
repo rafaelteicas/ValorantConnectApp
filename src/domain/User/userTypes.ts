@@ -5,4 +5,8 @@ export type UserAPI = {
   riotId: string;
 };
 
-export type User = UserAPI;
+export type User = {
+  username: string;
+  profileImage: string;
+  riotId: string;
+};

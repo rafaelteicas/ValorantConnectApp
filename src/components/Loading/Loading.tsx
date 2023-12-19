@@ -14,7 +14,12 @@ import {Text} from '../Text/Text';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-export function Loading({percentage = 10}: {percentage: number}) {
+interface Props {
+  percentage: number;
+  title?: string;
+}
+
+export function Loading({percentage = 10, title}: Props) {
   const theta = useSharedValue(2 * Math.PI);
   const radius = 30;
   const strokeWidth = 10;
@@ -34,7 +39,7 @@ export function Loading({percentage = 10}: {percentage: number}) {
   }, [animateTo.value, theta]);
   return (
     <Box justifyContent="center" alignItems="center">
-      <Text color="primary">{percentage}</Text>
+      <Text color="primary">{title || percentage}</Text>
       <Svg
         width={radius * 2}
         height={radius * 2}

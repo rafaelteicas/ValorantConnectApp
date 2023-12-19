@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {GestureResponderEvent, Pressable} from 'react-native';
+import {GestureResponderEvent, TouchableOpacity} from 'react-native';
 
 import {useTheme} from '@hooks';
 import {Theme} from '@theme';
@@ -15,6 +15,9 @@ import {
   FindTeamIcon,
   EmailIcon,
   CloseIcon,
+  ProfileIcon,
+  DeleteIcon,
+  EditIcon,
 } from '../../assets/icons';
 import {Box, BoxProps} from '../Box/Box';
 
@@ -35,6 +38,9 @@ const Icons = {
   findTeamIcon: FindTeamIcon,
   emailIcon: EmailIcon,
   closeIcon: CloseIcon,
+  profileIcon: ProfileIcon,
+  deleteIcon: DeleteIcon,
+  editIcon: EditIcon,
 };
 
 export type IconType = {
@@ -53,9 +59,9 @@ export function Icon({
   const SelectedIcon = Icons[name];
   return (
     <Box {...boxProps}>
-      <Pressable disabled={!onPress} onPress={onPress}>
+      <TouchableOpacity disabled={!onPress} onPress={onPress}>
         <SelectedIcon size={size} color={colors[color]} />
-      </Pressable>
+      </TouchableOpacity>
     </Box>
   );
 }

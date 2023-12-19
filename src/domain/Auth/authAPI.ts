@@ -1,9 +1,9 @@
-import {apiConfig} from '@api';
+import {api} from '@api';
 
 import {Auth, SignUp} from './authTypes';
 
 async function authenticate(email: string, password: string): Promise<Auth> {
-  const auth = await apiConfig.post('/auth', {
+  const auth = await api.post('/auth', {
     email,
     password,
   });
@@ -12,12 +12,12 @@ async function authenticate(email: string, password: string): Promise<Auth> {
 }
 
 async function signUp(account: SignUp): Promise<Auth> {
-  const response = await apiConfig.post('/signup', account);
+  const response = await api.post('/signup', account);
   return response.data;
 }
 
 async function refreshToken(token: string) {
-  const response = await apiConfig.post('/refresh-token', {
+  const response = await api.post('/refresh-token', {
     token,
   });
 

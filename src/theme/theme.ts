@@ -3,6 +3,7 @@ import {createTheme} from '@shopify/restyle';
 const pallette = {
   red: '#E31039',
   darkBlue: '#0F1923',
+  mediumBlue: '#0F1923',
   white: '#FFFFFF',
   darkGray: '#090808',
   lightGray: '#cecece',
@@ -15,6 +16,7 @@ export const theme = createTheme({
     lightBox: pallette.lightGray,
     backgroundColor: pallette.darkBlue,
     backgroundContrast: pallette.white,
+    ...pallette,
   },
   spacing: {
     s4: 4,

@@ -4,6 +4,8 @@ import {GestureResponderEvent, TouchableOpacity} from 'react-native';
 
 import {Box, BoxProps, Icon, Text} from '@components';
 
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
+
 import {Presets, getButtonPresets} from './getButtonPresets';
 
 export interface ButtonProps extends BoxProps {
@@ -14,6 +16,7 @@ export interface ButtonProps extends BoxProps {
   outline?: boolean;
   preset?: Presets;
   paddingHorizontalOn?: boolean;
+  isLoading?: boolean;
 }
 
 export function Button({
@@ -22,13 +25,14 @@ export function Button({
   disabled,
   preset = 'primary',
   paddingHorizontalOn,
+  isLoading,
   onPress,
   ...boxProps
 }: ButtonProps) {
   const buttonPreset = getButtonPresets[preset];
   return (
     <TouchableOpacity
-      disabled={disabled}
+      disabled={disabled || isLoading}
       onPress={onPress}
       style={{
         paddingHorizontal: paddingHorizontalOn ? 32 : undefined,
@@ -42,12 +46,17 @@ export function Button({
         backgroundColor={disabled ? 'lightBox' : buttonPreset.backgroundColor}
         {...boxProps}>
         {rightComponent && <Box width={26} height={26} />}
-        <Text preset="paragraphMedium" color="backgroundContrast">
-          {title}
-        </Text>
-        {rightComponent && (
+        {isLoading ? (
+          <ActivityIndicator size={26} />
+        ) : (
+          <Text preset="heading" color="backgroundContrast">
+            {title}
+          </Text>
+        )}
+        {!isLoading && rightComponent && (
           <Icon name="arrowIcon" color="backgroundContrast" size={26} />
         )}
+        {isLoading && <Box width={26} height={26} />}
       </Box>
     </TouchableOpacity>
   );

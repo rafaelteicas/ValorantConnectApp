@@ -1,4 +1,4 @@
-import {Page, apiConfig} from '@api';
+import {Page, api} from '@api';
 
 import {CreatePost, PostAPI} from './postTypes';
 
@@ -8,7 +8,7 @@ type PostParams = {
 };
 
 async function getPosts(params: PostParams): Promise<Page<PostAPI>> {
-  const response = await apiConfig.get('/user/post', {
+  const response = await api.get('/user/post', {
     params,
   });
 
@@ -16,7 +16,7 @@ async function getPosts(params: PostParams): Promise<Page<PostAPI>> {
 }
 
 async function create(post: CreatePost) {
-  await apiConfig.post('/user/post', post);
+  await api.post('/user/post', post);
 }
 
 export const postApi = {

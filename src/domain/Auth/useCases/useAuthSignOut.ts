@@ -13,6 +13,6 @@ export function useAuthSignOut() {
   });
 
   return {
-    signOut: query,
+    signOut: () => query,
   };
 }

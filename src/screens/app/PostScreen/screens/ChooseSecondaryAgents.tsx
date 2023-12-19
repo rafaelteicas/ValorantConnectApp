@@ -17,16 +17,20 @@ const SIZE = 100;
 
 export function ChooseSecondaryAgents({
   navigation,
+  route,
 }: PostScreenTypes<'ChooseSecondaryAgents'>) {
+  const agent = route.params.agent;
   const {agents} = useGetCharacters();
   const [selected, setSelected] = useState<string[]>([]);
-
   if (!agents) {
     return;
   }
-  function handleNavigate(agent: string) {
+  function handleNavigate(agents: String[]) {
+    console.log(agents);
+
     navigation.navigate('ChooseEloScreen', {
       agent: agent,
+      agents: agents,
     });
   }
 
@@ -95,7 +99,7 @@ export function ChooseSecondaryAgents({
         title="Continuar"
         rightComponent
         paddingHorizontalOn
-        onPress={() => handleNavigate('')}
+        onPress={() => handleNavigate(selected)}
       />
     </Screen>
   );

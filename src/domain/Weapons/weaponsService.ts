@@ -9,9 +9,9 @@ async function getWeapons(): Promise<WeaponsTypes[]> {
 }
 
 async function getWeaponsByUuid(uuid: string): Promise<SkinTypes[] | any> {
-  const result = await weaponsAPI.getWeaponsByUuid(uuid);
+  const data = await weaponsAPI.getWeaponsByUuid(uuid);
 
-  return result.map(weaponsAdapter.toSkinsByUuid);
+  return data.map(weaponsAdapter.toSkinsByUuid);
 }
 
 export const weaponsService = {

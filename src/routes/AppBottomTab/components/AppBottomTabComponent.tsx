@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
@@ -48,7 +48,7 @@ export function AppBottomTabComponent({
             flex={1}
             key={route.key}
             style={{paddingBottom: bottom}}>
-            <TouchableOpacity
+            <Pressable
               accessibilityRole="button"
               accessibilityState={isFocused ? {selected: true} : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -64,7 +64,7 @@ export function AppBottomTabComponent({
                 color={isFocused ? 'primary' : 'backgroundContrast'}
                 preset="paragraphMedium"
               />
-            </TouchableOpacity>
+            </Pressable>
           </Box>
         );
       })}

@@ -53,6 +53,7 @@ export function Text({
   bold,
   semiBold,
   preset = 'paragraphMedium',
+  color = 'backgroundContrast',
   ...textProps
 }: TextProps) {
   const fontFamily = getFontFamily(bold, semiBold);
@@ -60,6 +61,7 @@ export function Text({
     <RestyleText
       style={$fontSize[preset]}
       fontFamily={fontFamily}
+      color={color}
       {...textProps}>
       {children}
     </RestyleText>

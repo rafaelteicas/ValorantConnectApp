@@ -15,6 +15,6 @@ export const getTabBarItem: Record<
     icon: 'findTeamIcon',
   },
   ProfileScreen: {
-    icon: 'homeIcon',
+    icon: 'profileIcon',
   },
 };

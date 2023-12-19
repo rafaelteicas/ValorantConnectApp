@@ -8,9 +8,12 @@ import {ChooseSecondaryAgents} from './screens/ChooseSecondaryAgents';
 
 export type PostScreenParamList = {
   ChooseAgentScreen: undefined;
-  ChooseSecondaryAgents: undefined;
+  ChooseSecondaryAgents: {
+    agent: string;
+  };
   ChooseEloScreen: {
     agent: string;
+    agents: string[];
   };
 };
 

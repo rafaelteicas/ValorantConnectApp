@@ -7,6 +7,7 @@ export function toPost(postAPI: PostAPI): Post {
     elo: postAPI.elo,
     main: postAPI.main,
     userId: postAPI.user || 0,
+    other: postAPI.other,
   };
 }
 

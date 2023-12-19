@@ -130,6 +130,7 @@ export type SkinTypes = {
   uuid: string;
   name: string;
   image: string;
+  cost?: number;
 };
 
 export type SkinTypesAPI = {

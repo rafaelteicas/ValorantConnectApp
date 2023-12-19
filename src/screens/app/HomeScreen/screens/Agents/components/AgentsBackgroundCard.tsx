@@ -21,7 +21,7 @@ export function AgentsBackgroundCard({
     <>
       <Image
         source={{uri: backgroundImage}}
-        width={width}
+        width={width / 2}
         height={height}
         style={{
           zIndex: -1,

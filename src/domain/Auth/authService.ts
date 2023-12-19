@@ -1,4 +1,4 @@
-import {apiConfig} from '@api';
+import {api} from '@api';
 
 import {authAPI} from './authAPI';
 import {Auth, SignIn, SignUp} from './authTypes';
@@ -18,10 +18,10 @@ async function signUp(signUpData: SignUp): Promise<Auth> {
 }
 
 function updateToken(token: string) {
-  apiConfig.defaults.headers.common.Authorization = `Bearer ${token}`;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 function removeToken() {
-  apiConfig.defaults.headers.common.Authorization = null;
+  api.defaults.headers.common.Authorization = null;
 }
 
 async function refreshToken(token: string) {

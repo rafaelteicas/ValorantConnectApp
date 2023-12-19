@@ -7,3 +7,6 @@ export * from './SearchIcon';
 export * from './FindTeamIcon';
 export * from './EmailIcon';
 export * from './CloseIcon';
+export * from './ProfileIcon';
+export * from './DeleteIcon';
+export * from './EditIcon';

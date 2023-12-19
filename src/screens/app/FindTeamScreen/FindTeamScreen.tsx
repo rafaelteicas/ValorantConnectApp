@@ -1,35 +1,46 @@
 import React from 'react';
 
-import {FlatList} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 
 import {usePostList} from '@domain';
 
 import {useNavigation} from '@react-navigation/native';
 
-import Animated, {FadeInDown} from 'react-native-reanimated';
-
 import {AppHeader, Screen} from '@components';
 
-import {FindTeamBoxComponent} from './components/FindTeamBoxComponent';
+import {useAppSafeArea} from '@hooks';
+
+import {FindTeamBoxComponent} from './components/FindTeamComponent';
 import {FindTeamHeader} from './components/FindTeamHeader';
 
 export function FindTeamScreen() {
-  const {data} = usePostList();
+  const {data, loading, fetchNextPage, fetchData} = usePostList();
+  const {top} = useAppSafeArea();
   const navigation = useNavigation();
   function handleNavigate() {
     navigation.navigate('PostScreen');
   }
 
   return (
-    <Screen paddingOff>
+    <Screen paddingOff flex={1} paddingVerticalOff style={{paddingTop: top}}>
       <AppHeader />
       <FindTeamHeader onPress={handleNavigate} />
-      <Animated.View entering={FadeInDown.delay(200)}>
-        <FlatList
-          data={data}
-          renderItem={item => <FindTeamBoxComponent {...item} />}
-        />
-      </Animated.View>
+      <FlatList
+        data={data}
+        keyExtractor={item => item.id.toString()}
+        renderItem={item => <FindTeamBoxComponent {...item} />}
+        onEndReached={fetchNextPage}
+        refreshing={loading}
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={fetchData}
+            tintColor="#FFFFFF"
+          />
+        }
+        showsVerticalScrollIndicator={false}
+        style={{flex: 1}}
+      />
     </Screen>
   );
 }

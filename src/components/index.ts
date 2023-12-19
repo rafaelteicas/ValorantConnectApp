@@ -13,3 +13,4 @@ export * from './Loading/Loading';
 export * from './AppHeader/AppHeader';
 export * from './UserAvatar/UserAvatar';
 export * from './Modal/Modal';
+export * from './DefaultAvatar/DefaultAvatar';

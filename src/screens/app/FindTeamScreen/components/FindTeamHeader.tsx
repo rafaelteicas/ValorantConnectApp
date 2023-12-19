@@ -17,7 +17,7 @@ export function FindTeamHeader({onPress}: Props) {
       <Text preset="heading" color="backgroundContrast">
         {'ENCONTRE AGORA\nPESSOAS PARA JOGAR!!!'}
       </Text>
-      <Button ml="s16" preset="outlineWhite" title="BUSCAR" onPress={onPress} />
+      <Button ml="s16" preset="outlineWhite" title="Buscar" onPress={onPress} />
     </Box>
   );
 }

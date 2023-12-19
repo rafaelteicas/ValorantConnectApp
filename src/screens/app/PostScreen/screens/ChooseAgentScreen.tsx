@@ -4,7 +4,7 @@ import {
   FlatList,
   Image,
   ListRenderItemInfo,
-  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 
 import {useGetCharacters} from '@domain';
@@ -26,14 +26,14 @@ export function ChooseAgentScreen({
     return;
   }
   function handleNavigate(agent: string) {
-    console.log(agent);
-
-    navigation.navigate('ChooseSecondaryAgents');
+    navigation.navigate('ChooseSecondaryAgents', {
+      agent,
+    });
   }
 
   function renderItemAgent({item, index}: ListRenderItemInfo<CharactersType>) {
     return (
-      <TouchableOpacity onPress={() => setKey(index)}>
+      <Pressable onPress={() => setKey(index)}>
         <Box
           backgroundColor="darkBox"
           borderRadius="b12"
@@ -42,7 +42,7 @@ export function ChooseAgentScreen({
           marginLeft="s16">
           <Image source={{uri: item.smallIcon}} width={SIZE} height={SIZE} />
         </Box>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
   return (

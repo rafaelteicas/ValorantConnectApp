@@ -17,5 +17,6 @@ export function useAuthSignIn() {
   return {
     signIn: (email: string, password: string) =>
       mutation.mutate({email, password}),
+    isLoading: mutation.isLoading,
   };
 }

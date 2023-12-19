@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  Dimensions,
-  Image,
-  ListRenderItemInfo,
-  TouchableOpacity,
-} from 'react-native';
+import {Dimensions, Image, ListRenderItemInfo, Pressable} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import {WeaponsTypes} from 'src/domain/Weapons/weaponsTypes';
@@ -17,7 +12,7 @@ export function WeaponsComponent({item}: ListRenderItemInfo<WeaponsTypes>) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={() => navigation.navigate('WeaponScreen', {uuid: item.uuid})}>
       <Box
         width={width}
@@ -28,6 +23,6 @@ export function WeaponsComponent({item}: ListRenderItemInfo<WeaponsTypes>) {
         <Image source={{uri: item.image}} width={200} height={50} />
         <Text color="backgroundContrast">{item.name}</Text>
       </Box>
-    </TouchableOpacity>
+    </Pressable>
   );
 }

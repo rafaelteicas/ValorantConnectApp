@@ -23,6 +23,7 @@ export function Input({
   boxProps,
   multiline,
   padding = 's12',
+  autoCapitalize = 'none',
   ...textInputProps
 }: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
@@ -41,6 +42,7 @@ export function Input({
           )}
           <Box flexDirection="row">
             <TextInput
+              autoCapitalize={autoCapitalize}
               style={[$inputTextStyle]}
               placeholder={placeholder}
               secureTextEntry={secure}
