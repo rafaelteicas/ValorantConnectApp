@@ -2,29 +2,18 @@ import React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {AgentScreen, PostScreen, WeaponScreen} from '@screens';
+import {
+  AgentScreen,
+  EditScreen,
+  InfoScreen,
+  PostScreen,
+  UploadScreen,
+  WeaponScreen,
+} from '@screens';
 
 import {AppBottomTab} from '../AppBottomTab/AppBottomTab';
 
-export type AppStackParamList = {
-  TabNavigator: undefined;
-  AgentScreen: {
-    name: string;
-    image: string;
-    description: string;
-    role: {
-      name: string;
-      description: string;
-      icon: string;
-    };
-    abilities: {};
-  };
-  PostScreen: undefined;
-  ChooseMain: undefined;
-  WeaponScreen: {
-    uuid: string;
-  };
-};
+import {AppStackParamList} from './AppStackParams';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -37,6 +26,9 @@ export function AppStackNavigator() {
       <Stack.Screen name="AgentScreen" component={AgentScreen} />
       <Stack.Screen name="PostScreen" component={PostScreen} />
       <Stack.Screen name="WeaponScreen" component={WeaponScreen} />
+      <Stack.Screen name="UploadScreen" component={UploadScreen} />
+      <Stack.Screen name="InfoScreen" component={InfoScreen} />
+      <Stack.Screen name="EditScreen" component={EditScreen} />
     </Stack.Navigator>
   );
 }

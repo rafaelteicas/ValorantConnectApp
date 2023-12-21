@@ -1,6 +1,8 @@
 import React from 'react';
 import {Image, ImageProps} from 'react-native';
 
+import {DefaultAvatar} from '../DefaultAvatar/DefaultAvatar';
+
 interface Props extends Omit<ImageProps, 'source'> {
   profileImage?: string;
   size?: number;
@@ -10,10 +12,10 @@ interface Props extends Omit<ImageProps, 'source'> {
 export function UserAvatar({
   profileImage,
   size = 50,
-  bordeRadius = size / 2,
+  bordeRadius = size / 4,
   ...imageProps
 }: Props) {
-  return (
+  return profileImage ? (
     <Image
       source={{uri: profileImage}}
       width={size}
@@ -24,5 +26,7 @@ export function UserAvatar({
       }}
       {...imageProps}
     />
+  ) : (
+    <DefaultAvatar size={size} borderRadius={bordeRadius} iconSize={size / 2} />
   );
 }

@@ -10,3 +10,4 @@ export * from './CloseIcon';
 export * from './ProfileIcon';
 export * from './DeleteIcon';
 export * from './EditIcon';
+export * from './CameraIcon';

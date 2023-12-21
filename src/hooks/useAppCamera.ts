@@ -1,15 +1,12 @@
 import {useState} from 'react';
 import {Alert} from 'react-native';
 
-import {
-  ImageLibraryOptions,
-  launchCamera,
-  launchImageLibrary,
-} from 'react-native-image-picker';
+import ImagePicker, {Image} from 'react-native-image-crop-picker';
 
 export function useAppCamera() {
-  const [image, setImage] = useState<string | undefined>();
+  const [image, setImage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [response, setResponse] = useState<Image>();
 
   function imagePicker() {
     Alert.alert(
@@ -27,45 +24,47 @@ export function useAppCamera() {
       ],
       {
         cancelable: true,
-        onDismiss: () => console.log('tratar depois'),
+        onDismiss: () => {},
       },
     );
   }
 
   async function galleryPicker() {
-    const options: ImageLibraryOptions = {
-      mediaType: 'photo',
-    };
+    setLoading(true);
     try {
-      setLoading(true);
-      await launchImageLibrary(options).then((imageData: any) => {
-        setImage(imageData.assets[0].uri);
-      });
-    } catch (e) {
-      console.log(e);
+      ImagePicker.openPicker({mediaType: 'photo', cropping: true}).then(
+        data => {
+          setImage(data.path);
+          setResponse(data);
+        },
+      );
+    } catch {
+      console.log('erro');
     } finally {
       setLoading(false);
     }
   }
 
   async function cameraPicker() {
-    const options: ImageLibraryOptions = {
-      mediaType: 'photo',
-    };
+    setLoading(true);
     try {
-      setLoading(true);
-      await launchCamera(options).then((imageData: any) => {
-        setImage(imageData.assets[0].uri);
-      });
-    } catch (e) {
-      console.log(e);
+      ImagePicker.openCamera({mediaType: 'photo', cropping: true}).then(
+        data => {
+          setImage(data.path);
+          setResponse(data);
+        },
+      );
+    } catch {
+      console.log('erro');
     } finally {
       setLoading(false);
     }
   }
+
   return {
     image,
     loading,
+    response,
     imagePicker,
   };
 }

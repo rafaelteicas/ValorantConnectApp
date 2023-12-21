@@ -2,21 +2,19 @@ import React from 'react';
 import {Pressable} from 'react-native';
 
 import {useAuthSignIn} from '@domain';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
 
 import {useForm} from 'react-hook-form';
 
 import {Box, Screen, Button, Text, FormTextInput} from '@components';
-import {AuthStackParamList} from '@routes';
 
 type LoginType = {
   email: string;
   password: string;
 };
 
-export function LoginScreen({
-  navigation,
-}: NativeStackScreenProps<AuthStackParamList, 'LoginScreen'>) {
+export function LoginScreen() {
+  const navigation = useNavigation();
   const {signIn, isLoading} = useAuthSignIn();
   const {control, formState, handleSubmit} = useForm<LoginType>({
     defaultValues: {

@@ -389,9 +389,9 @@ PODS:
   - react-native-pager-view (6.2.3):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - react-native-safe-area-context (4.7.4):
+  - react-native-safe-area-context (4.8.2):
     - React-Core
-  - react-native-skia (0.1.225):
+  - react-native-skia (0.1.230):
     - RCT-Folly (= 2021.07.22.00)
     - React
     - React-callinvoker
@@ -506,18 +506,32 @@ PODS:
     - React-jsi (= 0.72.6)
     - React-logger (= 0.72.6)
     - React-perflogger (= 0.72.6)
+  - rn-fetch-blob (0.12.0):
+    - React-Core
   - RNCAsyncStorage (1.21.0):
     - React-Core
+  - RNFS (2.20.0):
+    - React-Core
+  - RNImageCropPicker (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.40.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
   - RNReanimated (3.6.1):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - ReactCommon/turbomodule/core
-  - RNScreens (3.27.0):
+  - RNScreens (3.29.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - RNSVG (13.14.0):
     - React-Core
   - SocketRocket (0.6.1)
+  - TOCropViewController (2.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -591,7 +605,10 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNFS (from `../node_modules/react-native-fs`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -614,6 +631,7 @@ SPEC REPOS:
     - MMKVCore
     - OpenSSL-Universal
     - SocketRocket
+    - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -706,8 +724,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -757,8 +781,8 @@ SPEC CHECKSUMS:
   react-native-image-picker: 5e076db26cd81660cfb6db5bcf517cfa12054d45
   react-native-mmkv: e97c0c79403fb94577e5d902ab1ebd42b0715b43
   react-native-pager-view: e26d35e382d86950c936f8917e3beb9188115ccc
-  react-native-safe-area-context: 2cd91d532de12acdb0a9cbc8d43ac72a8e4c897c
-  react-native-skia: 0af8dd48ce9332d1dedcb1bc8a648f7d57a04b6c
+  react-native-safe-area-context: 0ee144a6170530ccc37a0fd9388e28d06f516a89
+  react-native-skia: a395bbbb438d593e525f65d0886c36d1c30f0604
   React-NativeModulesApple: 02e35e9a51e10c6422f04f5e4076a7c02243fff2
   React-perflogger: e3596db7e753f51766bceadc061936ef1472edc3
   React-RCTActionSheet: 17ab132c748b4471012abbcdcf5befe860660485
@@ -776,11 +800,15 @@ SPEC CHECKSUMS:
   React-runtimescheduler: f23e337008403341177fc52ee4ca94e442c17ede
   React-utils: fa59c9a3375fb6f4aeb66714fd3f7f76b43a9f16
   ReactCommon: dd03c17275c200496f346af93a7b94c53f3093a4
+  rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
+  RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
+  RNImageCropPicker: d9616a0cb9b72e8551ff94a7a5021fbd29050aa5
   RNReanimated: fdbaa9c964bbab7fac50c90862b6cc5f041679b9
-  RNScreens: 3c2d122f5e08c192e254c510b212306da97d2581
+  RNScreens: 3c5b9f4a9dcde752466854b6109b79c0e205dad3
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

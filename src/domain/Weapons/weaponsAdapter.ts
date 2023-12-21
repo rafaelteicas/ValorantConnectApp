@@ -1,7 +1,6 @@
 import {
   SkinTypes,
   SkinTypesAPI,
-  WeaponsByUuidAPI,
   WeaponsTypes,
   WeaponsTypesAPI,
 } from './weaponsTypes';
@@ -14,17 +13,11 @@ export function toWeapons(data: WeaponsTypesAPI): WeaponsTypes {
   };
 }
 
-interface SkinData {
-  data: SkinTypesAPI;
-  shopData?: WeaponsByUuidAPI;
-}
-
-function toSkinsByUuid({data, shopData}: SkinData): SkinTypes {
+function toSkinsByUuid(data: SkinTypesAPI): SkinTypes {
   return {
     uuid: data.uuid,
     image: data.displayIcon,
     name: data.displayName,
-    cost: shopData?.shopData.cost,
   };
 }
 

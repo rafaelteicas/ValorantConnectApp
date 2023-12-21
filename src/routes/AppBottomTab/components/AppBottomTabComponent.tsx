@@ -42,6 +42,8 @@ export function AppBottomTabComponent({
           }
         };
 
+        const iconSize = tabItem.icon.includes('profile') ? 20 : 24;
+
         return (
           <Box
             padding="s16"
@@ -57,7 +59,7 @@ export function AppBottomTabComponent({
               style={{flex: 1, alignItems: 'center', paddingBottom: bottom}}>
               <Icon
                 name={tabItem.icon}
-                size={24}
+                size={iconSize}
                 color={isFocused ? 'primary' : 'backgroundContrast'}
               />
               <Text

@@ -6,9 +6,6 @@ import {Auth, SignIn, SignUp} from './authTypes';
 async function signIn({email, password}: SignIn): Promise<Auth> {
   const response = await authAPI.authenticate(email, password);
 
-  if (response.status === 400) {
-    throw new Error();
-  }
   return response;
 }
 
@@ -17,7 +14,7 @@ async function signUp(signUpData: SignUp): Promise<Auth> {
   return response;
 }
 
-function updateToken(token: string) {
+function updateToken(token: string): void {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 function removeToken() {

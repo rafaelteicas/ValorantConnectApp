@@ -5,27 +5,35 @@ import {Image, ImageProps} from 'react-native';
 import {useUserGetUser} from '@domain';
 
 import {Box, BoxProps} from '../Box/Box';
+import {DefaultAvatar} from '../DefaultAvatar/DefaultAvatar';
 import {Text} from '../Text/Text';
 
 const SIZE_PROFILE = 40;
 
 export function AppHeader() {
   const {user, isLoading} = useUserGetUser();
-
-  return (
-    <Box {...$boxStyle}>
-      <Text color="primary">{isLoading ? 'Username' : user?.username}</Text>
-      <Image
-        {...$imageStyle}
-        source={{uri: isLoading ? '_' : user?.profileImage}}
-      />
-    </Box>
-  );
+  if (!isLoading && user) {
+    return (
+      <Box {...$boxStyle}>
+        {user.profileImage ? (
+          <Image {...$imageStyle} source={{uri: user.profileImage}} />
+        ) : (
+          <DefaultAvatar
+            size={SIZE_PROFILE}
+            borderRadius={SIZE_PROFILE / 3}
+            iconSize={20}
+          />
+        )}
+        <Text color="primary" ml="s12">
+          {user.username}
+        </Text>
+      </Box>
+    );
+  }
 }
 
 const $boxStyle: BoxProps = {
   flexDirection: 'row',
-  justifyContent: 'flex-end',
   alignItems: 'center',
   paddingHorizontal: 's16',
   pb: 's16',
@@ -34,7 +42,7 @@ const $boxStyle: BoxProps = {
 const $imageStyle: Omit<ImageProps, 'source'> = {
   width: SIZE_PROFILE,
   height: SIZE_PROFILE,
-  borderRadius: SIZE_PROFILE / 2,
+  borderRadius: SIZE_PROFILE / 3,
   style: {
     marginLeft: 10,
   },

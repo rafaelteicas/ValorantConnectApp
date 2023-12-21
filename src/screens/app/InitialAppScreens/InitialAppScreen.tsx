@@ -2,7 +2,9 @@ import React from 'react';
 
 import {Pressable, Image} from 'react-native';
 
+import {useUploadProfileImage} from '@domain';
 import {useNavigation} from '@react-navigation/native';
+import {useAuthContext} from '@service';
 
 import {Box, Button, DefaultAvatar, Screen, Text} from '@components';
 import {useAppCamera} from '@hooks';
@@ -10,9 +12,33 @@ import {useAppCamera} from '@hooks';
 const DEFAULTS = {size: 300, borderRadius: 75};
 
 export function InitialAppScreen() {
-  const {image, loading, imagePicker} = useAppCamera();
-
   const navigation = useNavigation();
+  const {auth} = useAuthContext();
+  const {upload} = useUploadProfileImage();
+  const {image, loading, response, imagePicker} = useAppCamera();
+
+  function handleSendOnPress() {
+    if (response && auth) {
+      upload({
+        id: auth.user.id,
+        response: response,
+      });
+      navigation.reset({
+        routes: [
+          {
+            name: 'HomeScreen',
+          },
+          {
+            name: 'HomeScreen',
+          },
+        ],
+      });
+    }
+  }
+  function handleSkipOnPress() {
+    navigation.navigate('TabNavigator');
+  }
+
   return (
     <Screen>
       <Text preset="title" color="primary">
@@ -43,19 +69,17 @@ export function InitialAppScreen() {
         </Pressable>
       </Box>
       <Button
-        isLoading={loading}
-        disabled={!image}
         mb="s16"
         title="Enviar"
         rightComponent
+        onPress={handleSendOnPress}
       />
       <Button
+        disabled={loading}
         title="Pular"
         preset="outline"
         rightComponent
-        onPress={() => {
-          navigation.navigate('LoginScreen');
-        }}
+        onPress={handleSkipOnPress}
       />
     </Screen>
   );

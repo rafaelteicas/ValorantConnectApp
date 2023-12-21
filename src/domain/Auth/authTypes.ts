@@ -1,4 +1,6 @@
-export type Auth = {
+import {ImagePickerResponse} from 'react-native-image-picker';
+
+export interface Auth {
   token: {
     accessToken: string;
     refreshToken: string;
@@ -10,17 +12,22 @@ export type Auth = {
     riotId: string;
     username: string;
   };
-};
+}
 
-export type SignIn = {
+export interface SignIn {
   email: string;
   password: string;
-};
+}
 
-export type SignUp = {
+export interface SignUp {
   email: string;
   password: string;
   confirmPassword: string;
   username: string;
   riotId: string;
-};
+}
+
+export interface UploadAvatarProps {
+  id: number;
+  imagePickerResponse: ImagePickerResponse;
+}

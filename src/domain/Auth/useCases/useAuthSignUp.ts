@@ -9,8 +9,8 @@ export function useAuthSignUp() {
   const mutation = useMutation<Auth, Error, SignUp>({
     mutationFn: data => authService.signUp(data),
     retry: false,
-    onSuccess: data => {
-      saveAuth(data);
+    onSuccess: auth => {
+      saveAuth(auth);
     },
   });
 
