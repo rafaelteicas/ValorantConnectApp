@@ -6,8 +6,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {PostScreenParamList, SignUpAuthStackParamList} from '@screens';
 
 import {TabBottomParamList} from './AppBottomTab/AppBottomTab';
-import {AppStackParamList} from './AppStack/AppStackParams';
-import {AuthStackParamList} from './AuthStack/AuthStackParams';
+import {AppStackParamList} from './AppStack/AppStackParamList';
+import {AuthStackParamList} from './AuthStack/AuthStackParamList';
 
 declare global {
   namespace ReactNavigation {

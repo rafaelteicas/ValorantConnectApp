@@ -33,7 +33,12 @@ function renderItem({item}: ListRenderItemInfo<SkinTypes>) {
       <Text preset="paragraphMedium" color="backgroundContrast">
         {item.name}
       </Text>
-      <Image source={{uri: item.image}} width={width} height={100} />
+      <Image
+        source={{uri: item.image}}
+        width={width}
+        height={200}
+        resizeMode="center"
+      />
     </Box>
   );
 }

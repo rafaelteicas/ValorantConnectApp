@@ -4,6 +4,8 @@ export enum QueryKeys {
   GetPostList = 'GetPostList',
   GetWeapons = 'GetWeapons',
   GetStreams = 'GetStreams',
+  GetMessages = 'GetMessages',
+  GetMessagesByPath = 'GetMessagesByPath',
   GetProfileImage = 'GetProfileImage',
   AuthSignIn = 'AuthSignIn',
   UseUseGetUserById = 'UseUseGetUserById',

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {Image, FlatList, ListRenderItemInfo, Pressable} from 'react-native';
 
-import {Elos, useCreatePost, useGetElos} from '@domain';
+import {Elos, useCreatePost, useGetElos, usePostList} from '@domain';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -10,11 +10,18 @@ import {Box, Button, Screen, Text} from '@components';
 import {PostScreenTypes} from '@routes';
 
 export function ChooseElosScreen({route}: PostScreenTypes<'ChooseEloScreen'>) {
+  const {fetchData} = usePostList();
   const navigation = useNavigation();
   const {elos} = useGetElos<Elos[]>();
   const SIZE = 80;
   const [selected, setSelected] = useState<string>('');
-  const {createPost} = useCreatePost();
+  const {createPost} = useCreatePost({
+    onSuccess: () => {
+      fetchData;
+      // @ts-ignore
+      navigation.navigate('FindTeamScreen');
+    },
+  });
 
   function toggleSelection(name: string) {
     setSelected(name);
@@ -48,14 +55,12 @@ export function ChooseElosScreen({route}: PostScreenTypes<'ChooseEloScreen'>) {
 
   function handleOnPress(elo: string) {
     const {agent, agents} = route.params;
-    createPost(
-      {
-        elo: elo,
-        main: agent,
-        other: agents,
-      },
-      () => navigation.navigate('FindTeamScreen'),
-    );
+
+    createPost({
+      elo: elo,
+      main: agent,
+      other: agents,
+    });
   }
 
   return (
@@ -73,6 +78,7 @@ export function ChooseElosScreen({route}: PostScreenTypes<'ChooseEloScreen'>) {
         />
       </Box>
       <Button
+        disabled={selected.length === 0 ? true : false}
         title="Continuar"
         rightComponent
         paddingHorizontalOn

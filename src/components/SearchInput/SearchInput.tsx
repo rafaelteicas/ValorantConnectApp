@@ -25,7 +25,7 @@ export function SearchInput({boxProps, ...textInputProps}: Props) {
         {...boxProps}>
         <TextInput
           ref={inputRef}
-          style={{flexGrow: 1, flexShrink: 1, marginLeft: 12}}
+          style={{flexGrow: 1, flexShrink: 1, marginLeft: 12, padding: 0}}
           {...textInputProps}
         />
         <Box justifyContent="center" mr="s12">

@@ -31,7 +31,6 @@ export function useGetElos<T>(elo?: string) {
 
   useEffect(() => {
     getEloData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

@@ -13,6 +13,7 @@ async function authenticate(email: string, password: string): Promise<Auth> {
 
 async function signUp(account: SignUp): Promise<Auth> {
   const response = await api.post('/signup', account);
+
   return response.data;
 }
 

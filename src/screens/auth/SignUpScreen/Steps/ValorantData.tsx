@@ -3,7 +3,6 @@ import React from 'react';
 import {Dimensions} from 'react-native';
 
 import {useAuthSignUp} from '@domain';
-import {useNavigation} from '@react-navigation/native';
 
 import {Box, Button, FormTextInput, Loading, Screen, Text} from '@components';
 import {useAppForm} from '@hooks';
@@ -16,7 +15,6 @@ interface dataType {
 }
 
 export function ValorantData({route}: AuthSignUpStackTypes<'ValorantData'>) {
-  const navigation = useNavigation();
   const {email, password, confirmPassword} = route.params;
   const {signUp} = useAuthSignUp();
   const {control, formState, handleSubmit} = useAppForm({
@@ -26,9 +24,6 @@ export function ValorantData({route}: AuthSignUpStackTypes<'ValorantData'>) {
   });
   const {width} = Dimensions.get('window');
   function submitForm(data: dataType) {
-    navigation.navigate('AppStackNavigator', {
-      screen: 'InitialAppScreen',
-    });
     signUp({
       email,
       password,

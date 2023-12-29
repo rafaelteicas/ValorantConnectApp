@@ -27,22 +27,20 @@ export function InfoScreen() {
             <Text preset="title">Informações de usuário</Text>
           </Box>
           <FieldComponent
-            field="E-mail:"
+            field="E-mail"
             value={email}
             onPress={() => navigateToEdit('E-mail', 'Digite seu novo e-mail')}
           />
           <FieldComponent
-            field="Riot Id:"
+            field="Riot Id"
             value={riotId}
-            onPress={() =>
-              navigateToEdit('Riot Id:', 'Digite seu novo riot id')
-            }
+            onPress={() => navigateToEdit('Riot Id', 'Digite seu novo riot id')}
           />
           <FieldComponent
-            field="Username:"
+            field="Username"
             value={username}
             onPress={() =>
-              navigateToEdit('Username: ', 'Digite seu novo username')
+              navigateToEdit('Username', 'Digite seu novo username')
             }
           />
           <TouchableOpacity>

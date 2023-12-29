@@ -5,6 +5,7 @@ import ImagePicker, {Image} from 'react-native-image-crop-picker';
 
 export function useAppCamera() {
   const [image, setImage] = useState<string>();
+  const [error, setError] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>(false);
   const [response, setResponse] = useState<Image>();
 
@@ -39,7 +40,7 @@ export function useAppCamera() {
         },
       );
     } catch {
-      console.log('erro');
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -55,7 +56,7 @@ export function useAppCamera() {
         },
       );
     } catch {
-      console.log('erro');
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -65,6 +66,7 @@ export function useAppCamera() {
     image,
     loading,
     response,
+    error,
     imagePicker,
   };
 }

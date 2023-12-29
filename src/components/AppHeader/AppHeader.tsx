@@ -1,22 +1,29 @@
 import React from 'react';
 
-import {Image, ImageProps} from 'react-native';
+import {Image, ImageProps, Platform} from 'react-native';
 
-import {useUserGetUser} from '@domain';
+import {useGetProfileImage} from '@domain';
+
+import {useAuthContext} from '@service';
 
 import {Box, BoxProps} from '../Box/Box';
 import {DefaultAvatar} from '../DefaultAvatar/DefaultAvatar';
-import {Text} from '../Text/Text';
+import {Logo} from '../Logo/Logo';
 
 const SIZE_PROFILE = 40;
 
 export function AppHeader() {
-  const {user, isLoading} = useUserGetUser();
-  if (!isLoading && user) {
-    return (
-      <Box {...$boxStyle}>
-        {user.profileImage ? (
-          <Image {...$imageStyle} source={{uri: user.profileImage}} />
+  const {auth} = useAuthContext();
+  if (!auth) {
+    return;
+  }
+  const {data} = useGetProfileImage(auth.user.id);
+  return (
+    <Box {...$boxStyle}>
+      <Logo size={100} />
+      <Box flexDirection="row" alignItems="center">
+        {data ? (
+          <Image {...$imageStyle} source={{uri: data}} />
         ) : (
           <DefaultAvatar
             size={SIZE_PROFILE}
@@ -24,19 +31,19 @@ export function AppHeader() {
             iconSize={20}
           />
         )}
-        <Text color="primary" ml="s12">
-          {user.username}
-        </Text>
       </Box>
-    );
-  }
+    </Box>
+  );
 }
 
 const $boxStyle: BoxProps = {
   flexDirection: 'row',
+  justifyContent: 'space-between',
   alignItems: 'center',
   paddingHorizontal: 's16',
-  pb: 's16',
+  style: {
+    marginTop: Platform.OS === 'android' ? -20 : null,
+  },
 };
 
 const $imageStyle: Omit<ImageProps, 'source'> = {

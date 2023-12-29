@@ -19,6 +19,7 @@ import {
   DeleteIcon,
   EditIcon,
   CameraIcon,
+  MessageIcon,
 } from '../../assets/icons';
 import {Box, BoxProps} from '../Box/Box';
 
@@ -43,6 +44,7 @@ const Icons = {
   deleteIcon: DeleteIcon,
   editIcon: EditIcon,
   cameraIcon: CameraIcon,
+  messageIcon: MessageIcon,
 };
 
 export type IconType = {

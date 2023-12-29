@@ -5,19 +5,14 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import {FindTeamScreen, ProfileScreen} from '@screens';
+import {FindTeamScreen, MessageScreen, ProfileScreen} from '@screens';
 
 import {AppTopNavigator} from '../AppTopNavigator/AppTopNavigator';
 
+import {AppBottomTabParamList} from './AppBottomTabParamList';
 import {AppBottomTabComponent} from './components/AppBottomTabComponent';
 
-export type TabBottomParamList = {
-  HomeScreen: undefined;
-  FindTeamScreen: undefined;
-  ProfileScreen: undefined;
-};
-
-const Tab = createBottomTabNavigator<TabBottomParamList>();
+const Tab = createBottomTabNavigator<AppBottomTabParamList>();
 
 export function AppBottomTab() {
   function renderTabBar(props: BottomTabBarProps) {
@@ -31,6 +26,7 @@ export function AppBottomTab() {
       }}>
       <Tab.Screen name="HomeScreen" component={AppTopNavigator} />
       <Tab.Screen name="FindTeamScreen" component={FindTeamScreen} />
+      <Tab.Screen name="MessageScreen" component={MessageScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );

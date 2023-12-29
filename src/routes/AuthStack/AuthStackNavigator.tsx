@@ -6,7 +6,7 @@ import {LoginScreen, SignUpScreen} from '@screens';
 
 import {AppStackNavigator} from '../AppStack/AppStackNavigator';
 
-import {AuthStackParamList} from './AuthStackParams';
+import {AuthStackParamList} from './AuthStackParamList';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 

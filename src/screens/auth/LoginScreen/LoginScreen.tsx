@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import {useForm} from 'react-hook-form';
 
-import {Box, Screen, Button, Text, FormTextInput} from '@components';
+import {Screen, Button, Text, FormTextInput, Logo} from '@components';
 
 type LoginType = {
   email: string;
@@ -30,50 +30,54 @@ export function LoginScreen() {
 
   return (
     <Screen justifyContent="center" style={{paddingTop: 0}}>
-      <Box>
-        <FormTextInput
-          control={control}
-          textContentType="emailAddress"
-          autoCapitalize="none"
-          name="email"
-          rules={{
-            required: true,
-          }}
-          title="E-mail"
-          placeholder="Digite seu e-mail"
-        />
-        <FormTextInput
-          control={control}
-          name="password"
-          autoCapitalize="none"
-          textContentType="password"
-          rules={{
-            required: true,
-          }}
-          secureTextEntry
-          title="Senha"
-          placeholder="********"
-        />
-        <Button
-          isLoading={isLoading}
-          disabled={!formState.isValid}
-          onPress={handleSubmit(handleOnPress)}
-          marginBottom="s32"
-          rightComponent
-          title="ENTRAR"
-        />
-        <Pressable
-          onPress={() => navigation.navigate('SignUpScreen')}
-          style={{alignItems: 'center'}}>
-          <Text
-            color="primary"
-            bold
-            preset="paragraphSmall"
-            textDecorationLine="underline">
-            OU CADASTRE-SE
-          </Text>
-        </Pressable>
-      </Box>
+      <Logo
+        boxProps={{
+          alignSelf: 'center',
+          paddingBottom: 's12',
+        }}
+      />
+      <FormTextInput
+        control={control}
+        textContentType="emailAddress"
+        autoCapitalize="none"
+        name="email"
+        rules={{
+          required: true,
+        }}
+        title="E-mail"
+        placeholder="Digite seu e-mail"
+      />
+      <FormTextInput
+        control={control}
+        name="password"
+        autoCapitalize="none"
+        textContentType="password"
+        rules={{
+          required: true,
+        }}
+        secureTextEntry
+        title="Senha"
+        placeholder="********"
+      />
+      <Button
+        isLoading={isLoading}
+        disabled={!formState.isValid}
+        onPress={handleSubmit(handleOnPress)}
+        marginBottom="s32"
+        rightComponent
+        title="ENTRAR"
+      />
+      <Pressable
+        onPress={() => navigation.navigate('SignUpScreen')}
+        style={{alignItems: 'center'}}>
+        <Text
+          color="primary"
+          bold
+          preset="paragraphSmall"
+          textDecorationLine="underline">
+          OU CADASTRE-SE
+        </Text>
+      </Pressable>
     </Screen>
   );
 }

@@ -1,7 +1,7 @@
 export * from './Navigator';
 
 export * from './AuthStack/AuthStackNavigator';
-export * from './AuthStack/AuthStackParams';
+export * from './AuthStack/AuthStackParamList';
 
 export * from './AppStack/AppStackNavigator';
 

@@ -1,9 +1,9 @@
 import {IconProps} from '@components';
 
-import {TabBottomParamList} from './AppBottomTab';
+import {AppBottomTabParamList} from './AppBottomTabParamList';
 
 export const getTabBarItem: Record<
-  keyof TabBottomParamList,
+  keyof AppBottomTabParamList,
   {
     icon: IconProps['name'];
   }
@@ -16,5 +16,8 @@ export const getTabBarItem: Record<
   },
   ProfileScreen: {
     icon: 'profileIcon',
+  },
+  MessageScreen: {
+    icon: 'messageIcon',
   },
 };

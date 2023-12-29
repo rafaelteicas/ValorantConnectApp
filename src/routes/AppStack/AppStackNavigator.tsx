@@ -4,6 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
   AgentScreen,
+  ConversationScreen,
+  ConversationScreenFromPath,
   EditScreen,
   InfoScreen,
   PostScreen,
@@ -13,7 +15,7 @@ import {
 
 import {AppBottomTab} from '../AppBottomTab/AppBottomTab';
 
-import {AppStackParamList} from './AppStackParams';
+import {AppStackParamList} from './AppStackParamList';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -29,6 +31,11 @@ export function AppStackNavigator() {
       <Stack.Screen name="UploadScreen" component={UploadScreen} />
       <Stack.Screen name="InfoScreen" component={InfoScreen} />
       <Stack.Screen name="EditScreen" component={EditScreen} />
+      <Stack.Screen name="ConversationScreen" component={ConversationScreen} />
+      <Stack.Screen
+        name="ConversationScreenFromPath"
+        component={ConversationScreenFromPath}
+      />
     </Stack.Navigator>
   );
 }

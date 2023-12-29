@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {FlatList, RefreshControl} from 'react-native';
+import {FlatList, ListRenderItemInfo, RefreshControl} from 'react-native';
 
-import {usePostList} from '@domain';
+import {Post, usePostList} from '@domain';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -17,18 +17,24 @@ export function FindTeamScreen() {
   const {data, loading, fetchNextPage, fetchData} = usePostList();
   const {top} = useAppSafeArea();
   const navigation = useNavigation();
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   function handleNavigate() {
     navigation.navigate('PostScreen');
   }
-
+  function renderItem({item, index}: ListRenderItemInfo<Post>) {
+    return <FindTeamBoxComponent {...item} key={index} />;
+  }
   return (
     <Screen paddingOff flex={1} paddingVerticalOff style={{paddingTop: top}}>
       <AppHeader />
       <FindTeamHeader onPress={handleNavigate} />
       <FlatList
-        data={data}
         keyExtractor={item => item.id.toString()}
-        renderItem={item => <FindTeamBoxComponent {...item} />}
+        data={data}
+        renderItem={renderItem}
         onEndReached={fetchNextPage}
         refreshing={loading}
         refreshControl={

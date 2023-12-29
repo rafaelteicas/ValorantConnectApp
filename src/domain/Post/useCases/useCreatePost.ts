@@ -3,10 +3,15 @@ import {useMutation} from 'react-query';
 import {postService} from '../postService';
 import {CreatePost} from '../postTypes';
 
-export function useCreatePost() {
+interface Props {
+  onSuccess: () => void;
+}
+
+export function useCreatePost({onSuccess}: Props) {
   const mutation = useMutation<void, Error, CreatePost>({
     mutationFn: post => postService.create(post),
     retry: false,
+    onSuccess,
   });
 
   return {

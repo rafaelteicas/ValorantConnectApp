@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Image, ListRenderItemInfo} from 'react-native';
+import {Image} from 'react-native';
 
 import {
   Elos,
@@ -18,13 +18,12 @@ import {FindBoxIconComponent} from './FindBoxIconComponent';
 const SIZE = 50;
 const SMALL_SIZE = 40;
 
-export function FindTeamBoxComponent({item}: ListRenderItemInfo<Post>) {
+export function FindTeamBoxComponent(item: Post) {
   const {agents} = useGetCharacters(item.main);
   const {user} = useGetUserById(item.userId.toString());
   const {elos} = useGetElos<Elos>(item.elo);
   const images: string[] = [];
   item.other.map(item => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const {agents} = useGetCharacters(item);
     images.push(agents ? agents[0].smallIcon : '');
   });
@@ -36,7 +35,7 @@ export function FindTeamBoxComponent({item}: ListRenderItemInfo<Post>) {
       <Box flexDirection="row" alignItems="center" mb="s12">
         <UserAvatar profileImage={user?.profileImage} />
         <Text color="primary">{user?.username}</Text>
-        <FindBoxIconComponent username={user.username} />
+        <FindBoxIconComponent id={item.userId} postId={item.id} />
       </Box>
       <FindBoxComponent title="MAIN">
         {agents && (
@@ -52,7 +51,7 @@ export function FindTeamBoxComponent({item}: ListRenderItemInfo<Post>) {
         <Box flexDirection="row">
           {images.map(image => (
             <Image
-              source={{uri: image}}
+              source={{uri: image ? image : undefined}}
               width={SMALL_SIZE}
               height={SMALL_SIZE}
               borderRadius={SMALL_SIZE / 2}

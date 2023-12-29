@@ -1,27 +1,35 @@
 import React from 'react';
 
+import {useNavigation} from '@react-navigation/native';
 import {useAuthContext} from '@service';
 
 import {Box, Icon} from '@components';
 
-export function FindBoxIconComponent({username}: {username: string}) {
+interface Props {
+  id: number;
+  postId: number;
+}
+
+export function FindBoxIconComponent({id, postId}: Props) {
   const {auth} = useAuthContext();
+  const {navigate} = useNavigation();
   return (
     <Box flexDirection="row" justifyContent="flex-end" flex={1}>
-      {/* {username !== auth?.user.username ? (
-        <Icon name="deleteIcon" style={{padding: 12}} />
-      ) : null}
-      {username === auth?.user.username ? (
+      {id !== auth?.user.id && (
         <Icon
-          name="editIcon"
-          color="backgroundContrast"
+          name="messageIcon"
           style={{padding: 12}}
-          onPress={() => {}}
+          onPress={() =>
+            navigate('ConversationScreen', {
+              postId,
+              authorId: id,
+            })
+          }
         />
-      ) : null} */}
-      {username === auth?.user.username ? (
+      )}
+      {id === auth?.user.id && (
         <Icon name="deleteIcon" style={{padding: 12}} onPress={() => {}} />
-      ) : null}
+      )}
     </Box>
   );
 }

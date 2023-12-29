@@ -14,6 +14,7 @@ export interface InputProps extends TextInputProps {
   padding?: BoxProps['padding'];
   multiline?: boolean;
   boxProps?: BoxProps;
+  RightComponent?: () => React.ReactNode;
 }
 
 export function Input({
@@ -24,6 +25,7 @@ export function Input({
   multiline,
   padding = 's12',
   autoCapitalize = 'none',
+  RightComponent,
   ...textInputProps
 }: InputProps) {
   const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
@@ -56,6 +58,7 @@ export function Input({
                 onPress={() => setSecure(current => !current)}
               />
             )}
+            {RightComponent && RightComponent()}
           </Box>
         </Box>
       </Pressable>

@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:5000/',
-  timeout: 5000,
+  baseURL: 'https://valorant-app-6fc534e0a9a2.herokuapp.com/',
   headers: {
     'Content-Type': 'application/json',
   },

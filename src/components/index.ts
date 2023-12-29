@@ -5,7 +5,7 @@ export * from './Screen/Screen';
 export * from './Icon/Icon';
 export * from './Button/Button';
 export * from './Header/Header';
-export * from './StreamSlide/StreamSlide';
+export * from './Logo/Logo';
 export * from './SearchInput/SearchInput';
 export * from './Form/FormTextInput';
 export * from './Toast/Toast';

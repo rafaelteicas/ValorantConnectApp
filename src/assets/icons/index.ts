@@ -11,3 +11,4 @@ export * from './ProfileIcon';
 export * from './DeleteIcon';
 export * from './EditIcon';
 export * from './CameraIcon';
+export * from './MessageIcon';

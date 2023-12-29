@@ -25,12 +25,10 @@ export function ChooseSecondaryAgents({
   if (!agents) {
     return;
   }
-  function handleNavigate(agents: String[]) {
-    console.log(agents);
-
+  function handleNavigate(selectedAgents: string[]) {
     navigation.navigate('ChooseEloScreen', {
       agent: agent,
-      agents: agents,
+      agents: selectedAgents,
     });
   }
 
@@ -38,7 +36,7 @@ export function ChooseSecondaryAgents({
   function toggleMultipleSelect(agentName: string) {
     const includes = selected.includes(agentName);
     if (selected.length >= 3 && !includes) {
-      Alert.alert('PASSOU!');
+      Alert.alert('Limite máximo atingido!');
     } else if (includes) {
       const newArray = selected.filter(names => names !== agentName);
       setSelected(newArray);
@@ -49,7 +47,9 @@ export function ChooseSecondaryAgents({
   }
 
   function renderItemAgent({item}: ListRenderItemInfo<CharactersType>) {
-    const map = selected.map(agent => agent).includes(item.name);
+    const map = selected
+      .map(agentSelected => agentSelected)
+      .includes(item.name);
     return (
       <Pressable
         onPress={() => toggleMultipleSelect(item.name)}
@@ -86,7 +86,7 @@ export function ChooseSecondaryAgents({
     <Screen paddingOff>
       <Box flex={1} justifyContent="center" alignItems="center">
         <Text preset="title" color="primary" mb="s16">
-          ESCOLHA SEU MAIN
+          ESCOLHA ATÉ 3 AGENTES PARA COMPLETAR
         </Text>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -96,6 +96,7 @@ export function ChooseSecondaryAgents({
         />
       </Box>
       <Button
+        disabled={selected.length === 0 ? true : false}
         title="Continuar"
         rightComponent
         paddingHorizontalOn
