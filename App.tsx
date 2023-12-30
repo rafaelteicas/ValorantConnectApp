@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {Platform} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 
 import {AuthCredentialsProvider} from '@service';
 import {ThemeProvider} from '@shopify/restyle';
@@ -24,6 +24,7 @@ export function App() {
   return (
     <AuthCredentialsProvider>
       <SafeAreaProvider>
+        <StatusBar animated backgroundColor="#0F1923" />
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <Navigator />

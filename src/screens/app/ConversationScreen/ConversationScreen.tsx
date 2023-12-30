@@ -55,7 +55,7 @@ export function ConversationScreen({
           inverted
         />
       </Box>
-      <ConversationInput path={postPath.path} />
+      <ConversationInput path={postPath.path} data={data} />
     </Screen>
   );
 }

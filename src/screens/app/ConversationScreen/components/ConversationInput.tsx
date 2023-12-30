@@ -2,7 +2,6 @@ import React from 'react';
 
 import {TouchableOpacity} from 'react-native';
 
-import {useGetConversations, useSetConversation} from '@domain';
 import {useAuthContext, useSendMessage, useSendPaths} from '@service';
 import {useForm} from 'react-hook-form';
 
@@ -15,22 +14,19 @@ interface Props {
     authorId: string;
   };
   fromPath?: string;
+  data?: any[];
 }
 
-export default function ConversationInput({path, fromPath}: Props) {
-  console.log(fromPath);
-
+export default function ConversationInput({path, fromPath, data}: Props) {
   const {auth} = useAuthContext();
-  const {send} = useSetConversation();
   const {control, getValues, handleSubmit, setValue} = useForm({
     defaultValues: {
       message: '',
     },
     mode: 'onChange',
   });
-  const {refetch} = useGetConversations(path.userId);
   function sendMessage() {
-    if (!auth) {
+    if (!auth || !getValues('message')) {
       return null;
     }
     useSendMessage({
@@ -43,16 +39,14 @@ export default function ConversationInput({path, fromPath}: Props) {
         ? fromPath
         : `${path.postId}${path.authorId}${path.userId}`,
     });
-    {
-      !fromPath &&
-        useSendPaths({
-          path: `${path.postId}${path.authorId}${path.userId}`,
-          id: auth.user.id,
-          from: parseInt(path.authorId),
-        });
+
+    if (!fromPath && data?.length === 0) {
+      useSendPaths({
+        path: `${path.postId}${path.authorId}${path.userId}`,
+        id: auth.user.id,
+        from: parseInt(path.authorId),
+      });
     }
-    fromPath ? null : send({path});
-    refetch();
     setValue('message', '');
   }
   function rightComponent() {
