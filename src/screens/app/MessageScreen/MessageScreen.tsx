@@ -1,29 +1,29 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-import {FlatList, ListRenderItemInfo} from 'react-native';
+import {ListRenderItemInfo, FlatList} from 'react-native';
 
-import {Conversation, useGetConversations} from '@domain';
+import {useAuthContext, useGetPaths} from '@service';
 
-import {useAuthContext} from '@service';
-
-import {Screen} from '@components';
+import {Box, Screen, Text} from '@components';
 
 import {MessageScreenComponent} from './components/MessageScreenComponent';
 
 export function MessageScreen() {
   const {auth} = useAuthContext();
-  const id = auth?.user.id;
-  if (!id) {
-    return;
+  const {paths} = useGetPaths({userId: auth?.user.id!!});
+  console.log(paths);
+
+  if (!paths || paths.length === 0) {
+    return (
+      <Screen>
+        <Box justifyContent="center" alignItems="center" flex={1}>
+          <Text>Sem mensagens</Text>
+        </Box>
+      </Screen>
+    );
   }
-  const {paths, refetch} = useGetConversations(id.toString());
 
-  useEffect(() => {
-    refetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  function renderItem({item}: ListRenderItemInfo<Conversation>) {
+  function renderItem({item}: ListRenderItemInfo<any>) {
     return <MessageScreenComponent {...item} />;
   }
 
@@ -32,7 +32,7 @@ export function MessageScreen() {
       <FlatList
         data={paths}
         renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.path}
       />
     </Screen>
   );

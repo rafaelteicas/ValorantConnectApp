@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ImageProps, TouchableOpacity} from 'react-native';
 
-import {Conversation, useGetProfileImage, useGetUserById} from '@domain';
+import {useGetProfileImage, useGetUserById} from '@domain';
 
 import {useNavigation} from '@react-navigation/native';
 
@@ -9,12 +9,12 @@ import {Box, DefaultAvatar, Text} from '@components';
 
 const AVATAR_SIZE = 60;
 
-export function MessageScreenComponent({path, from}: Conversation) {
-  const {user} = useGetUserById(from.toString());
-  const {data} = useGetProfileImage(from);
+export function MessageScreenComponent(item: any) {
+  const {user} = useGetUserById(item.from);
+  const {data} = useGetProfileImage(item.from);
   const navigation = useNavigation();
   function navigateToConversation() {
-    navigation.navigate('ConversationScreenFromPath', {path: path});
+    navigation.navigate('ConversationScreenFromPath', {path: item.path});
   }
   return (
     <TouchableOpacity onPress={navigateToConversation}>

@@ -6,3 +6,5 @@ export * from './modal/useModal';
 
 export * from './firebase/useCases/useGetMessages';
 export * from './firebase/useCases/useSendMessage';
+export * from './firebase/useCases/useGetPaths';
+export * from './firebase/useCases/useSendPaths';

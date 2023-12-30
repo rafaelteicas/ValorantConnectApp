@@ -3,7 +3,7 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
 import {useGetConversations, useSetConversation} from '@domain';
-import {useAuthContext, useSendMessage} from '@service';
+import {useAuthContext, useSendMessage, useSendPaths} from '@service';
 import {useForm} from 'react-hook-form';
 
 import {FormTextInput, Text} from '@components';
@@ -18,6 +18,8 @@ interface Props {
 }
 
 export default function ConversationInput({path, fromPath}: Props) {
+  console.log(fromPath);
+
   const {auth} = useAuthContext();
   const {send} = useSetConversation();
   const {control, getValues, handleSubmit, setValue} = useForm({
@@ -41,6 +43,14 @@ export default function ConversationInput({path, fromPath}: Props) {
         ? fromPath
         : `${path.postId}${path.authorId}${path.userId}`,
     });
+    {
+      !fromPath &&
+        useSendPaths({
+          path: `${path.postId}${path.authorId}${path.userId}`,
+          id: auth.user.id,
+          from: parseInt(path.authorId),
+        });
+    }
     fromPath ? null : send({path});
     refetch();
     setValue('message', '');

@@ -11,6 +11,7 @@ interface Props {
 
 export function useSendMessage({data, path}: Props) {
   const databaseRef = firebase.database().ref(`message/${path}`);
+
   databaseRef.push({
     data,
   });
