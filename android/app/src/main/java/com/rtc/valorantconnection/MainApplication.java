@@ -1,4 +1,4 @@
-package com.projeto;
+package com.rtc.valorantconnection;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

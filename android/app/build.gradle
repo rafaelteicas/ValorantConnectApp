@@ -75,9 +75,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.projeto"
+    namespace "com.rtc.valorantconnection"
     defaultConfig {
-        applicationId "com.projeto"
+        applicationId "com.rtc.valorantconnection"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
