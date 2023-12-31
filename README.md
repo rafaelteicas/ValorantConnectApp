@@ -1,79 +1,88 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<div style="text-align: center;">
 
-# Getting Started
+![Valorant Connect](/src/assets/brand/Logo.png)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+</div>
 
-## Step 1: Start the Metro Server
+## Table of Contents
+-[Technologies and Libraries](#🏗️-technologies)
+-[Features](#🔥-features)
+-[Structure](#📁-structure)
+-[Installation](#⬇️-installation)
+-[Screenshots](#📷-screenshots)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🏗️ Technologies
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- [React Native](https://reactnative.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Restyle](https://shopify.github.io/restyle/)
+- [Firebase](https://firebase.google.com/?hl=pt-br)
+- [Reanimated v3](https://docs.swmansion.com/react-native-reanimated/)
+- [Skia](https://shopify.github.io/react-native-skia/)
+- [React Navigation](https://reactnavigation.org/)
+- [TanStack Query v3](https://tanstack.com/query/v3/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [Axios](https://axios-http.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [Jest](https://jestjs.io)
 
-```bash
-# using npm
-npm start
+## 🔥 Features
 
-# OR using Yarn
-yarn start
+- Authentication
+- Posts
+- Messages
+- Upload of Photos
+- Data Update
+- Home with Agents, Maps, and Weapons
+- Valorant Skins
+
+## 📁 Structure
+``````
+project
+  ├─ __mocks__              ## Mock async storage
+  ├─ .husky                 ## Husky lib for pre-commit hook
+  ├─ coverage               ## Coverage from jest library
+  ├─ src                    ## Source code from project
+    ├─ api                  ## Api calls
+    ├─ assets               
+    ├─ brand                ## Brand design
+    ├─ components           ## Components from UI
+    ├─ domain               ## The scope and context of application
+    ├─ hooks                ## Custom hooks
+    ├─ infra                ## The infrastructure of application
+    ├─ routes               ## Routes from application (BottomTab, Stack)
+    ├─ screens              ## Screens are divided by AuthStack and AppStack
+    ├─ services             ## The services from application
+    ├─ test                 ## Jest setup and utils
+    ├─ theme                ## Theme config with Restyle lib
+    ├─ types                
+    ├─ utils        
+  ├─ App.tsx                ## Entry point with the providers
+  ├─ jest.config.js
+  ├─ tsconfig.json          ## Config of typescript and absolute paths
+  ├─ babel.config.js        ## Babel and absolute paths
+``````
+
+## ⬇️ Installation
+Clone the repository
+```
+git clone https://github.com/rafaelteicas/nubbleapp
+```
+Project directory
+```
+cd project
+```
+Install dependencies 
+```
+npm install or yarn
 ```
 
-## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## 📱 Screenshots
 
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<div>
+<img src="https://i.ibb.co/K5cNb5T/simulator-screenshot-CF017296-92-C3-4-C96-99-A5-6-C24-AD05-DDAE.png" width="215" height="466">
+<img src="https://i.ibb.co/CJV1MNj/simulator-screenshot-0-E8-F4-F73-ACBE-44-D4-B3-D8-7-DB69-A9-F9-FB0.png" width="215" height="466">
+<img src="https://i.ibb.co/9H8dJZX/simulator-screenshot-D70-B7-F1-C-E188-4-C7-F-99-F5-61-F17-E2-EA8-DB.png" width="215" height="466">
+</div>
