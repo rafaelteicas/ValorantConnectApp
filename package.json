@@ -1,5 +1,5 @@
 {
-  "name": "Valorant Connect",
+  "name": "ValorantConnect",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -28,6 +28,7 @@
     "react-hook-form": "^7.47.0",
     "react-native": "0.72.6",
     "react-native-app-intro-slider": "^4.0.4",
+    "react-native-dotenv": "^3.4.9",
     "react-native-fs": "^2.20.0",
     "react-native-image-crop-picker": "^0.40.2",
     "react-native-image-picker": "^7.1.0",
