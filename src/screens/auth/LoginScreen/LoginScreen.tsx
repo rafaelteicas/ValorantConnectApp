@@ -61,11 +61,11 @@ export function LoginScreen() {
       />
       <Button
         isLoading={isLoading}
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || isLoading}
         onPress={handleSubmit(handleOnPress)}
         marginBottom="s32"
         rightComponent
-        title="ENTRAR"
+        title="Entrar"
       />
       <Pressable
         onPress={() => navigation.navigate('SignUpScreen')}
