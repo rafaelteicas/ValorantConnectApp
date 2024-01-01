@@ -16,7 +16,6 @@ export function SearchInput({boxProps, ...textInputProps}: Props) {
   return (
     <Pressable onPress={focusOnInput}>
       <Box
-        position="absolute"
         p="s12"
         backgroundColor="lightBox"
         flexDirection="row"
