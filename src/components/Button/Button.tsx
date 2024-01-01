@@ -67,4 +67,7 @@ const $buttonStyle: ButtonProps = {
   alignItems: 'center',
   padding: 's16',
   height: 62,
+  style: {
+    paddingVertical: 0,
+  },
 };
