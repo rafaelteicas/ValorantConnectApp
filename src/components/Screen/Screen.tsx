@@ -10,6 +10,7 @@ interface ScreenProps extends BoxProps {
   canGoBack?: boolean;
   paddingOff?: boolean;
   paddingVerticalOff?: boolean;
+  behavior?: 'height' | 'padding' | 'position' | undefined;
 }
 
 export function Screen({
@@ -17,6 +18,7 @@ export function Screen({
   canGoBack,
   paddingOff,
   paddingVerticalOff,
+  behavior,
   ...props
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
@@ -24,7 +26,7 @@ export function Screen({
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      behavior={Platform.OS === 'ios' ? 'padding' : behavior}>
       <Box
         padding={paddingOff ? undefined : 's32'}
         backgroundColor="backgroundColor"

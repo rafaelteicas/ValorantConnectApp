@@ -23,7 +23,7 @@ export function AgentsScreen() {
     x.value = event.contentOffset.x;
   });
   return (
-    <Screen paddingVerticalOff paddingOff>
+    <Screen paddingVerticalOff paddingOff behavior="height">
       <SearchInput
         value={search}
         onChangeText={setSearch}
@@ -44,6 +44,7 @@ export function AgentsScreen() {
         scrollEventThrottle={16}
         onScroll={scrollHandler}
         onEndReachedThreshold={0.1}
+        showsHorizontalScrollIndicator={false}
       />
     </Screen>
   );
