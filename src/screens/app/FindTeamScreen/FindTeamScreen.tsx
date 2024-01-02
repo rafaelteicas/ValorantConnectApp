@@ -32,7 +32,7 @@ export function FindTeamScreen() {
       <AppHeader />
       <FindTeamHeader onPress={handleNavigate} />
       <FlatList
-        keyExtractor={item => `${item.id.toString()}${Date.now()}`}
+        keyExtractor={item => item.id.toString()}
         data={data}
         renderItem={renderItem}
         onEndReached={fetchNextPage}

@@ -28,6 +28,7 @@ export type AppStackParamList = {
   EditScreen: {
     field: string;
     placeholder: string;
+    confirmPassword?: string;
   };
   ConversationScreen: {
     postId: number;

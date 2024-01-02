@@ -11,10 +11,15 @@ export function InfoScreen() {
   const {auth} = useAuthContext();
   const navigation = useNavigation();
 
-  function navigateToEdit(field: string, placeholder: string) {
+  function navigateToEdit(
+    field: string,
+    placeholder: string,
+    confirmPassword?: string,
+  ) {
     navigation.navigate('EditScreen', {
       field,
       placeholder,
+      confirmPassword,
     });
   }
 
@@ -43,7 +48,10 @@ export function InfoScreen() {
               navigateToEdit('Username', 'Digite seu novo username')
             }
           />
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigateToEdit('Senha', 'Digite sua senha', 'Confirme sua senha')
+            }>
             <Text preset="heading" color="primary" p="s12">
               Alterar senha
             </Text>

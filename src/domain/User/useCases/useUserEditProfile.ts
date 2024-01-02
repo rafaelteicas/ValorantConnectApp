@@ -2,16 +2,28 @@ import {useMutation} from 'react-query';
 
 import {userService} from '../userService';
 
-export function useUserEditProfile() {
-  const mutation = useMutation<void, Error, {field: string; value: string}>({
+interface Props {
+  onSuccess?: () => void;
+}
+
+export function useUserEditProfile({onSuccess}: Props) {
+  const mutation = useMutation<
+    void,
+    Error,
+    {field: string; value: string; confirmPassword?: string}
+  >({
     mutationFn: variables =>
-      userService.editUserInfo(variables.field, variables.value),
-    onSuccess: () => {
-      console.log('Deu bom');
-    },
+      userService.editUserInfo(
+        variables.field,
+        variables.value,
+        variables.confirmPassword,
+      ),
+    onSuccess: onSuccess,
   });
 
   return {
-    mutation: (field: string, value: string) => mutation.mutate({field, value}),
+    mutation: (field: string, value: string, confirmPassword?: string) =>
+      mutation.mutate({field, value, confirmPassword}),
+    isLoading: mutation.isLoading,
   };
 }

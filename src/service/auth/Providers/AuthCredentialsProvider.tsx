@@ -21,6 +21,7 @@ export function AuthCredentialsProvider({children}: React.PropsWithChildren) {
 
   useEffect(() => {
     startAuthCredentials();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function startAuthCredentials() {

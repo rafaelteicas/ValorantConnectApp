@@ -11,8 +11,12 @@ async function getUserById(id: string): Promise<User> {
   return response;
 }
 
-async function editUserInfo(field: string, value: string): Promise<void> {
-  await userAPI.editUserInfo(field, value);
+async function editUserInfo(
+  field: string,
+  value: string,
+  confirmPassword?: string,
+): Promise<void> {
+  await userAPI.editUserInfo(field, value, confirmPassword);
 }
 
 export const userService = {
