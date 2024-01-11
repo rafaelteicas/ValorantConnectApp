@@ -27,7 +27,6 @@ export function App() {
         {Platform.OS === 'android' ? (
           <StatusBar animated backgroundColor="#0F1923" />
         ) : null}
-
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <Navigator />

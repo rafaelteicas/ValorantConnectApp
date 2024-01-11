@@ -5,7 +5,7 @@ import {postApi} from './postApi';
 import {CreatePost, Post} from './postTypes';
 
 async function getPosts(page: number): Promise<Page<Post>> {
-  const response = await postApi.getPosts({page, perPage: 5});
+  const response = await postApi.getPosts({page, perPage: 10});
 
   return {
     post: response.post.map(postAdapter.toPost),

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>projeto</string>
+	<string>Valorant Connect</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -64,5 +64,7 @@
 	<string>Give $(PRODUCT_NAME) permission to access your camera</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) permission to use your microphone</string>
+	<key>UIViewControllerBasedStatusBarApperance</key>
+	<string>NO</string>
 </dict>
 </plist>

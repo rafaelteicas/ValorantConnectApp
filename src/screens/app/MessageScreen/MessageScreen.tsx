@@ -11,8 +11,6 @@ import {MessageScreenComponent} from './components/MessageScreenComponent';
 export function MessageScreen() {
   const {auth} = useAuthContext();
   const {paths} = useGetPaths({userId: auth?.user.id!!});
-  console.log(paths);
-
   if (!paths || paths.length === 0) {
     return (
       <Screen>

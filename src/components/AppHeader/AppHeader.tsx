@@ -20,6 +20,7 @@ export function AppHeader() {
   const {data} = useGetProfileImage(auth.user.id);
   return (
     <Box {...$boxStyle}>
+      <Box width={SIZE_PROFILE} height={SIZE_PROFILE} />
       <Logo size={100} />
       <Box flexDirection="row" alignItems="center">
         {data ? (

@@ -21,13 +21,15 @@ export function AgentsBackgroundCard({
     <>
       <Image
         source={{uri: backgroundImage}}
-        width={width / 2}
-        height={height}
         style={{
           zIndex: -1,
           position: 'absolute',
+          width: 300,
+          height: '100%',
+          resizeMode: 'contain',
+          left: 20,
+          opacity: 0.7,
         }}
-        resizeMode="center"
       />
       <Canvas
         style={[
@@ -39,12 +41,11 @@ export function AgentsBackgroundCard({
           $centerBackground,
         ]}>
         <RoundedRect
-          width={width * 0.6}
+          width={width * 0.55}
           height={height * 0.4}
-          x={40}
-          y={160}
-          r={40}
-          color={'black'}>
+          x={120}
+          y={270}
+          r={20}>
           <SweepGradient c={{x: 0, y: 0}} colors={colors} />
         </RoundedRect>
       </Canvas>
@@ -54,6 +55,4 @@ export function AgentsBackgroundCard({
 
 const $centerBackground: StyleProp<ViewStyle> | any = {
   position: 'absolute',
-  top: -40,
-  left: 0,
 };

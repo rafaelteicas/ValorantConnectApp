@@ -17,8 +17,8 @@ export function AgentsComponent({item}: ListRenderItemInfo<CharactersType>) {
     `#${item.backgroundGradientColors[0]}`,
     `#${item.backgroundGradientColors[1]}`,
   ];
-  const DEFAULT_WIDTH = width * 0.8;
-  const DEFAULT_HEIGHT = height * 0.5;
+  const DEFAULT_WIDTH = width * 0.7;
+  const DEFAULT_HEIGHT = height * 0.55;
   const navigation = useNavigation();
   function handleNavigate() {
     navigation.navigate('AgentScreen', {
