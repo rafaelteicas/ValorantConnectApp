@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {LogBox} from 'react-native';
 
 import {Platform, StatusBar} from 'react-native';
 
@@ -16,6 +17,7 @@ import {theme} from '@theme';
 const queryClient = new QueryClient();
 
 export function App() {
+  LogBox.ignoreAllLogs();
   useEffect(() => {
     if (Platform.OS === 'android') {
       SplashScreen.hide();
