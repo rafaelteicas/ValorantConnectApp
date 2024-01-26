@@ -19,4 +19,13 @@ describe('<Button />', () => {
     fireEvent.press(buttonElement);
     expect(mockedOnPress).toHaveBeenCalled();
   });
+  it('should not call onPress if button is disabled', () => {
+    const mockedOnPress = jest.fn();
+    const {buttonElement} = renderButton({
+      onPress: mockedOnPress,
+      disabled: true,
+    });
+    fireEvent.press(buttonElement);
+    expect(mockedOnPress).not.toHaveBeenCalled();
+  });
 });
