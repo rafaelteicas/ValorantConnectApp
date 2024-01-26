@@ -32,6 +32,7 @@ export function Button({
   const buttonPreset = getButtonPresets[preset];
   return (
     <TouchableOpacity
+      testID="touchable-opacity"
       disabled={disabled || isLoading}
       onPress={onPress}
       style={{

@@ -1,13 +1,26 @@
 import React from 'react';
-import {ActivityIndicator as RNActivityIndicator} from 'react-native';
+import {
+  ActivityIndicatorProps,
+  ActivityIndicator as RNActivityIndicator,
+} from 'react-native';
 
 import {useTheme} from '@hooks';
 
-interface Props {
+interface Props extends ActivityIndicatorProps {
   size?: number;
 }
 
-export function ActivityIndicator({size = 25}: Props) {
+export function ActivityIndicator({
+  size = 25,
+  ...activityIndicatorProps
+}: Props) {
   const {colors} = useTheme();
-  return <RNActivityIndicator size={size} color={colors.darkBox} />;
+  return (
+    <RNActivityIndicator
+      testID="activity-indicator"
+      size={size}
+      color={colors.darkBox}
+      {...activityIndicatorProps}
+    />
+  );
 }

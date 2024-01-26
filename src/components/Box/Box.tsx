@@ -13,5 +13,9 @@ interface BoxComponentProps extends BoxProps {
 }
 
 export function Box({children, ...boxProps}: BoxComponentProps) {
-  return <BoxRestyle {...boxProps}>{children}</BoxRestyle>;
+  return (
+    <BoxRestyle testID="box" {...boxProps}>
+      {children}
+    </BoxRestyle>
+  );
 }
