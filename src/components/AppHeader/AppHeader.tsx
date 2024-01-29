@@ -19,16 +19,16 @@ export function AppHeader() {
   }
   const {data} = useGetProfileImage(auth.user.id);
   return (
-    <Box {...$boxStyle}>
+    <Box testID="app-header-box" {...$boxStyle}>
       <Box width={SIZE_PROFILE} height={SIZE_PROFILE} />
       <Logo size={100} />
       <Box flexDirection="row" alignItems="center">
         {data ? (
-          <Image {...$imageStyle} source={{uri: data}} />
+          <Image testID="image-avatar" {...$imageStyle} source={{uri: data}} />
         ) : (
           <DefaultAvatar
+            testID="default-avatar"
             size={SIZE_PROFILE}
-            borderRadius={SIZE_PROFILE / 3}
             iconSize={20}
           />
         )}
