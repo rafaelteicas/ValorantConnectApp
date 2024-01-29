@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TextInputProps, TextStyle} from 'react-native';
 
 import {Pressable, TextInput} from 'react-native';
 
 import {Box, BoxProps, Text} from '@components';
 
-import {Icon} from '../Icon/Icon';
-
 export interface InputProps extends TextInputProps {
   title?: string;
   placeholder?: string;
-  secureTextEntry?: boolean;
   padding?: BoxProps['padding'];
   multiline?: boolean;
   boxProps?: BoxProps;
@@ -20,7 +17,6 @@ export interface InputProps extends TextInputProps {
 export function Input({
   title,
   placeholder,
-  secureTextEntry,
   boxProps,
   multiline,
   padding = 's12',
@@ -28,8 +24,6 @@ export function Input({
   RightComponent,
   ...textInputProps
 }: InputProps) {
-  const [secure, setSecure] = useState<boolean>(!!secureTextEntry);
-
   return (
     <Box
       style={{backgroundColor: 'rgba(255,255,255,0.1)'}}
@@ -44,20 +38,20 @@ export function Input({
           )}
           <Box flexDirection="row">
             <TextInput
+              testID="text-input"
               autoCapitalize={autoCapitalize}
               style={[$inputTextStyle]}
               placeholder={placeholder}
-              secureTextEntry={secure}
               placeholderTextColor={'white'}
               multiline={multiline}
               {...textInputProps}
             />
-            {secureTextEntry && (
+            {/* {secureTextEntry && (
               <Icon
                 name={secure ? 'eyeIcon' : 'eyeOffIcon'}
                 onPress={() => setSecure(current => !current)}
               />
-            )}
+            )} */}
             {RightComponent && RightComponent()}
           </Box>
         </Box>

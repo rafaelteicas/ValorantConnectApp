@@ -63,7 +63,7 @@ export function Icon({
   const SelectedIcon = Icons[name];
   return (
     <Box {...boxProps}>
-      <TouchableOpacity disabled={!onPress} onPress={onPress}>
+      <TouchableOpacity testID={name} disabled={!onPress} onPress={onPress}>
         <SelectedIcon size={size} color={colors[color]} />
       </TouchableOpacity>
     </Box>
