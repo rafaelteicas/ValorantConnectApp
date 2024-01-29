@@ -12,7 +12,7 @@ export function Header({paddingHorizontal, ...headerProps}: headerProps) {
   const navigation = useNavigation();
 
   return (
-    <Pressable onPress={() => navigation.goBack()}>
+    <Pressable testID="go-back-header" onPress={() => navigation.goBack()}>
       <Box
         paddingBottom="s32"
         paddingHorizontal={paddingHorizontal}

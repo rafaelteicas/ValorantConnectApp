@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react';
 
+import {NavigationContainer} from '@react-navigation/native';
 import {ThemeProvider} from '@shopify/restyle';
 import {
   render,
@@ -26,7 +27,9 @@ export const wrapperAllProviders = () => {
   });
   return ({children}: {children: React.ReactNode}) => (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>{children}</NavigationContainer>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
