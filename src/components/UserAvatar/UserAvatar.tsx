@@ -17,6 +17,7 @@ export function UserAvatar({
 }: Props) {
   return profileImage ? (
     <Image
+      testID="image"
       source={{uri: profileImage}}
       width={size}
       height={size}
@@ -27,6 +28,6 @@ export function UserAvatar({
       {...imageProps}
     />
   ) : (
-    <DefaultAvatar size={size} borderRadius={bordeRadius} iconSize={size / 2} />
+    <DefaultAvatar size={size} iconSize={size / 2} />
   );
 }
