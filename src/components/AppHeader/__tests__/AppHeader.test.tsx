@@ -3,7 +3,7 @@ import React from 'react';
 import {useAuthContext} from '@service';
 import {render, renderHook, screen} from 'test-utils';
 
-import {mockedAuthData} from '../../../domain/Auth/useCases/__test__/mock';
+import {mockedAuthData} from '../../../domain/Auth/useCases/__tests__/mock';
 
 import {AppHeader} from '../AppHeader';
 
