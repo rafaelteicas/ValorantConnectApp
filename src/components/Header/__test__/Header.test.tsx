@@ -1,7 +1,6 @@
 import React from 'react';
 
-import {useNavigation} from '@react-navigation/native';
-import {fireEvent, render, renderHook, screen, waitFor} from 'test-utils';
+import {fireEvent, render, screen} from 'test-utils';
 
 import {Header} from '../Header';
 

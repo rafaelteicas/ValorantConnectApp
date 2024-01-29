@@ -59,6 +59,7 @@ export function Text({
   const fontFamily = getFontFamily(bold, semiBold);
   return (
     <RestyleText
+      testID="text"
       style={$fontSize[preset]}
       fontFamily={fontFamily}
       color={color}
