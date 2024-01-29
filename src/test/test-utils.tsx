@@ -14,7 +14,15 @@ import {theme} from '@theme';
 
 export const wrapperAllProviders = () => {
   const queryClient = new QueryClient({
-    defaultOptions: {queries: {retry: false}, mutations: {retry: false}},
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: Infinity,
+      },
+      mutations: {
+        retry: false,
+      },
+    },
   });
   return ({children}: {children: React.ReactNode}) => (
     <QueryClientProvider client={queryClient}>
