@@ -6,7 +6,14 @@ import {useNavigation} from '@react-navigation/native';
 
 import {useForm} from 'react-hook-form';
 
-import {Screen, Button, Text, FormTextInput, Logo} from '@components';
+import {
+  Screen,
+  Button,
+  Text,
+  FormTextInput,
+  FormPasswordInput,
+  Logo,
+} from '@components';
 
 type LoginType = {
   email: string;
@@ -25,7 +32,7 @@ export function LoginScreen() {
   });
 
   function handleOnPress({email, password}: LoginType) {
-    signIn(email, password);
+    signIn({email: email, password: password});
   }
 
   return (
@@ -47,7 +54,7 @@ export function LoginScreen() {
         title="E-mail"
         placeholder="Digite seu e-mail"
       />
-      <FormTextInput
+      <FormPasswordInput
         control={control}
         name="password"
         autoCapitalize="none"
@@ -55,9 +62,8 @@ export function LoginScreen() {
         rules={{
           required: true,
         }}
-        secureTextEntry
         title="Senha"
-        placeholder="********"
+        placeholder="Digite sua senha"
       />
       <Button
         isLoading={isLoading}

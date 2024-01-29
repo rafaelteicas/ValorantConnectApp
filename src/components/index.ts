@@ -8,6 +8,7 @@ export * from './Header/Header';
 export * from './Logo/Logo';
 export * from './SearchInput/SearchInput';
 export * from './Form/FormTextInput';
+export * from './Form/FormPasswordInput';
 export * from './Toast/Toast';
 export * from './Loading/Loading';
 export * from './AppHeader/AppHeader';
