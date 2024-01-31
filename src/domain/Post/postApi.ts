@@ -7,8 +7,10 @@ type PostParams = {
   perPage: number;
 };
 
+export const POST_PATH = 'user/post';
+
 async function getPosts(params: PostParams): Promise<Page<PostAPI>> {
-  const response = await api.get('/user/post', {
+  const response = await api.get(POST_PATH, {
     params,
   });
 
@@ -16,7 +18,7 @@ async function getPosts(params: PostParams): Promise<Page<PostAPI>> {
 }
 
 async function create(post: CreatePost) {
-  await api.post('/user/post', post);
+  await api.post(POST_PATH, post);
 }
 
 export const postApi = {

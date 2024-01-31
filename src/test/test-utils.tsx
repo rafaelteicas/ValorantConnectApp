@@ -1,6 +1,7 @@
 import React, {ReactElement} from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
+import {AuthCredentialsProvider} from '@service';
 import {ThemeProvider} from '@shopify/restyle';
 import {
   render,
@@ -9,22 +10,25 @@ import {
   RenderOptions,
 } from '@testing-library/react-native';
 
-import {QueryClient, QueryClientProvider} from 'react-query';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {QueryClient, QueryClientConfig, QueryClientProvider} from 'react-query';
 
 import {theme} from '@theme';
 
-export const wrapperAllProviders = () => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-        cacheTime: Infinity,
-      },
-      mutations: {
-        retry: false,
-      },
+const queryClientConfig: QueryClientConfig = {
+  defaultOptions: {
+    queries: {
+      retry: false,
+      cacheTime: Infinity,
     },
-  });
+    mutations: {
+      retry: false,
+    },
+  },
+};
+
+export const wrapperAllProviders = () => {
+  const queryClient = new QueryClient(queryClientConfig);
   return ({children}: {children: React.ReactNode}) => (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
@@ -34,10 +38,32 @@ export const wrapperAllProviders = () => {
   );
 };
 
+export const wrapScreenProviders = () => {
+  const queryClient = new QueryClient(queryClientConfig);
+  return ({children}: {children: React.ReactNode}) => (
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider>
+          <ThemeProvider theme={theme}>
+            <NavigationContainer>{children}</NavigationContainer>
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
+  );
+};
+
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>,
 ) => render(ui, {wrapper: wrapperAllProviders(), ...options});
+
+export function renderScreen<T = unknown>(
+  component: ReactElement<T>,
+  options?: Omit<RenderOptions, 'wrapper'>,
+) {
+  return render(component, {wrapper: wrapScreenProviders(), ...options});
+}
 
 const customRenderHook = <Props, Result>(
   renderCallback: (props: Props) => Result,
