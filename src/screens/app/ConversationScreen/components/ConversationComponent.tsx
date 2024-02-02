@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Image, ImageProps} from 'react-native';
 
-import {useGetProfileImage, useGetUserById} from '@domain';
+import {useGetProfileImage} from '@domain';
 import {useAuthContext} from '@service';
 
 import {Box, DefaultAvatar, Text} from '@components';
@@ -39,7 +39,7 @@ function getAvatarImage(image?: string) {
   if (image) {
     return <Image source={{uri: image}} {...$imageStyle} />;
   }
-  return <DefaultAvatar size={SIZE} borderRadius={SIZE / 3} iconSize={20} />;
+  return <DefaultAvatar size={SIZE} iconSize={20} />;
 }
 
 const $imageStyle: Omit<ImageProps, 'source'> = {

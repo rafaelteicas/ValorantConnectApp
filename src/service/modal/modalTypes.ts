@@ -1,7 +1,6 @@
-import React from 'react';
-
 export interface ModalService {
-  modal: React.ReactNode;
-  showModal: (modal: React.ReactNode) => void;
+  modal: string | null;
+  showModal: (modal: string) => void;
   hideModal: () => void;
+  modalType?: 'success' | 'error';
 }

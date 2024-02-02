@@ -24,11 +24,11 @@ export function AgentsBackgroundCard({
         style={{
           zIndex: -1,
           position: 'absolute',
-          width: 300,
-          height: '100%',
-          resizeMode: 'contain',
-          left: 20,
+          width: 150,
+          height: '60%',
+          left: '30%',
           opacity: 0.7,
+          overflow: 'hidden',
         }}
       />
       <Canvas
@@ -41,7 +41,7 @@ export function AgentsBackgroundCard({
           $centerBackground,
         ]}>
         <RoundedRect
-          width={width * 0.55}
+          width={width * 0.5}
           height={height * 0.4}
           x={120}
           y={270}

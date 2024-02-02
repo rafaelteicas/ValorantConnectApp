@@ -1,32 +1,56 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
+import {useWindowDimensions} from 'react-native';
 
 import {useModal} from '@service';
 
+import Animated, {FadeInUp, FadeOut} from 'react-native-reanimated';
+
+import {useAppSafeArea} from '@hooks';
+
 import {Box} from '../Box/Box';
 import {Icon} from '../Icon/Icon';
+import {Text} from '../Text/Text';
 
 export function Modal() {
   const {modal, hideModal} = useModal();
+  const {width} = useWindowDimensions();
+  const {top} = useAppSafeArea();
+  useEffect(() => {
+    setTimeout(() => hideModal(), 2000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal]);
   if (!modal) {
     return null;
   }
   return (
-    <Box
-      bottom="50%"
-      p="s32"
-      position="absolute"
-      backgroundColor="backgroundContrast"
-      borderRadius="b12"
-      alignSelf="center">
-      <Icon
-        name="closeIcon"
-        onPress={() => hideModal()}
-        position="absolute"
-        top={10}
-        right={10}
-        size={15}
-      />
-      {modal}
-    </Box>
+    <Animated.View
+      entering={FadeInUp}
+      exiting={FadeOut}
+      style={{position: 'absolute'}}>
+      <Box p="s12" width={width} backgroundColor="darkBox" alignSelf="center">
+        <Box
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+          style={{marginTop: top}}>
+          <Box flexDirection="row" alignItems="center" gap="s12">
+            <Icon
+              color="primary"
+              name="successIcon"
+              onPress={() => hideModal()}
+              size={15}
+            />
+            <Text color="backgroundContrast">{modal}</Text>
+          </Box>
+          <Icon
+            color="backgroundContrast"
+            name="closeIcon"
+            onPress={hideModal}
+            size={15}
+          />
+        </Box>
+      </Box>
+    </Animated.View>
   );
 }

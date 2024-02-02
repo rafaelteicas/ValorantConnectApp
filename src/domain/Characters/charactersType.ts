@@ -40,11 +40,5 @@ export interface CharactersType {
     description: string;
     icon: string;
   };
-  abilities: [
-    {
-      displayName: string;
-      description: string;
-      displayIcon: string;
-    },
-  ];
+  abilities: abilitiesAPI[];
 }

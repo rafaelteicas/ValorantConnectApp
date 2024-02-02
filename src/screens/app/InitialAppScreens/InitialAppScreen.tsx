@@ -14,7 +14,7 @@ const DEFAULTS = {size: 300, borderRadius: 75};
 export function InitialAppScreen() {
   const navigation = useNavigation();
   const {auth} = useAuthContext();
-  const {upload} = useUploadProfileImage();
+  const {upload} = useUploadProfileImage({});
   const {image, loading, response, imagePicker} = useAppCamera();
 
   function handleSendOnPress() {
@@ -22,16 +22,6 @@ export function InitialAppScreen() {
       upload({
         id: auth.user.id,
         response: response,
-      });
-      navigation.reset({
-        routes: [
-          {
-            name: 'HomeScreen',
-          },
-          {
-            name: 'HomeScreen',
-          },
-        ],
       });
     }
   }
@@ -58,11 +48,7 @@ export function InitialAppScreen() {
             }}
           />
         ) : (
-          <DefaultAvatar
-            borderRadius={DEFAULTS.borderRadius}
-            size={DEFAULTS.size}
-            iconSize={DEFAULTS.size / 2}
-          />
+          <DefaultAvatar size={DEFAULTS.size} iconSize={DEFAULTS.size / 2} />
         )}
         <Pressable onPress={imagePicker} style={{top: 20}}>
           <Text color="primary">ESCOLHA UMA FOTO</Text>

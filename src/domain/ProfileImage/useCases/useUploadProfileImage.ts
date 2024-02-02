@@ -7,7 +7,11 @@ export function useUploadProfileImage({onSuccess}: {onSuccess?: () => void}) {
   const mutation = useMutation<void, Error, ProfileImageServiceType>({
     mutationFn: data =>
       profileImageService.uploadProfileImage(data.id, data.response),
-    onSuccess,
+    onSuccess: () => {
+      if (onSuccess) {
+        onSuccess();
+      }
+    },
   });
 
   return {

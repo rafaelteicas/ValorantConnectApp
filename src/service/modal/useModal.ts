@@ -4,6 +4,6 @@ import {ModalService} from './modalTypes';
 
 export const useModal = create<ModalService>(set => ({
   modal: null,
-  showModal: modalComponent => set({modal: modalComponent}),
+  showModal: modal => set({modal: modal}),
   hideModal: () => set({modal: null}),
 }));

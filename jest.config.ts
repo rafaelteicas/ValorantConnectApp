@@ -9,7 +9,7 @@ const config: Config = {
   moduleDirectories: ['node_modules', './src/test'],
   modulePathIgnorePatterns: ['.*/mock/.*'],
   transformIgnorePatterns: [
-    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context|@react-navigation)/)',
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context|@react-navigation|react-native-reanimated|react-native-svg)/)',
   ],
 };
 

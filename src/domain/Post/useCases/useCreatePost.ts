@@ -11,7 +11,9 @@ export function useCreatePost({onSuccess}: Props) {
   const mutation = useMutation<void, Error, CreatePost>({
     mutationFn: post => postService.create(post),
     retry: false,
-    onSuccess,
+    onSuccess: () => {
+      onSuccess();
+    },
   });
 
   return {

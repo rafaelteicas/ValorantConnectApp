@@ -12,3 +12,5 @@ export * from './DeleteIcon';
 export * from './EditIcon';
 export * from './CameraIcon';
 export * from './MessageIcon';
+export * from './AlertIcon';
+export * from './SuccessIcon';

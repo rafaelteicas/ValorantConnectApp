@@ -22,11 +22,7 @@ export function MessageScreenComponent(item: any) {
         {data ? (
           <Image {...$imageStyle} source={{uri: data}} />
         ) : (
-          <DefaultAvatar
-            size={AVATAR_SIZE}
-            borderRadius={AVATAR_SIZE / 3}
-            iconSize={AVATAR_SIZE / 2}
-          />
+          <DefaultAvatar size={AVATAR_SIZE} iconSize={AVATAR_SIZE / 2} />
         )}
         <Box ml="s16">
           <Text>{user?.username}</Text>

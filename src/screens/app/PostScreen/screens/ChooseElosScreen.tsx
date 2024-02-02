@@ -6,6 +6,8 @@ import {Elos, useCreatePost, useGetElos, usePostList} from '@domain';
 
 import {useNavigation} from '@react-navigation/native';
 
+import {useModal} from '@service';
+
 import {Box, Button, Screen, Text} from '@components';
 import {PostScreenTypes} from '@routes';
 
@@ -15,9 +17,11 @@ export function ChooseElosScreen({route}: PostScreenTypes<'ChooseEloScreen'>) {
   const {elos} = useGetElos<Elos[]>();
   const SIZE = 80;
   const [selected, setSelected] = useState<string>('');
+  const {showModal} = useModal();
   const {createPost} = useCreatePost({
     onSuccess: () => {
-      fetchData;
+      fetchData();
+      showModal('Sucesso!');
       // @ts-ignore
       navigation.navigate('FindTeamScreen');
     },

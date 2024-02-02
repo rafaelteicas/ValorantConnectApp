@@ -28,7 +28,9 @@ export function App() {
       <SafeAreaProvider>
         {Platform.OS === 'android' ? (
           <StatusBar animated backgroundColor="#0F1923" />
-        ) : null}
+        ) : (
+          <StatusBar backgroundColor={'white'} />
+        )}
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <Navigator />
