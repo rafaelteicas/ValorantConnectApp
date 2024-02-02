@@ -52,6 +52,7 @@ export function PasswordScreen({
       </Box>
       <Box flex={1} justifyContent="flex-end">
         <Button
+          testID="button-password"
           disabled={!formState.isValid}
           title="Continuar"
           rightComponent

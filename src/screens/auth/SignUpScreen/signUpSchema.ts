@@ -17,6 +17,12 @@ export const signUpSchemaPassword = z
     message: 'As senhas devem ser iguais',
   });
 
+export const valorantDataSchema = z.object({
+  riotId: z.string().min(3),
+  tag: z.string().min(3).max(6),
+  username: z.string().min(3),
+});
+
 export type SignUpSchema = z.infer<
   typeof signUpSchemaEmail | typeof signUpSchemaPassword
 >;

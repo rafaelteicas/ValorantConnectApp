@@ -37,6 +37,7 @@ export function EmailScreen({navigation}: AuthSignUpStackTypes<'EmailScreen'>) {
       </Box>
       <Box flex={1} justifyContent="flex-end">
         <Button
+          testID="button-email"
           disabled={!formState.isValid}
           title="Continuar"
           rightComponent

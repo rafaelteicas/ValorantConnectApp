@@ -8,6 +8,8 @@ import {Box, Button, FormTextInput, Loading, Screen, Text} from '@components';
 import {useAppForm} from '@hooks';
 import {AuthSignUpStackTypes} from '@routes';
 
+import {valorantDataSchema} from '../signUpSchema';
+
 interface dataType {
   riotId: string;
   tag: string;
@@ -16,12 +18,15 @@ interface dataType {
 
 export function ValorantData({route}: AuthSignUpStackTypes<'ValorantData'>) {
   const {email, password, confirmPassword} = route.params;
-  const {signUp} = useAuthSignUp();
-  const {control, formState, handleSubmit} = useAppForm({
-    riotId: '',
-    tag: '',
-    username: '',
-  });
+  const {signUp, isLoading} = useAuthSignUp();
+  const {control, formState, handleSubmit} = useAppForm(
+    {
+      riotId: '',
+      tag: '',
+      username: '',
+    },
+    valorantDataSchema,
+  );
   const {width} = Dimensions.get('window');
   function submitForm(data: dataType) {
     signUp({
@@ -75,7 +80,8 @@ export function ValorantData({route}: AuthSignUpStackTypes<'ValorantData'>) {
       </Box>
       <Box flex={1} justifyContent="flex-end">
         <Button
-          disabled={!formState.isValid}
+          testID="valorant-data-button"
+          disabled={!formState.isValid || isLoading}
           title="Continuar"
           rightComponent
           onPress={handleSubmit(submitForm)}
