@@ -26,6 +26,7 @@ export function Input({
 }: InputProps) {
   return (
     <Box
+      testID='input'
       style={{backgroundColor: 'rgba(255,255,255,0.1)'}}
       {...boxProps}
       {...$inputContainer}>
